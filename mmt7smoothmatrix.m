@@ -1,4 +1,6 @@
-%This program relies on output from the Dynare program mmt7.mod which includes b(t)
+%This program relies on output from the Dynare program mmt7.mod with interest rate smoothing,
+%which requires 4 lagged variables,
+
 % the variables in the Dynare program area
 
 %The variables in the log-linear model area
@@ -14,7 +16,7 @@ A(1,13)=-1;
 A(2,2)=(hss^psi)*css/z;
 A(2,9)=psi*(hss^psi)*css/z;
 A(2,13)=chi*hsss;
-%A(2,16)=-(1/eta);   %for use with a shock on consumption
+%A(2,15)=-(1/eta);   %for use with a shock on consumption
 A(3,3)=1;
 A(3,6)=rlss/(rlss-rdss);
 A(3,7)=-rdss/(rlss-rdss);
@@ -28,7 +30,7 @@ A(5,10)=-1;
 %A(5,16)=-1;  %for use with a supply shock
 A(6,3)=(dss/xa)^((nu-1)/nu);
 A(6,4)=-(xn^(1/nu))*(nss^((nu-1)/nu));
-A(6,11)=-(xh^(1/nu))*(hdss^((nu-1)/nu));
+A(6,9)=-(xh^(1/nu))*(hdss^((nu-1)/nu));
 
 A(7,4)=-1;
 A(7,12)=1;
@@ -36,7 +38,7 @@ A(7,12)=1;
 A(8,3)=1;
 A(8,4)=-1;
 A(8,6)=nu*rlss*((1/(rlss-rdss))-(1/(rlss-rnss+phin*z)));
-A(8,7)=-nu*rdss/(rlss-rdss);
+A(8,7)=-rdss*nu/(rlss-rdss);
 A(8,8)=-nu*rnss/(rlss-rnss+phin*z);
 
 A(9,3)=1;
@@ -51,20 +53,21 @@ A(10,12)=-hnss;
 
 A(11,1)=1;
 A(11,2)=-css/(css+g);
-A(11,16)= 0;      %-g/(css+g);    %for use with a shock to g
+A(11,16)=-g/(css+g);    %for use with a shock to g
 
-A(12,1)=0;
-A(12,14)=1;        
+A(12,1)=1;
+A(12,14)=-1;
 
 A(13,4)=rnss*nss;
 A(13,8)=rnss*nss;
 A(13,15)=-mss;
-A(13,16)=0;           g;       %for use with a shock to g
+A(13,16)=g;       %for use with a shock to g
 
 A(14,4)=nss*pigss;
-A(14,5)=mss+bss;
-A(14,6)=-beta*bss;
-A(14,14)=beta*bss;     %check
+A(14,5)=pigss*(nss+(bss/rlss));
+A(14,6)=-pigss*bss/rlss;
+
+
 
 A(15,1)=by;          %bpi*pigss/(pigss-1); for use with (pig-1)/(pigss-1) form
 A(15,5)=bpi;
@@ -87,6 +90,7 @@ B(4,16)=1;
 C=zeros(nvar,nvar);
 C(14,14)=bss;
 C(14,15)=mss;
+C(15,8)=br;       %for use with interest rate smoothing
 C(16,16)=rhoa1;
 
 
@@ -94,7 +98,7 @@ C(16,16)=rhoa1;
 
 
 b1=zeros(nvar,nvar);
-b1(1:16,14:16)=B1;
+b1(1:16,13:16)=B1;
 
 b2=zeros(nvar,nvar);
 b2(1:nvar,nvar:nvar)=B2;
@@ -110,8 +114,11 @@ DTAeig=sort(real(eig(DTA)),"descend");
 DTBeig=sort(real(eig(DTB)),"descend");
 maxA=max(DTAeig);
 maxB=max(DTBeig);
-bpi
 maxeig=max(maxA, maxB)
+
+DTBtm1=kron(b1',betmat) + kron(Imat,betmat*b1);           %matrix for expectations based on t-1 data, assumes 0 steady states
+DTBtm1eig=sort(real(eig(DTBtm1)),"descend");
+maxBtm1=max(DTBtm1eig)
 
 eigAC=sort(real(eig(betmat+delmat)),"descend");
 maxAC=max(eigAC)

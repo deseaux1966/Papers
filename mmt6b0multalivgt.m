@@ -3,7 +3,7 @@
 
 tautests=300;
 alitests=90;
-%resultsmat=zeros(tautests,alitests);
+resultsmat=zeros(tautests,alitests);
 
 j=0;
 while j<=alitests
@@ -19,18 +19,13 @@ while k<=tautests
 
   set_param_value('tau',taum);
 
-  %rmdir(['+',M_.fname], 's');
-  system(['rm -rf +' M_.fname]);
-   dynare mmt6iorb0 noclearall
-  %temp_dir = [ '+', M_.fname, 'mmt5eq13iorYjLu0asVxy'];
-  %[~,~] = rmdir(temp_dir);
-  %[~,~] = rmdir(["" M_.fname "+mmt5eq13ior"]);
-  %clear M
+   system(['rm -rf +' M_.fname]);
+   dynare mmt7mult noclearall
 
   resultsmat(k,j)=pigss;
+end
 
-endwhile
-endwhile
+end
 
 
 resultsmat;

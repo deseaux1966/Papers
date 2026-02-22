@@ -1,6 +1,6 @@
 %Includes b as an endogenous variable to examine short term debt
 
-%the model is the same as mmt5, without the Phillips Curve and with IOR and multiple shocks
+%the model is the same as mmt5, without the Phillips Curve and with IOR
 
 %This version generates the results for "Shotgun Wedding"
 
@@ -12,17 +12,17 @@ Parameters chi psi va beta eta nu xa xn xh phin g tau rhoa1 bpi by br ali omega 
 %New calibration:
 
 %ali=alim;
-ali =  0.3;            %calib for pigss=1.04
-beta =  0.968;
-eta =  1.5294;
-va =  2.5035;
-xa =  5.2528;
+%ali =  0.3;            %calib for pigss=1.04
+%beta =  0.968;
+%eta =  1.5294;
+%va =  2.5035;
+%xa =  5.2528;
 
-%ali =   0.2892;             %calib for pigss=1.02
-%beta =  0.9828;
-%eta =  1.5365;
-%va =  2.6462;
-%xa =  4.4850;
+ali =   0.2892;             %calib for pigss=1.02
+beta =  0.9828;
+eta =  1.5365;
+va =  2.6462;
+xa =  4.4850;
 
 chi=1.0;
 psi=1.3;      %chi=1, psi=1.3 in the NY Fed value
@@ -33,13 +33,13 @@ z=1.3;
 g=0.2;
 tau=0.18;
 %tau=taum;     %for use with mmt6iorb0mult
-rhoa1=0.9;
+rhoa1=0.0;
 %rhoa2=0.35;
-bpi=1.5;
+bpi=0.044;   
 by=0.0;
 br=0.0;
 
-nu=0.24;
+nu=0.25;
 xn=0.95;
 xh=1-xn;
 phin=0.0005;
@@ -65,10 +65,10 @@ hd=((rl-rd)^nu)*(xa^(nu-1))*xh*d*(z^(-nu));
 
 h=hg+hd+hn;       %hb=hd+hn;
 y=c+g;
-b=(1-omega)*b0*(y/STEADY_STATE(y));      %including a shock for deficit spending
+b=(1-omega)*b0;              %*(y/STEADY_STATE(y));     
 m=((g)-(tau))+(rn)*n;
 n=(m(-1)/pig)+(b(-1)/pig)-b*(1/rl);
-rn=(STEADY_STATE(rl)^(ali*(1-br)))*(((pig)/(STEADY_STATE(pig)))^bpi)*((y/steady_state(y))^by);
+rn=(STEADY_STATE(rl)^(ali))*(((pig)/(STEADY_STATE(pig)))^bpi)*((y/steady_state(y))^by);
 
 a1=(a1(-1)^rhoa1)*(exp(epsa1));
 %a2=(a2(-1)^rhoa2)*(exp(epsa2));
@@ -105,7 +105,7 @@ end;
 
 steady(solve_algo=4);
 
-stoch_simul(irf=10,order=1,loglinear);
+stoch_simul(irf=10,nograph,noprint,order=1,loglinear);
 
 %The following is for writing the log-linear model in matrix form
 %and for simulations
