@@ -1,0 +1,1201 @@
+
+\documentclass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{chicago}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{graphicx}
+
+\setcounter{MaxMatrixCols}{10}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\geometry{margin=1in}
+
+\begin{document}
+
+\title{The Many Faces of the Taylor Rule for Advanced Undergraduate
+Macroeconomics}
+\date{\textsf{May 5, 2022}}
+\author{George A. Waters \\
+%EndAName
+Department of Economics\\
+Illinois State University\\
+Normal, IL 61790-4200}
+\maketitle
+
+\begin{abstract}
+The Taylor Rule and Fisher Relation can be represented on a graph that
+allows for discussion of the zero lower bound on interest rates, the
+existence of multiple equilibria, secular stagnation and Japan's lost
+decade, among other issues. The Taylor Rule and Fisher Relation can also be
+included in a small macroeconomic model that can be used to study the
+stability under various interest rate rules under adaptive expectations or
+solved under rational expectations. \ There are a number of related
+empirical exercises using both descriptive statistics and regressions for
+undergraduates with intermediate macro level knowledge.
+
+\textbf{Keywords: \ }Monetary Policy, Interest Rate Rules, Taylor Rule,
+zero-lower bound
+
+\textbf{JEL classification: }A22, E0, E52, E60
+\end{abstract}
+
+\begin{doublespace}
+\pagebreak
+
+\section{Introduction}
+
+Taylor Rules are a ubiquitous method for describing the current conduct of
+monetary policy. \ At the same time, the zero lower bound on interest rates
+(ZLB) is a key constraint on policy and has implications the type of
+stabilization policies that work. \ A combination of the Fisher relation and
+an interest rate rule that accounts for the ZLB on a graph or as part of an
+algebraic model offers insights on these issues that are accessible to
+undergraduates. In addition, there are a number of theoretical issues and
+empirical exercises that arise from extensions.
+
+An important point that can be made using a model with a Taylor Rule (TR)
+and the Fisher relation (FR) concern the existence of multiple equilibria
+and their stability. The equilibrium at the inflation target is stable under
+learning if the Taylor Principle is satisfied; however, equilibria at an
+interest rate peg, such as the ZLB, are not, under reasonable assumptions.
+Furthermore, a graph with the TR and FR provides intuition about the impact
+of secular stagnation, changes in the inflation target and Neo-Fisherian
+increases in the lower bound on interest rates.
+
+Including standard loanable funds and IS-LM graphs in the analysis allows
+for a discussion of the excess savings under the ZLB in financial markets
+and the liquidity trap in the broader economy. The liquidity trap is the
+primary counterexample to Say's Law, and Keynes' (1935) argument for the
+necessity of fiscal stimulus in such a situation is apparent. The
+extraordinary policies of forward guidance and quantitative easing employed
+by the Federal Reserve in response to the Great Recession of 2009-10 can be
+interpreted on the IS-LM graph as well.
+
+An algebraic model with IS and aggregate supply relations included with the
+TR and FR can be analyzed under different assumptions about expectations.
+Solving the model under rational expectations shows the role of the
+parameters in the TR on the response to shocks. Under adaptive expectations,
+the dynamics of the resulting difference equation(s) demonstrates the
+importance of the Taylor Principle and the instability arising from interest
+rate pegs\footnote{%
+This model is closely related to the graphical analysis in Buttet and Roy
+(2014).}.
+
+Another advantage to focusing on the TR and FR is the close relation to the
+data, exemplified in the graphs of the recent experience of the U.S. and
+Japan in Bullard (2010). There are a number of empirical exercises students
+can do such as comparing graphs of the recommended interest rates for
+various Taylor rules and the actual policy rates. Estimating interest rate
+rules using the methods of Judd and Rudebusch (1998) is an excellent way to
+get intuition about policy and experience applying econometric techniques.
+
+Finally, analyzing the graphical and algebraic models described here forms
+and excellent basis for students planning to study these issues at a
+graduate level. The TR-FR graphs arise often in theoretical papers, see
+footnote 3 for examples. \ Solving under rational expectations with the
+method of undetermined coefficients and analyzing stability under learning
+are methods that are invaluable for further study.
+
+The conduct of monetary policy at the Federal Reserve is currently
+undergoing changes that we do not explicitly address. As detailed in Wolla
+(2019), in an environment where there are ample reserves, the usual analysis
+where the supply and demand for reserves determine an equilibrium federal
+funds rate does not apply. The Fed now pays interest on both required and
+excess reserves the sets on upper and lower bound on the federal funds rate.
+From a macroeconomic modeling perspective, whether these considerations are
+an innocuous bit of plumbing or factors that need explicitly modeling
+remains to be seen.
+
+Another goal of this work is to provide a guide to related outside readings
+that are accessible. \ References with a (*) are suitable for
+undergraduates. \ The text also includes some questions (Q:) that are
+intended for pedagogical use as discussion questions or essay topics.
+
+Section 2 discusses the TR-FR framework using graphical analysis and the
+policy responses to the ZLB. Section 3 describes some associated empirical
+exercises including the estimation of interest rate rules. Section 4
+demonstrates algebraic analysis of a small macroeconomics model with the TR
+and FR that includes solutions under rational expectations and stability
+analysis under adaptive expectations. Section 5 concludes.
+
+\section{Graphs}
+
+The key graph combines a Taylor Rule and a Fisher Relation approximation in
+the space $\left( \pi ,i\right) $ where the inflation rate is $\pi $, and
+the nominal interest rate is $i$. \ As preparation, students should have
+studied a macroeconomic model that describes short run fluctuations such as
+the IS-LM, AS-AD-PC graphs common in most intermediate level textbooks. They
+should understand that the policymaker cannot target the money supply and an
+interest rate simultaneously.
+
+A good way to introduce interest rate rules is to discuss stability under
+money supply versus interest rate pegs with a money supply and demand graph,
+summarizing Friedman (1968). Under an interest rate peg, a shock to money
+demand would require a change in the money supply to maintain the peg that
+would exacerbate the shock, shifting demand again. On a money supply and
+demand graph, shifts in demand are followed by shifts in supply
+indefinitely, representing an inflationary or deflationary spiral.
+Alternatively, one can use Wicksell's (1898) description of the \textit{%
+cumulative process} that arises when the interest rate is pegged at a value
+different from the natural rate, see Woodford (Section 1.3, 2003) for a more
+detailed discussion.
+
+Q: Why don't Taylor rules suffer from the same instability?
+
+A: The interest rate responds to changes in the economy\footnote{%
+How strongly they must respond is addressed in the section on algebraic
+formulations of the model.}.
+
+Assume that the nominal rate is the policy rate targeted by the central
+bank. A simple Taylor Rule takes the form%
+\begin{equation}
+i_{t}=\pi _{t}+\widetilde{r}+b_{\pi }\left( \pi _{t}-\bar{\pi}\right)
++b_{y}\left( y_{t}-\bar{y}\right) ,  \label{TR}
+\end{equation}%
+where the equilibrium real rate is $\widetilde{r}$, the inflation gap is $%
+\pi _{t}-\bar{\pi},$ the output gap is $y_{t}-\bar{y}$ and the parameters $%
+b_{\pi }$ and $b_{y}$ reflect the relative concern the policymaker has for
+the two goals of smoothing inflation and output. To represent the Taylor
+Rule on the graph, make the extra assumption that $b_{y}=0$, which means the
+the monetary policymaker is engaged in pure inflation targeting, so the rule
+becomes \ 
+\begin{equation}
+i_{t}=\pi _{t}+\widetilde{r}+b_{\pi }\left( \pi _{t}-\bar{\pi}\right) .
+\label{TR infl}
+\end{equation}%
+Besides simplifying the pedagogy, the assumption is reasonable as it is part
+of the mandate of the European Central Bank\footnote{%
+The Federal Reserve has dual mandate to stabilize employment as well, which
+can be accomplished by smoothing real GDP, which is represented in the
+algebraic model in Section 4.}.
+
+The Fisher Relation approximation is standard%
+\begin{equation*}
+r_{t}=i_{t}-E_{t}\pi _{t+1},
+\end{equation*}%
+where inflation expectations are $E_{t}\pi _{t+1}$. \ Making the additional
+assumptions that expectations are formed adaptively such that $E_{t}\pi
+_{t+1}=\pi _{t}$, following Mankiw (2013) and Buttet and Roy (2014), and
+that the real rate is stable at $\widetilde{r},$\ the relation used for the
+graph is%
+\begin{equation*}
+\widetilde{r}=i_{t}-\pi _{t}.
+\end{equation*}%
+A macroeconomic theory paper\footnote{%
+Evans, Guse and Honkapohja (2008) and Schmitt-Grohe and Uribe (2009) are two
+eamples of theory papers that include interest rate rules, the Fisher
+relation and the ZLB.} might focus on steady states instead of resorting to
+adaptive expectations, and some instructors may feel more comfortable with
+such an approach. \ Here, for ease of exposition, it is sufficient to
+describe inflation and the nominal rate as fluctuating every period, while
+the equilibrium real rate $\widetilde{r}$ is determined by many factors such
+as savings preferences and the perceived return on capital, which change
+infrequently. The algebraic formulations of the model (Section 4) do not
+make such an assumption, and the role of expectations is explored in detail.
+
+When introducing the graph, the following questions can stimulate a brief
+discussion that gives some intuition.
+
+Q: \ What are the slopes and intercepts of the two lines?
+
+Q: \ Where and how do they intersect?
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=4.0421in]{RBQA8C00.png}
+\caption{TR-FR graph}
+\label{fig:trfr}
+\end{figure}
+
+In Figure 1, the vertical intercept of the FR line corresponds to the
+equilibrium real rate $\widetilde{r}$, since it satisfies the Fisher
+Relation when inflation is zero.\ The slope of the FR line is one, while the
+slope of the TR is $1+b_{\pi }$. Assuming that the parameter $b_{\pi }$ is
+positive, which corresponds to the Taylor principle, the TR is steeper than
+the FR. \ Examining a time series graph of inflation and the federal funds
+rate shows that the Taylor principle has usually been met, but not always,
+as during the 1970s. The issue is analyzed formally in the empirical and
+algebraic formulations of the model in Section 3.
+
+The TR and FR intersect at the point $\left( \bar{\pi},\widetilde{r}+\bar{\pi%
+}\right) $. \ If policy is functioning well, the data should fluctuate
+around this equilibrium. \ As inflation rises above target, the policy rate
+increases by a greater amount so that the real rate rises as well, and the
+resulting dampening of demand should bring inflation back toward target. \
+But the story does not end here.
+
+Q: \ According to the graph, what happens when inflation is close to zero?
+
+The problem evident from the construction of the graph in Figure 1 is that
+for sufficiently low levels of inflation, the TR recommends negative values
+for the policy rate. Given current institutional arrangements, negative
+interest rates are not practical.\ Hence the zero lower bound on interest
+rates binds, and the TR must have a kink at the horizontal axis, as in
+Figure 2.\ In practice, a small negative value for short term rates might be
+possible, but for simplicity, setting the bound at zero is sensible.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=4.0421in]{RBQA8C01.png}
+\caption{TR-FR graph with ZLB}
+\label{fig:zlb}
+\end{figure}
+
+The following gives students some intuition about the ZLB.
+
+Q: \ What would you do if your checking account switched to pay -10\%
+interest?
+
+A: \ Naturally, everyone would withdraw their money since the 0\% interest
+paid on cash is much better than -10\%. \ 
+
+\section{ZLB on standard graphs}
+
+Before exploring the implication of the ZLB on the TR/FR graph, it is useful
+to discuss the implications for intermediate level graphs. This material is
+standard, mostly. \ A number of intermediate level textbooks discuss the
+liquidity trap by showing a kinked or non-linear LM curve and/or money
+demand curve, for example Blanchard (2021).\ Those are included here along
+with a loanable funds graph that motivates the IS relation, see Mankiw
+(2013), and gives intuition about the ZLB.
+
+Q: \ What is the economic reason for savings to equal investment $\left(
+S=I\right) $? \ What would happen if that wasn't true $\left( S>I\right) $?
+
+The loanable funds graph embodies the reason for achieving equilibrium. \ If
+savings was greater than investment, bank reserves would build up, and banks
+would lower interest rates in response. \ If the ZLB binds on the loanable
+funds graph, as in Figure 3, it acts as a price floor, so there is excess
+savings.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=4.0421in]{RBQA8C02.png}
+\caption{Loanable funds graph}
+\label{fig:loanable}
+\end{figure}
+
+On the corresponding IS-LM graph in Figure 4, showing a \textit{liquidity
+trap}, where the IS curve has shifted down, as is typical in a recession,
+the equilibrium rate is negative. However, the level of output $Y^{\ast }$\
+achieved is determined by the intersection of the IS curve and the ZLB,
+since negative rates are unachievable. \ The natural rate of output is shown
+as $Y_{n}$.
+
+One subtle point concerning the representation of the liquidity trap is that
+the (flow of) excess savings on the loanable funds graph in Figure 3 is
+temporary, since output falls and shifts savings to the left to restore
+equilibrium, albeit at a level of income below the natural rate.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=4.0413in]{RBQA8C03.png}
+\caption{IS-LM liquidity trap}
+\label{fig:islm}
+\end{figure}
+
+The kink in the LM curve can be motivated by the kink in money demand due to
+the ZLB (see Blanchard 2021).\ A number of points are evident about a
+liquidity trap from the above graph.
+
+\begin{itemize}
+\item Monetary policy is ineffective, since shifts in LM do not change $%
+Y^{\ast }$.
+
+\item Fiscal policy is effective, since shifts in IS do change $Y^{\ast }$.
+
+\item It is possible to increase $Y^{\ast }$ without crowding out with
+fiscal policy, since the interest rate remains at zero.
+\end{itemize}
+
+The liquidity trap is a primary counter-example to Say's Law, which implies
+that gluts, such as a sharp rise in unemployment, are impossible, since
+prices can adjust to clear all markets ("supply creates its own demand"). \
+As Mill (1844) pointed out and Keynes (1935) discussed at length, that logic
+does not apply if some consumers refuse to spend their savings. \ A negative
+equilibrium interest rate with the ZLB reflects such a state without an
+obvious market solution\footnote{%
+Keynes (1935, Chapter 16 section III) said that eventually capital would
+depreciate simulating investment and raising the equilibrium interest rate,
+but that solution could be protracted.}.
+
+\subsection{Policy Responses}
+
+Armed with these tools (graphs), students can better understand the policy
+responses that have been employed when the ZLB is a concern, particularly in
+response to the recession of 2008-9, and a couple that were proposed but not
+implemented. \ Two major parts of the policy response in the U.S. can be
+represented on IS-LM graph. \ Quantitative easing (QE) is an increase in the
+money supply that shifts LM to the right, and the ARRA legislation in 2009
+was a combination of the spending increases and tax cuts that shifts IS to
+the right. In principle, the combination of the two policies could close the
+recessionary gap with no crowding out from an increase in the interest rate.
+\ 
+
+Forward guidance, the promise to keep the policy rate near zero into the
+future, was the other main policy response. \ It could be represented as an
+increase in inflation expectations on the loanable funds and IS-LM graphs
+where the nominal rate is on the vertical axis. One can argue that an
+increase in expected inflation increases the demand for money and shifts LM
+right, while it lowers the real rate, which shifts IS to the right due to
+the impact on savings and investment decisions. \ Both shifts have the
+effect of increasing output. Of course, this argument requires a more
+detailed description of the IS-LM model than is common in many intermediate
+levels textbooks. It also requires treating expected inflation as an
+exogenous variable under the control of the monetary policymaker. Not
+everyone finds such an assumption palatable, though it does point up the
+importance of credibility to the effectiveness of forward guidance.
+
+The narrative argument about the impact of forward guidance on long term
+rates may be the most important point to make. A credible promise to keep a
+short term rate near zero, should lower longer term rate according to the
+expectations hypothesis, and those rates are the most relevant to investment
+decisions. \ 
+
+Similarly, there are potential effects of QE not represented by a shift in
+LM. Alternative channels included inflation expectations, the stock market
+and the foreign exchange market.
+
+\subsubsection{Policies untried}
+
+Two policies that were not implemented have a natural interpretation on the
+TR-FR graph, the Neo-Fisherian policy of raising the lower bound on policy
+rates and raising the inflation target. \ The latter shifts the TR function
+to right, moving the equilibrium out along the FR. \ The appeal is that
+there is more room between the equilibrium and the ZLB, which is thereby
+less likely to be a factor. \ However, such a change would be difficult to
+make in the middle of a crisis, and is best done as a preventative measure.
+\ Krugman (1998) argues that a credible promise to increase the money supply
+could accomplish it, but once the ZLB has been achieved, that credibility
+could be in short supply. Whether such a change is politically feasible is
+questionable as well. Banks in the business of making fixed rate home loans
+would likely object, as higher inflation would lower the real return.
+Theoretical work including the ZLB such as Eggertson, Mehrotra and Robbins
+(2019).point out the danger of an insufficiently large increase in the
+inflation target, which would generate all the costs of higher inflation
+with none of the benefits.
+
+The Neo-Fisherian solution to the ZLB is elegant in its simplicity, but
+flies in the face of standard intuition about the role of money. The logic
+is that, if interest rates at zero is the problem, one should raise the
+bound in the interest rate rule so that the kink in the TR function would
+occur at a positive value, as in Figure 5. \ Hence, the equilibrium
+determined by the bound and the intersection with the FR occurs at a higher
+level of inflation.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=4.0421in]{RBQA8C04.png}
+\caption{Neo-Fisherian policy}
+\label{fig:neofisher}
+\end{figure}
+
+The usual way the ZLB is encountered is a fall in demand leading to a
+recession. To raise interest rates in such a situation is the opposite of
+the usual recommendation of a Taylor Rule.
+
+\subsubsection{Multiple equilibria and stability}
+
+A deeper issue is the stability of the equilibria where the TR and FR
+intersect. \ There are mathematically sophisticated models to address this
+such as the expectational stability analysis of Evans and Honkapohja (2001,
+2003,2006), see sections 4.2.2 and 4.2.3 for a simple example, but the
+intuition goes back to our discussion about the instability of interest rate
+pegs, motivating Taylor Rules, at the beginning of section 2. \ 
+
+That instability argument applies to the Neo-Fisherian policy as well, where
+raising the interest rate peg would require a decrease in the money supply
+with a resulting deflationary spiral. The policy does not appear to have
+been seriously considered by any central bank\footnote{%
+See Evans and McGough (2018) for a discussion of the related theory.
+Recently, Turkey tried to lower inflation by lowering interest rates with
+unfortunate results. \ }.\ However, the instability issue is apparent
+without any increase in the lower bound.
+
+The equilibrium at the intersection between the FR line and the ZLB portion
+of the TR function is a topic of much discussion within macroeconomics. \
+The instability that could arise from a pegged interest rate is relevant at
+zero. \ However, as Bullard (2010*) notes, data from the lost decade (and
+beyond) for Japan seems to fluctuate around such an equilibrium in a way
+that suggests stability. Figure 6 is an updated version of the first graph
+in Bullard (2010*). \ Furthermore, mathematical studies with the ZLB can
+show different stability results depending on the details of the model%
+\footnote{%
+For example, see Eusepi and Preston (2007), Benhabib, Schmitt-Grohe and
+Uribe (2002), Evans, Guse and Honkapohja (2008) and Michaillat and Saez
+(2021).}.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=4.0413in]{RBQA8C05.png}
+\caption{U.S. and Japan data}
+\label{fig:data}
+\end{figure}
+
+So there are not definitive answers about the interpretation and relevance
+of the second equilibrium, but that only adds to the interest. \ Questions
+for discussion include:
+
+\begin{itemize}
+\item Does the Japanese data really give evidence of a second equilibrium?
+
+\item Is the U.S. or has the U.S. ever been in danger of approaching such a
+state?
+
+\item Does the lack of a deflationary spiral in the data mean that the
+second equilibrium is meaningless?
+
+\item Does recent data affect any of these judgements? \ 
+\end{itemize}
+
+The discussion motivates the empirical exercises discussed below.
+
+\subsection{Secular Stagnation}
+
+Secular stagnation has implications for monetary policy that are apparent on
+the TR-FR graph. \ There are two related versions of secular stagnation,
+long term declines in productivity growth and real interest rates (VoxEU
+2014*). \ We can interpret the latter as a fall in the parameter $\widetilde{%
+r}$ on the graph.
+
+Students should be able to answer the following.
+
+Q: \ If $\widetilde{r}$ falls, how does the TR-FR graph change?
+
+A: \ Both the FR and the sloped portion of the TR shift down.
+
+The result is the "good" equilibrium also shifts down toward the ZLB, making
+the bound more likely to bind. \ A more specific version of the question
+above is the following.
+
+Q: If the value of $\widetilde{r}$ falls below $-\bar{\pi}$, what is the
+problem for monetary policy?
+
+In this case the equilibrium at the inflation target $\bar{\pi}$ requires a
+negative nominal rate, so it is unachievable\footnote{%
+See Appendix 7.1 and Waters (2021) for other graphing problems.}.\ Such a
+fall might seem implausible, but negative real rates have been common in
+developed countries for the last couple decades.
+
+If students are familiar with the Solow model, they can make the connection
+between the two flavors of secular stagnation. As productivity growth falls,
+the steady state intensive capital level rises so the steady state real
+interest rate falls under decreasing marginal returns.
+
+\subsection{More Policies Untried}
+
+Concerns about secular stagnation and the sluggish recoveries in Japan
+1991-2011 (at least) and in the U.S. 2009-2014 suggest that the ZLB will be
+a concern for macroeconomic policy for some time to come. \ Besides the
+Neo-Fisherian policy and raising the inflation target, proposed policies
+that have not yet been implemented include targeting longer term bond yields
+and implementing negative rates.
+
+Even through the ZLB period in the U.S., longer term rates such as the ten
+year bond yield remained significantly positive, above 1\% with the
+exception of the first few months at the beginning of the COVID pandemic
+where they approached 0.5\%.\ Brunner and Meltzer (1968) argued that the
+presence of positive long term rates means that liquidity traps have never
+occurred. Flow of funds data from the years following the housing crisis
+make this judgment hard to accept. But there is the possibility that
+lowering longer term rates could stimulate the economy in such a situation.
+A central bank can lower any bond yield as far as it wants by purchasing a
+sufficient quantity of that bond\footnote{%
+The Federal Reserve purchased long term bonds as part of QE and Operation
+Twist in 2011-2 but did not explicitly target long term yields.}. In
+principle, monetary policy could flatten the yield curve near zero for all
+rates. \ Whether such a policy would provide sufficient stimulus to exit a
+liquidity trap is uncertain, but the cost seems low. \ 
+
+Rogoff (2017*) discusses a number of methods for removing the institutional
+barriers to negative rates that would eliminate the ZLB. If the payments
+system was fully electronic, negative interest rates would be quite
+possible, but if people can hold cash, the ZLB exists. Some ideas such as
+that of Gesell (1916) requiring cash to be stamped so that older notes would
+be valued less are impractical, though interesting for students to
+contemplate. \ Another proposal is to eliminate large denomination notes,
+making cash hoarding more costly. Countries such as India and North Korea
+have adopted such a policy, though not with an explicit desire to achieve
+negative rates.
+
+The most practical proposal discussed by Rogoff (2017*) is breaking the
+one-to-one exchange rate between cash and bank reserves. For example, if a
+bank sets a -3\% rate for deposits, then cash deposited a year later would
+be credited \$0.97 on the dollar. \ Two years later a one dollar deposit
+would be credited \$0.9409, and so on. \ Therefore, the negative interest
+rate would impact cash as well as electronic currency. Hence, monetary
+policymakers could set negative rates according to an interest rate rule
+without a lower bound.
+
+\section{Algebraic Analysis}
+
+Algebraic models are helpful for both empirical and theoretical analysis.
+Small macroeconomic models including Taylor Rules can demonstrate the impact
+of the choice of rule on the responses to different shocks. Stability
+analysis of such models formalizes and extends Friedman's (1968*) discussion
+about interest rate pegs for a broad class of interest rate rules. Whether
+the interest rate rules used in practice are reasonable according to these
+theoretical considerations is an important empirical question.
+
+\subsection{Empirical Exercises}
+
+\subsubsection{Graphing the data}
+
+Even without estimation there are graphing exercises students can do to
+familiarize themselves with the data and the underlying issues. In Figure 6,
+the possible relevance of the equilibrium at $\left( i,\pi \right) =\left(
+-1,0\right) $ for the Japanese data is apparent, as is the "good"
+equilibrium $\left( i,\pi \right) =\left( 3,2\right) $ for the U.S.
+Furthermore, some U.S. data shows drift toward the ZLB. Students can create
+such graphs with updated samples or data from other countries to promote
+discussion as well as refining their spreadsheet skills.
+
+\subsubsection{Taylor Rule simulations}
+
+More formal methods can sharpen the analysis. \ Simulating the interest rate
+recommended by a given Taylor Rule (\ref{TR}) can explicitly show whether
+such rules represent actual policy. Figure 7 shows an example with the
+parameters $b_{\pi }=b_{y}=0.5$ set to the values in the rule first proposed
+in Taylor (1993*). \ The inflation target is set to $\bar{\pi}=2\%$, the
+equilibrium real rate is $\widetilde{r}=2\%$ and the output gap $y_{t}-\bar{y%
+}$ is determined by the percentage difference between real GDP and potential
+GDP as given by the CBO. \ Naturally, there are many alternative
+specifications that could form the basis for student exercises or empirical
+projects.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=4.0413in]{../TRrec.png}
+\caption{Federal funds rate vs Taylor rule}
+\label{fig:trrec}
+\end{figure}
+
+The federal funds rate follows the Taylor Rule recommendation much of the
+time, but there are some notable exceptions. Again, the late 1970s stands
+out as a time that policy was much more dovish than recommended.
+Interestingly, there are other such periods, which did not result in high
+inflation.\ The data following the housing crisis/recession of 2008 reflects
+forward guidance as the federal funds rate stays near zero long after the
+rate simulated from the Taylor Rule. \ 
+
+Of course, all of these points could be sensitive to the particular
+specification of the Taylor Rule in terms of the both the parameters $b_{\pi
+},b_{y}$ and $\widetilde{r}$ and the form of the output gap. \ The output
+gap could be constructed with alternative forms of detrending such as the
+methods of Hodrick-Prescott or Hamilton (2018), or with growth rates of real
+GDP. \ Some interest rate rules substitute for the output gap using the
+difference of the unemployment rate from its natural rate. The list goes on,
+which provides many opportunities for students to explore the data.
+
+\subsubsection{Estimation}
+
+An even more formal approach is to estimate the parameters of an interest
+rate rule to reveal the preferences of the policymaker. \ The work of Judd
+and Rudebusch (1998*) (JR) is an invaluable model for such exercises. \ In
+particular, Taylor Rules such as equation (\ref{TR}) above are usually
+mis-specified for estimation, since they do not address the dynamics
+involved in the conduct of monetary policy. Central bankers often engage in
+interest rate smoothing, meaning they avoid drastic changes in the target
+rate. JR also add a lagged output gap term to the Taylor Rule to allow for a
+greater range of policymaker preferences. \ Hence their model is as follows,
+where $\widetilde{\pi }_{t}$ and $\widetilde{y}_{t}$ are the inflation and
+output gaps, and the target rate is $i_{t}^{T}$.%
+\begin{eqnarray*}
+i_{t}^{T} &=&\pi _{t}+\widetilde{r}+b_{\pi }\widetilde{\pi }_{t}+b_{y}%
+\widetilde{y}_{t}+b_{L}\widetilde{y}_{t-1} \\
+\Delta i_{t} &=&\gamma \left( i_{t}^{T}-i_{t}\right) +\rho \Delta i_{t-1}
+\end{eqnarray*}%
+The parameter $\gamma $ represents the speed at which the policy rate $i_{t}$
+approaches the target $i_{t}^{T}$, and the term $\rho \Delta i_{t-1}$
+reflects a momentum effect.
+
+Hence, the estimation equation is achieved by substituting for $i_{t}^{T}$.%
+\begin{equation}
+\Delta i_{t}=\gamma \widetilde{r}-\gamma i_{t}+\gamma \left( 1+b_{\pi
+}\right) \widetilde{\pi }_{t}+\gamma b_{y}\widetilde{y}_{t}+\gamma b_{L}%
+\widetilde{y}_{t-1}+\rho \Delta i_{t-1}  \label{JR}
+\end{equation}%
+JR estimate the $b$'s for the different Fed chairs Burns, Volker and
+Greenspan and demonstrate the differences in their approaches. \ Many
+advanced undergraduates have the ability to collect the data and conduct the
+estimation, which uses ordinary least squares, though there are some subtle
+issues in the interpretation, about which JR is an excellent guide.
+Estimating this equation is a case where entering the equation in the
+statistics software, as opposed to a list of variables, is helpful.
+
+JR's results confirm the received wisdom that Burns was insufficiently
+aggressive in dealing with the inflation of the 1970s, though there could be
+other factors. Nixon can get some blame, see Abrams (2006*) for a detailed
+discussion that includes evidence from recorded conversations. \ More
+recently, Drechsler, Savov and Schnabl (2020) argue that Regulation Q was a
+much greater culprit behind inflation than is commonly supposed as the
+return on deposits could not respond to changes in monetary policy. \ The
+paper has a detailed empirical analysis of local deposit and inflation data.
+\ The logic in that paper also extends to explain the low inflation during
+the period 2009-2015 under the ZLB, which acted as a floor, as opposed to a
+ceiling with Regulation Q.
+
+One complication is that estimations like those in JR do not work with data
+from the ZLB period, since there is almost no variation in the federal funds
+rate.\ I've tried to use longer maturity rates as a proxy for the policy
+stance with limited success.
+
+\subsection{Theoretical analysis}
+
+Some algebraic versions of a macroeconomic model including an interest rate
+rule and Fisher relation can be solved under rational expectations or used
+to examine dynamic stability under adaptive expectations. The material that
+follows requires a bit more mathematical sophistication on the part of
+students than would be necessary for a standard intermediate macroeconomics
+class, though the mathematical tools can be taught along with the economics.
+
+A common model in intermediate level books such as Blanchard (2021) or
+Carlin and Soskice (2015) includes an IS relation and an aggregate supply
+equation to create a small macroeconomic model similar to the following. \ 
+\begin{eqnarray}
+y_{t} &=&\bar{y}-c\left( r_{t}-\widetilde{r}\right) +u_{t}\text{ \ \ \ \ (IS)%
+}  \label{smm} \\
+y_{t} &=&\bar{y}+a\left( \pi _{t}-E_{t-1}\pi _{t}\right) +v_{t}\text{ \ \ \
+\ (AS)}  \notag \\
+i_{t} &=&\pi _{t}+\widetilde{r}+b_{\pi }\left( \pi _{t}-\bar{\pi}\right)
++b_{y}\left( y_{t}-\bar{y}\right) \text{ \ \ \ \ (TR)}  \notag \\
+r_{t} &=&i_{t}-E_{t}\pi _{t+1}\text{ \ \ \ \ (FR)}  \notag
+\end{eqnarray}
+
+The IS, TR and FR equations can be solved to give an aggregate demand
+relation in $\left( y,\pi \right) $ space. The expectations formulation
+gives a \textit{New Classical version of} the AS equation, while supply
+relations with a forward looking term $E_{t}\pi _{t+1}$ are referred to as 
+\textit{New Keynesian} and are standard for much monetary policy analysis.
+The form adopted here is chosen to present multiple issues in a concise way.
+
+\subsubsection{Solutions under rational expectations}
+
+Solutions to the model (\ref{smm}) under rational expectations demonstrate
+the implications of the choice of Taylor rule parameters $b_{\pi }$ and $%
+b_{y}$ representing policymaker preferences in the presence of supply and
+demand shocks. We also present a solution at the ZLB, where policy in
+constrained.
+
+The method of undetermined coefficients of McCallum (1983) is the most
+common and accessible solution technique. Let the demand shocks for the
+model (\ref{smm}) be zero $u_{t}=0$, to focus on the case with mean zero
+supply shocks $v_{t}$. To use the method of undetermined coefficients,
+postulate that inflation has a solution of the form%
+\begin{equation*}
+\pi _{t}=d_{0}+d_{1}v_{t},
+\end{equation*}%
+for some coefficients $d_{0},d_{1}$, see the Appendix for details.
+Substituting for the nominal rate $i_{t}$ in the IS relation using the
+Fisher relation (FR) and Taylor rule (TR), yields an aggregate demand (AD)
+relation.%
+\begin{equation}
+-c\left[ \left( 1+b_{\pi }\right) \pi _{t}-b_{\pi }\bar{\pi}-E_{t}\pi _{t+1}%
+\right] =\left( 1+cb_{y}\right) \left( y_{t}-\bar{y}\right)  \label{AD RE}
+\end{equation}%
+Note that under the postulated solution, expected inflation is a constant $%
+E_{t}\pi _{t+1}=d_{0}$, assuming the shocks $v_{t}$ are mean zero. \ Hence,
+one can interpret the value%
+\begin{equation}
+b_{AD}=-\frac{1+cb_{y}}{c\left( 1+b_{\pi }\right) }  \label{bAD}
+\end{equation}%
+as the slope of AD, the avenue though which the preferences of the monetary
+policymaker enter the model.
+
+Substituting for $y_{t}-\bar{y}$ using the aggregate supply relation (AS)
+and the postulated solution for inflation yields the following.%
+\begin{eqnarray*}
+y_{t} &=&\bar{y}+\dfrac{c\left( 1+b_{\pi }\right) }{c\left( 1+b_{\pi
+}\right) +a\left( 1+cb_{y}\right) }v_{t} \\
+\pi _{t} &=&\bar{\pi}-\dfrac{1+cb_{y}}{c\left( 1+b_{\pi }\right) +a\left(
+1+cb_{y}\right) }v_{t}
+\end{eqnarray*}%
+\ The trade-off faced by policymakers dealing with a supply shock is evident
+from the different signs on the shock so that output and inflation move in
+opposite directions. To show the role of policymaker preferences, one can
+write the solution for output using the expression for the slope $b_{AD}$
+from (\ref{bAD}).%
+\begin{equation*}
+y_{t}=\bar{y}+\frac{1}{1-ab_{AD}}v_{t}
+\end{equation*}%
+Q: How would an increase in $b_{y}$ affect the response of output and
+inflation to a decline in oil prices (a positive supply shock)?
+
+As the value $b_{y}$ increases, so does the magnitude of slope of AD ($%
+b_{AD}<0$ gets farther from zero) , which minimizes the impact of a supply
+shock on $y_{t}$, which is apparent from fall in the the coefficient on $%
+v_{t}$ in the solution for $y_{t}$ above. An increase in $b_{y}$ means the
+policymaker cares more about smoothing output, and the result shows that $%
+y_{t}$ is more insulated from the shock.
+
+The solution above is the \textit{minimum state variables }solution, and
+there may be others. The existence of sunspot or bubble equilibria may be
+intriguing to undergraduates though formal analysis is beyond the goals of
+most classes, see for example Evans and McGough (2005).
+
+One can also solve under the assumption of a pegged nominal rate $\bar{\imath%
+}$, which includes the ZLB as a special case $\bar{\imath}=0$. Here, the TR
+in the model (\ref{smm}) is irrelevant and, using the FR, the IS relation
+becomes%
+\begin{equation*}
+y_{t}=\bar{y}+cE_{t}\pi _{t+1}-c\left( \widetilde{r}+\bar{\imath}\right) .
+\end{equation*}%
+Using the same minimum state variable techniques as above gives the
+following solutions.%
+\begin{eqnarray*}
+y_{t} &=&\bar{y} \\
+\pi _{t} &=&-\widetilde{r}+\bar{\imath}-a^{-1}v_{t}
+\end{eqnarray*}%
+As in Buttet and Roy (2014), equilibrium output remains at target under the
+ZLB, but inflation is typically below target. At the ZLB $\bar{\imath}=0$,
+inflation fluctuates around the equilibrium represented by the intersection
+of the FR and the ZLB on Figure 2.
+
+Q: Could the solution above be used to argue for or against Neo-Fisherian
+policy?
+
+The logic of the Neo-Fisherian policy recommendation is apparent since
+raising the interest rate peg $\bar{\imath}$ lifts the rational expectations
+equilibrium level of inflation to any desired level. However, analysis of
+stability under learning raises questions about such a policy, as noted in
+Friedman (1968).
+
+\subsubsection{Stability}
+
+The stability analysis here formalizes the earlier discussions about
+interest rate pegs and the Taylor principle. The simplest version of
+learning is the adaptive expectations used earlier in the development of
+Figure 2.%
+\begin{equation*}
+E_{t}\pi _{t+1}=\pi _{t}
+\end{equation*}
+
+Such a simple version of adaptive expectations has limitations. For example,
+with New Keynesian timing of expectations in the AS equation, the inflation
+terms cancel and AS is vertical. Such a result reflecting the classical
+dichotomy would not arise with almost any other version of learning.
+Expectational stability of Evans and Honkapohja (2001) is the formulation of
+learning that is most generally applicable for stability analysis. The form $%
+E_{t}\pi _{t+1}=\pi _{t}$ is chosen here strictly for ease of exposition.
+
+Using this assumption in the AS relation in the model (\ref{smm}), and
+aggregate demand relation achieved by substituting for the variables $%
+r_{t},i_{t}$ with the other three equations in the model (\ref{smm}) results
+in the following.%
+\begin{eqnarray*}
+y_{t} &=&\bar{y}-c\left( \bar{\imath}-\pi _{t}-\widetilde{r}\right) \text{ \
+\ \ \ (AD)} \\
+y_{t} &=&\bar{y}+a\left( \pi _{t}-\pi _{t-1}\right) \text{ \ \ \ \ (AS)}
+\end{eqnarray*}
+
+Buttet and Roy (2014) interpret the model such that the slopes of AD and AS
+are $c$ and $a$ respectively. The fact that AD is upward sloping is an
+indication that the interest rate peg has perverse effects. The
+interpretation of the slopes is intuitive but different than under rational
+expectations where expected inflation is a constant. \ Here, expected
+inflation becomes the endogenous level of inflation in the AD relation and
+an exogenous lagged value in AS.
+
+Solving to eliminate output from the AD and AS equations above yields the
+following difference equation.%
+\begin{equation}
+\pi _{t}=\frac{a}{a-c}\pi _{t-1}+\frac{c}{a-c}\left( \widetilde{r}-\overline{%
+i}\right)  \label{diff peg}
+\end{equation}
+
+Reasonable values of the parameters show instability, meaning inflation
+diverges. \ Both parameters $a$ and $c$ are positive and inflation shows
+persistence in the data so the fraction $\dfrac{a}{a-c}$ should also be
+positive, which implies $a>c$. \ In that case, it is indeed the case that $%
+\dfrac{a}{a-c}>1$, and the equilibrium is unstable under adaptive
+expectations for a fixed interest rate policy, which corresponds to the
+discussion of a pegged rate around Figure 5. \ 
+
+There is one solution to the difference equation where the initial value $%
+\pi _{0}$ is at the steady state value $\pi ^{\ast }=\widetilde{r}-\bar{%
+\imath}$. \ However, policymakers do not get to choose their initial values,
+and the inclusion of any shock would push inflation onto a divergent path. \
+Whether it diverges to positive or negative infinity depends on the initial
+value $\pi _{0}$ and the peg $\bar{\imath}$. If the initial value of
+inflation is less than the steady state such that $\pi _{0}<\widetilde{r}-%
+\bar{\imath},$ inflation falls indefinitely, a \textit{deflationary spiral}.
+
+\subsubsection{Taylor Principle}
+
+For a model with a Taylor Rule, one can show the relevance of the Taylor
+principle via stability analysis. Again assuming adaptive expectations $%
+E_{t}\pi _{t+1}=\pi _{t}$, the model (\ref{smm}) above reduces to the
+following difference equation.%
+\begin{equation}
+\pi _{t}=\frac{a\left( 1+cb_{y}\right) }{a\left( 1+cb_{y}\right) +cb_{\pi }}%
+\pi _{t-1}+\frac{cb_{\pi }}{a\left( 1+cb_{y}\right) +cb_{\pi }}\bar{\pi}
+\label{diff Taylor}
+\end{equation}%
+Q: \ Is there a simple condition on the policymaker preference parameters $%
+b_{\pi },b_{y}$ that guarantess convergence/stability?
+
+If the Taylor principle $b_{\pi }>0$ holds, the coefficient on $\pi _{t-1}$
+is between 0 and 1 and inflation converges but, if not, inflation diverges,
+demonstrating instability, a result found in Mankiw (2013). The cases where
+the Taylor principle holds are examples of interest rate rules that are not
+subject to Friedman's (1968*) objection concerning interest rate pegs, since
+the policymaker is sufficiently aggressive in adjusting the rate in response
+to economic conditions. \ Evans and Honkapohja (2003, 2006) survey results
+about expectational stability and determinacy for a range of interest rate
+rules. \ A related discussion can also be found in Woodford (2003, Chapter
+4, section 2.3).
+
+\subsubsection{Stability under the ZLB}
+
+A stability analysis that encompasses the ZLB requires an interest rate rule
+with a kink as in Figure 2. One example uses the following interest rate rule%
+\begin{equation*}
+i_{t}=\max \left\{ 0,\pi _{t}+\widetilde{r}+b_{\pi }\left( \pi _{t}-\bar{\pi}%
+\right) +b_{y}\left( y_{t}-\bar{y}\right) \right\} .
+\end{equation*}%
+Using this interest rule in place of the TR in the model (\ref{smm}), there
+are two steady states corresponding to the intersections of TR and FR on the
+graph. \ One is the steady state for the difference equation (\ref{diff
+Taylor}) when the ZLB does not bind, which is stable at the inflation target 
+$\pi ^{\ast }=\bar{\pi}$. The other is the steady state for the difference
+equation (\ref{diff peg}) for $\bar{\imath}=0$, which is unstable at the
+value $\pi ^{\ast }=-\widetilde{r}$. \ Output is at its target value for
+both steady states\footnote{%
+A more sophisticate model such as the one in Jung, Teranishi and Watanabe
+(2005) is required for there to be a distinction in the values of output at
+the steady states.}.
+
+The kinked interest rate rule above determines the condition for whether the
+ZLB binds. \ The nominal rate is positive if%
+\begin{equation*}
+\pi _{t}+\widetilde{r}+b_{\pi }\left( \pi _{t}-\bar{\pi}\right) +b_{y}\left(
+y_{t}-\bar{y}\right) >0.
+\end{equation*}%
+This condition is satisfied at the stable steady state where both output and
+inflation are at target as long as $\bar{\pi}+\widetilde{r}>0$. \ However,
+this condition shows that a sufficiently large adverse shock to the
+equilibrium natural rate $\widetilde{r}$ could make the stable steady
+impossible to achieve so that the the nominal rate must be zero, creating
+possible instability. \ 
+
+On the graph in Figure 8, such a fall in $\widetilde{r}$, as with secular
+stagnation, is represented by a shift down in both the TR and FR relations.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=4.0421in]{RBQA8C06.png}
+\caption{Secular stagnation}
+\label{fig:secular}
+\end{figure}
+
+A simple way to show a fiscal policy response to such a decline in the
+equilibrium real rate is to included a government spending term as a shock
+to the IS equation, like the variable $u$ in the model (\ref{smm}). \ A
+positive shock, meaning an increase in spending, would counter the fall in $%
+\widetilde{r}$.
+
+Buttet and Roy (2014) analyze the model above with the ZLB under adaptive
+expectations and graphical stability analysis. The AD relation has a kink
+such that the slope of AD is positive at $c>0$ when the ZLB binds but is
+downward sloping otherwise. They also show that an equilibrium where AS
+intersects the upward sloping portion of AD is unstable when the slope of AD
+is greater than the slope of AS using a dynamic analysis where changes in
+lagged inflation shift AD. Fiscal stimulus shifts AD to the right and can
+move the equilibrium off the upward sloping portion so inflation converges
+to target $\bar{\pi}$.
+
+Similarly, given the interest rate peg $i_{t}=\bar{\imath}$, the combination
+of the FR and IS relations in the model (\ref{smm}) is an upward sloping
+aggregate demand relation with slope $c$. \ The condition $a>c$ that
+guarantees instability for any interest rate peg (\ref{diff peg}) is
+equivalent to the slope of aggregate demand being greater than the slope of
+aggregate supply.
+
+Related graphs in more sophisticated models can also be found in Eggertson
+and Egiev (2019) and Eggertson, Mehrotra and Robbins (2019). Advanced
+undergraduates should be able to understand the graphical stability analysis
+in Buttet and Roy (2014) or the algebraic analysis presented here or both
+depending on the time constraints and their mathematical background. A
+version using a Taylor Rule that only responds to inflation (\ref{TR infl})
+where $b_{y}=0$\ simplifies the exposition.
+
+\subsubsection{Forward guidance}
+
+As discussed in Section 3, an important policy response to the ZLB is
+forward guidance, the promise to keep a targeted interest rate near zero for
+a specified length of time in the future. The intuition behind such a policy
+is that a credible promise to engage in monetary stimulus beyond normal
+policy, and the resulting increase inflation expectations can stimulate the
+economy today.
+
+Unfortunately, the proper way to model forward guidance is far from settled
+law in macroeconomics. The work most closely related\footnote{%
+Some alternative approaches include Krugman (1998), who presents a two
+period model where the central bank promises to "irresponsibly" increase
+inflation in the future, though the policymaker is assumed to have that
+ability. In the overlapping generations model of Eggertson, Mehrotra and
+Robbins (2019), forward guidance is not effective at lifting the economy
+away from the ZLB. Eggertson and Egiev (2019) describe a New Keynesian model
+based on Eggertson and Woodford (2003) where there is an exogenous regime
+shift in the equilibrium real rate. \ They describe the effect of
+expectations as a change in the probability of the shift.} to the model (\ref%
+{smm}) that includes forward guidance is Jung, Teranishi and Watanabe
+(2005).\ They study the optimal response of monetary policy to a shift down
+in the equilibrium real rate, as in Figure 8, followed by a gradual return
+to a value where the optimal policy rate is above the ZLB. \ Forward
+guidance emerges by comparing the policy response under discretion, when the
+policymaker optimizes in a single period, and commitment, where the
+policymaker considers the long run path of policy, the \textit{timeless
+perspective} in the terminology of Woodford (2003). Under commitment, the
+policymaker keeps the nominal rate at zero beyond the time that the
+equilibrium real rate has returned to its original value, so forward
+guidance emerges endogenously.
+
+Discussing forward guidance with the algebraic models presented here is not
+practical for most undergraduate classes. Commitment versus discretion for
+monetary policymakers is interesting, but developing mathematical models
+that express the timeless perspective is a topic for a Ph.D. level class.
+
+\subsection{Existing Textbook Treatments}
+
+Almost all undergraduate macroeconomics textbook contain elements in the
+discussion above, but none of them explicitly combine the Taylor Rule and
+Fisher relation graphically or algebraically. \ All of those referenced here
+contain an explanation of real vs. nominal interest rates, which includes
+the Fisher relation, and an algebraic expression of a Taylor Rule, with the
+exception of Chugh (2015), which is focused on micro-founded DSGE models. \
+Blanchard (2021), Jones (2021) and Carlin and Soskice (2015) discuss the
+liquidity trap and deflation spirals by specifying a FR under the ZLB such
+that $r_{t}=-\pi _{t}$ combined with a dynamic Phillips Curve. \ Blanchard
+(2021) also discusses the liquidity trap/ZLB in the context of a money
+supply and demand graph\footnote{%
+A referee notes that forward guidance is discussed with a standard IS-LM
+model in Mishkin (2015).}. Mankiw (2021) has a model closely related to the
+one described here (\ref{smm}) under adaptive expectations where the TR and
+IS relations are expressed in terms of the real rate, so the FR is
+superfluous. \ Graphical analysis of the output-inflation trade-off and the
+Taylor principle reflect the algebraic analysis here.
+
+\section{Summary}
+
+The trends behind secular stagnation indicate that the ZLB will be a fact of
+life for decades to come, which has implications for stabilization policy in
+general and the conduct of monetary policy in particular. Understanding the
+motivation for and the implementation of the extraordinary policies in the
+presence of the ZLB is important for many outside the economics profession.
+The graphs with the TR and FR give a simple framework for organizing many of
+the issues and the related data. For those who want to understand current
+research on these issues, the study of solution techniques and stability
+analysis in models including these two relations is an essential stepping
+stone.
+
+While addressing these policy issues, undergraduates can get experience with
+empirical techniques from creating spreadsheet graphs to estimating Taylor
+Rules. They can also learn to solve models under rational and adaptive
+expectations. Finally, the combination of all these methodologies helps to
+form connections between the data, the graphs and the algebraic models, a
+goal of most economics education.\bigskip
+
+\section{References}
+
+\newline
+Abram, Burton A. (2006) \ How Richard Nixon Pressured Arthur Burns: \
+Evidence from the Nixon Tapes. \ \textit{Journal of Economic Perspectives }%
+20(4), 177-188.\bigskip\ \newline
+Benhabib, Jess, Schmitt-Groh\'{e}, Stephanie and Mart\'{\i}n Uribe (2002).
+Avoiding Liquidity Traps. \textit{Journal of Political Economy 110(3), }p.
+535-563\bigskip\ \newline
+Blanchard, Olivier (2021). \textit{Macroeconomics, 8th edition.}
+Pearson\bigskip\ \newline
+Brunner, Karl. AND Allan H. Meltzer (1968): Liquidity Traps for Money, Bank
+Credit, and Interest Rates. \textit{Journal of Political Economy, 76 (1)},
+1--37.\bigskip\ \newline
+Bullard, James (2010). \ Seven Faces of "The Peril." \textit{\ Federal
+Reserve Bank of St. Louis Review} 92(5), 339-352.\bigskip\ \newline
+Buttet, Sebastien and Udayan Roy (2014). A Simple Treatment of the Liquidity
+Trap for Intermediate Macroeconomics Courses, \textit{The Journal of
+Economic Education, 45(1)}, 36-55.\bigskip\ \newline
+Carlin, Wendy and David Soskice, (2015). \textit{Macroeconomics: \
+Institutions, Instability and the Financial Crisis.} Oxford University
+Press.\bigskip\ \newline
+Chugh, Sanjay (2015). \textit{Modern Macroeconomics.} MIT Press, Cambridge,
+MA.\bigskip\ \newline
+Drechsler, Itamar, Alexei Savov and Philipp Schnabl (2020). The Financial
+Origins of the Rise and Fall of American Inflation. working paper, NYU Stern
+School of Business.\bigskip\ \newline
+Evans, George, and Seppo Honkapohja (2001). \ \textit{Learning and
+Expectations in Macroeconomcs}. \ Princeton University Press, Princeton,
+NJ.\bigskip\ \newline
+Evans, George and Seppo Honkapohja (2003) Expectations and the Stability
+Problem for Optimal Monetary Policies. \textit{Review of Economic Studies}
+70, 807-824.\bigskip \newline
+Evans, George and Seppo Honkapohja (2006) Monetary Policy, Expectations and
+Commitment. \textit{Scandinavian Journal of Economics} 108, 15-38.\bigskip 
+\newline
+Evans, George, Guse, Eran and Seppo Honkapohja (2008). Liquidity Traps,
+Learning, and Stagnation. \textit{European Economic Review, 52(8)}, p.
+1438-463.\bigskip\ \newline
+Evans, George and Bruce McGough (2005) Equilibrium Selection, Observability
+and Backward-stable Solutions. \textit{Journal of Monetary Economics} 91,
+1-10.\bigskip\ \newline
+Evans, George and Bruce McGough (2018) Monetary Policy, Indeterminacy and
+Learning. \textit{Journal of Economic Dynamics and Control} 29,
+1809-1840.\bigskip\ \newline
+Eggertson, Gauti, Neil Mehrotra and Jacob Robbins (2019) A Model of Secular
+Stagnation: Theory and Quantitative Evaluation. \textit{American Economic
+Journal: Macroeconomics} 11(1), 1-48.\bigskip\ \newline
+Eusepi, Stephano and Bruce Preston (2007) Learnability and Monetary Policy:
+A Global Perspective. \textit{Journal of Monetary Policy} 54(4),
+1115-1131.\bigskip\ \newline
+Friedman, Milton (1968) The Role of Monetary Policy. Presidentional address
+delivered at the 80th Annual Meeting of the American Economic Association. 
+\textit{American Economic Review }56(1), 1-17.\bigskip\ \newline
+Gesell, Silvio (1958). \textit{The Natural Economic Order.} Peter Owen,
+London.\bigskip\ \newline
+Hamilton, James (2018). \ Why You Should Never Use the Hodrick-Prescott
+Filter. \ \textit{Review of Economics and Statistics 100(5)},
+831-843.\bigskip\ \newline
+Howitt, Peter (1992). \ Interest Rate Control and Non-Convergenace to
+Rational Expectations. \ \textit{Journal of Political Economy} 100(4),
+776-800.\bigskip\ \newline
+Jones, Charles (2021). \ \textit{Macroeconomics.} W. W. Norton \& Company,
+New York, NY.\bigskip\ \newline
+Judd, Kenneth and Glenn D. Rudebusch (1997). \ Taylor's rule and the Fed. 
+\textit{FRBSF Economic Letter} 1998-4, 3-16.\bigskip\ \newline
+Jung, Taehun, Yuki Teranishi, and Tsutomu Watanabe (2005). Optimal Monetary
+Policy at the Zero-Interest-Rate Bound. \textit{Journal of Money, Credit and
+Banking} 37(5), 813--35.\bigskip\ \newline
+Keynes, John Maynard (1936). \ \textit{The General Theory of Employment,
+Interest and Money.} Palgrave Macmillan, London.\bigskip\ \newline
+Mill, John Stuart (1844). \ \textit{Essays on Some Unsettled Questions in
+Political Economy.} John W. Parker, London.\bigskip\ \newline
+Mankiw, Gregory N. (2013).\textit{\ Macroeconomics. 8th ed}, Worth
+Publishers, New York.\bigskip\ \newline
+Mankiw, Gregory N. (2021).\textit{\ Macroeconomics. 11th ed}, Worth
+Publishers, New York.CMichaillat, Pascal and Emmanuel Saez (2021). Resolving
+New Keynesian Anomalies with Wealth in the Utility Function. \ Review of
+Economics and Statistics 103(2), 197-205.\bigskip\ \newline
+McCallum, Bennett T. (1983). \ On Non-Uniqueness Rational Expectations
+Models. \textit{Journal of Monetary Economics }11,139-168.\bigskip\ \newline
+Mishkin, Frederic (2015). \textit{Macroeconomics: \ Policy and Practice.}
+Pearson.\bigskip\ \newline
+Rogoff, Kenneth (2017). \ Dealing with Monetary Paralysis at the Zero Bound.
+\ \textit{Journal of Economic Perspectives 31(3), }47-66.\bigskip\ \newline
+Schmitt-Groh\'{e}, Stephanie and Martin Uribe (2009). Liquidity Traps with
+Global Taylor Rules. \textit{International Journal of Economic Theory, 5(1)}%
+, pp. 85-106.\bigskip\ \newline
+Taylor, John B., (1993). \ Discretion Versus Policy Rules in Practice. \ 
+\textit{Carnegie-Rochester Conference Series on Public Policy}, vol. 39,
+December,195-214.\bigskip\ \newline
+Vox EU (2014). \ Secular Stagnation: Facts, Causes and Cures. \ e-book,
+edited by Coen Teulings and Richard Baldwin, \
+https://voxeu.org/content/secular-stagnation-facts-causes-and-cures \ 
+\textit{accessed 10/4/2019}.\bigskip\ \newline
+Waters, George (2021). \ \textit{A Primer on Macoeconomics}.
+manuscript.\bigskip\ \ \newline
+Wolla, Scott (2019). \ A New Frontier: \ Monetary Policy with Ample
+Reserves. \textit{Page One Economics\registered }, May 2019, The Federal
+Reserve Bank of St. Louis.\bigskip\ \newline
+Woodford, Michael (2003). \ \textit{Interest and Prices}. Princeton
+University Press, Princeton, NJ.
+
+\section{Appendix}
+
+\subsection{\protect\Large Sample TR-FR Graphing Problems}
+
+\begin{enumerate}
+\item Draw the graph with the Fisher Relation and the Taylor Rule assuming
+that the steady state real rate is lower than $-\bar{\pi}$, where the
+inflation target is $\bar{\pi}$. \ Why would this be a particularly
+difficult situation for a central bank? \ What could the Fed do to alleviate
+the problem?
+
+\item Starting from the TR-FR graph in Figure 2, show the effect of an
+increase in the inflation target $\bar{\pi}$. \ How are the equilibria
+affected?
+\end{enumerate}
+
+See Waters (2021) for other examples.
+
+\subsection{Model Solution under Rational Expectations}
+
+The model with supply shocks $v_{t}$%
+\begin{eqnarray}
+y_{t} &=&\bar{y}-c\left( r_{t}-\widetilde{r}\text{ }\right) \text{\ \ \ \
+(IS)} \\
+y_{t} &=&\bar{y}+a\left( \pi _{t}-E_{t-1}\pi _{t}\right) +v_{t}\text{ \ \ \
+\ (AS)}  \notag \\
+i_{t} &=&\pi _{t}+\widetilde{r}+b_{\pi }\left( \pi _{t}-\bar{\pi}\right)
++b_{y}\left( y_{t}-\bar{y}\right) \text{ \ \ \ \ (TR)}  \notag \\
+r_{t} &=&i_{t}-E_{t}\pi _{t+1}\text{ \ \ \ \ (FR)}  \notag
+\end{eqnarray}%
+can be solved under rational expectations with the method of undetermined
+coefficients. \ Substituting out $r_{t}$ using the IS, FR and TR equations 
+\begin{equation*}
+y_{t}-\bar{y}=.-c\left[ \pi _{t}-E_{t}\pi _{t+1}+b_{\pi }\left( \pi _{t}-%
+\bar{\pi}\right) +b_{y}\left( y_{t}-\bar{y}\right) \right] ,
+\end{equation*}%
+gives the aggregate demand relationship%
+\begin{equation}
+y_{t}-\bar{y}=\frac{-c}{1+cb_{y}}\left[ \pi _{t}-E_{t}\pi _{t+1}+b_{\pi
+}\left( \pi _{t}-\bar{\pi}\right) \right]  \label{ADapp}
+\end{equation}%
+Combining this AD relation with the AS relation substituting out $y_{t}-\bar{%
+y}$ yields%
+\begin{equation*}
+\frac{-c}{1+cb_{y}}\left[ \pi _{t}-E_{t}\pi _{t+1}+b_{\pi }\left( \pi _{t}-%
+\bar{\pi}\right) \right] =a\left( \pi _{t}-E_{t-1}\pi _{t}\right) +v_{t}.
+\end{equation*}%
+Postulating solutions of the forms%
+\begin{equation*}
+\pi _{t}=d_{0}+d_{1}v_{t}
+\end{equation*}%
+for unknown $d_{0},d_{1}$ and simplifying, the above relations become%
+\begin{equation*}
+\frac{-c}{1+cb_{y}}\left[ d_{1}v_{t}+b_{\pi }\left( d_{0}+d_{1}v_{t}-\bar{\pi%
+}\right) \right] =a\left( d_{1}v_{t}\right) +v_{t}
+\end{equation*}%
+using the fact that $E_{t}\pi _{t+1}=E_{t-1}\pi _{t}=d_{0}$, since the shock 
+$v_{t}$ is mean zero. \ 
+
+Matching the constant terms and shock terms gives the following.%
+\begin{eqnarray*}
+\frac{-c}{1+cb_{y}}\left( d_{0}-\bar{\pi}\right) &=&0 \\
+\frac{-c}{1+cb_{y}}\left( d_{1}+b_{\pi }d_{1}\right) &=&ad_{1}+1.
+\end{eqnarray*}%
+Hence, the coefficients are $d_{0}=\bar{\pi}$ and $d_{1}=-\dfrac{1+cb_{y}}{%
+c\left( 1+b_{\pi }\right) +a\left( 1+cb_{y}\right) }$, so the solutions are
+as in the text, using the AD relation (\ref{ADapp}) to solve for $y_{t}$.
+
+\begin{eqnarray*}
+y_{t} &=&\bar{y}+\dfrac{c\left( 1+b_{\pi }\right) }{c\left( 1+b_{\pi
+}\right) +a\left( 1+cb_{y}\right) }v_{t} \\
+\pi _{t} &=&\bar{\pi}-\dfrac{1+cb_{y}}{c\left( 1+b_{\pi }\right) +a\left(
+1+cb_{y}\right) }v_{t}
+\end{eqnarray*}%
+\end{doublespace}
+
+\end{document}
