@@ -1,0 +1,3788 @@
+﻿\documentclass[oneside]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\begin{document}
+
+Copyright 2023 Illinois State University
+
+
+Edited by *Cambridge Proofreading LLC*
+
+
+Cover Art:  *Samuel Waters*
+
+
+Cover Design:  *Kitty Huffman*
+
+
+For *e-book* versions and online resources: *primeronmacro.blogspot.com*
+
+
+
+
+# Preface
+
+
+This book bridges the gap between the undergraduate-level
+macroeconomic textbooks that rely largely on graphs and more advanced books
+that develop a particular methodology in detail.  It has the
+following concrete goals:
+
+
+- survey a range of theoretical methodologies,
+
+- cover topics of current policy interest,
+
+- provide empirical exercises to test and apply
+the theoretical models, and
+
+- show areas of macroeconomic theory that are incomplete, messy, and in need of work.
+
+The book is written as a text for an advanced undergraduate or master's level class. The intended readers are
+
+
+- students considering careers involving macroeconomics research who
+want a sense of what it's about.
+
+Other potential interested parties include
+
+
+
+- economists and graduate students who do not belong to the macro
+tribe but would like some insight without having to dive into the deep end,
+
+- graduate students studying macroeconomics who would like some extra intuition behind the mathematical models they are studying,
+
+- undergraduates with knowledge of calculus and a strong economics
+background (perhaps from an introductory class) who want to jumpstart their
+macroeconomics education,
+and
+
+- educated professionals that want to update their knowledge and sound smart at cocktail parties.
+
+Macroeconomics research is a noble activity, but it is a career with strong
+path dependence. Some scholars spend their professional lives working with
+one theoretical model or empirical technique, which is not necessarily a bad
+thing. But one should look at a map before choosing which road to follow.
+
+
+Notes on Pedagogy
+
+
+This book can be used for classes lasting one semester or one year. A one-semester class would typically skip several applications and some of the final three chapters. A one-year class would likely involve an extended project for students. Some ideas along these lines are included in the problems. Beyond that, there is considerable flexibility regarding the choice of focus.
+
+The text includes discussion questions intended to inspire short essays and in-class discussions and foster a more active learning experience.
+
+Naturally, students can be assigned some of the papers referenced in the text for direct study. Encountering economic research in situ is a
+valuable experience, and replicating and updating the data exercises in
+the papers represents a fruitful avenue for student projects.
+
+Some papers are available at the webpage/blog associated with the textbook:
+
+
+*https://primeronmacro.blogspot.com/*
+
+
+The following problems might provide inspiration for empirical projects:
+
+- Problem 3.  Phillips Curve with Adaptive Expectations
+- Problem 3.  VAR for a monetary shock
+- Problem 3.  Okun's Law
+Test rational expectations with survey data
+- Problem 4.  Simulate Taylor rules
+- Problem 4.  Estimate Taylor rules
+- Problem 5.  Simulate a small model with Dynare
+- Problem 6.  Real rates and secular stagnation
+- Problem 8.  Estimate the MPC with de-trended data
+- Problem 10.  Compute asset price persistence and volatility
+- Problem 10.  Testing the weak EMH
+- Problem 12.  Estimate the Solow Model with cross-country data
+- Problems 12. and 12. Find volatility ratios of detrended data
+- Problem 12.  Estimate and ARMA process for de-trended data
+- Problem 13.  Simulate future carbon emissions
+- Problem 13.  Simulate income per capita with damages from climate change
+- Problem 13.  Compute the social cost of carbon with damages from climate change
+- Problems 15. - 15. Simulate the Ramsey model with Dynare
+
+Material from some of the textbooks that I have previously used in class has
+inevitably seeped into the present work. Two of the most notable references
+are *Macroeconomics* by Olivier Blanchard  and *Advanced Macroeconomics* by David Romer .
+
+
+
+#
+
+
+
+Macroeconomists should be humble. Central issues, such as the real effects of money, have not achieved complete consensus. The same is true for questions of methodology. Such ambiguity tempts many to dismiss macroeconomic analysis altogether, but that is not an option. Well constructed
+macroeconomic policy can have enormous benefits, such as minimizing the risk of economic depression and helping countries develop.
+
+Macroeconomics seeks to explain the movement of aggregate variables like
+GDP. The popular image of the divisions in macro in terms of schools of
+thought is really about the sources of fluctuations. For example,
+*Neo-Classicals* explain aggregate movements as the result of supply shocks, such as technological advances, while *Keynesians* say consumer and business decisions have short-run effects. Relatively few contemporary macroeconomists would defend a singular focus on the source of fluctuations, and we try to avoid such big words, but some of these biases continue to influence the choice of models and the intuition about the role of policy. Current policy issues and modern techniques are introduced without being slavish about a particular style of model.
+
+A continuing point of contention about methodology is the role of
+micro-foundations, that is, whether models must be based on some type of optimization, such as utility maximization. Eschewing micro-foundations means ``starting from curves'' or assuming a relationship between aggregate variables, as in the case of unemployment and inflation in a Phillips Curve. Most theorists make some effort to include micro-foundations, but one economist's foundations are another's ad-hockery. We'll explain the arguments while remaining agnostic on the issue as much as possible. Naturally, the author's opinions unavoidably seep into the text at times. Fortunately, my judgment is excellentThat's a joke... sort of. [fn].\ In the event that I am mistaken, may it inspire a greater mind to prove me wrong.
+
+A question that surfaces repeatedly is the choice of method for modeling
+expectations, which informs the long-run stability of certain equilibrium
+outcomes, model predictions about the impact of policy, and the possible
+approaches to empirical analysis. A related issue that permeates much
+of economics is equilibrium. Much analysis assumes that markets and
+economies can be represented as shifts in and fluctuations around a single
+equilibrium. Questions about how equilibrium is achieved are often given
+limited attention. Furthermore, if markets are better conceived as
+movements between multiple equilibria, emphasizing a unique equilibrium
+could be very misleading. This concern gets relatively a modest amount of
+attention in the text, but it is worth keeping in mind throughout.
+
+
+
+##
+
+
+
+Allowing for several digressions, this section briefly surveys many of the intermediate-level ideas assumed in subsequent chapters. It is
+so brief that reference to a textbook might be helpful.
+
+Much macroeconomic intuition can be summarized by attaching words to an
+aggregate supply--aggregate demand (AS--AD) diagram (Figure ). Such
+graphs are inherently disadvantaged in terms of describing data because AS and AD are functions of the aggregate price level (P) and the level of real GDP
+(Y), while the economy is usually represented by inflation and GDP growth
+rates. However, it offers the advantage of enabling discussion of wide variety of issues within the context of a single graph.
+
+A simple way to motivate an AD relation employs the quantity equation for
+money
+
+
+
+MV=PY,
+
+
+where $M$ is the real money supply, and $V$ is the velocity of money. For
+given levels of $M$ and $V$, there is an inverse relationship between $P$ and
+$Y$, which implies downward-sloping AD. One reason for including this
+equation is that it represents a good chunk of the macro knowledge of finance guys, fourth-rate macroeconomists, and businessmen of a certain age, and I want them to know that I know what it is.
+
+The problem with the quantity equation is not its truthicity; it is true by
+definition, as both sides represent nominal GDP. Velocity is the problem.
+Milton Friedman used the quantity equation to advocate for monetary policy
+using a fixed money supply growth rate, arguing that real GDP fluctuated
+around a natural rate and that velocity was stable. Unfortunately, since
+the 1980s, velocity has been anything but stable, partially due to the multiple
+crises in the financial sector. More traditional models of demand include
+household consumption decisions, business investment, and fiscal policy, all
+of which could affect velocity and shift AD. The logic of downward sloping
+demand given by the quantity equation is sensible, but the next chapters
+include more detail.
+\begin{figure}[ht]
+\centering
+\includegraphics[width=8cm, trim=0 1cm 0 0.5cm ]{F11.png}
+\caption{}
+\end{figure}
+
+Returning to the task at hand, upward sloping supply follows the logic of firm decisions. If the price of a good rises, that good becomes more
+profitable, and the firm produces more of it. However, this logic is at
+odds with models of long-run growth where real GDP $Y$ depends on real
+inputs, such as labor $L$ and capital $K$, along with productivity $A$, and the production function is written
+
+
+
+Y=F( K,AL) ,
+
+
+implying that nominal values like prices are irrelevant.
+
+These ideas are reconciled by considering different interpretations of
+price expectations for the short run and the long run. Let labor demand $L_{d}( \cdot ) $ be inversely related to the real wage $\dfrac{W}{P}$ such that $L_{d}^{' }( \dfrac{W}{P}) <0$. Furthermore, the
+nominal wage $W$ depends on price expectations $P^{e}$ and factors represented by the markup $\theta ,$ which is determined by firm market
+power\ and non-labor costs, so
+
+
+
+W=P^{e}\theta .
+
+
+Substituting this for the nominal wage in the labor demand and the production function, assuming a fixed level of capital $\bar{K}$, yields the AS relation
+
+
+
+Y=F( \bar{K},AL_{d}( \frac{P^{e}}{P}\theta ) ) .
+
+
+
+
+The upward-sloping AS relation is interpreted as a short-run
+version where price expectations do not have time to adjust, so $P^{e}$ is fixed. In that case, a higher aggregate price level $P$ leads to a lower
+real wage and increased hiring, increasing production.
+
+Given enough time for expectations to adjust, $P^{e}=P$, such that real GDP $Y$
+does not depend on the price. Hence, on the graph, the natural rate of GDP
+$Y_{n}$ is defined by
+
+
+
+Y_{n}=F( \bar{K},AL_{d}( \theta ) ) ,
+
+
+and AS is vertical because $P$ does not appear. These equations also
+indicate factors that shift both short-run AS and long-run AS, such as productivity $A$ and the markup $\theta $. Only price expectations shift short-run AS but not long-run AS.
+
+In the short run, it is possible for $Y$ to deviate from the
+natural rate. For example, starting from the graph in Figure , an
+increase in the money supply would shift AD to the right, and equilibrium
+output $Y^{\ast }$ would exceed the natural rate $Y_{n}$, opening an
+inflationary gap, as Figure  shows.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=8cm, trim=0 1cm 0 0 ]{F12.png}
+\caption{Inflationary Gap}
+\end{figure}
+
+Q: Where is $P^{e}$ on the graph in Figure ?
+
+}
+A: At the intersection of short-run AS and long-run AS. [fn]
+}
+
+Given enough time, expectations adjust. In this case, that means price
+expectation $P^{e}$ increases toward the new equilibrium $P^{\ast }$, so the short-run (upward-sloping) AS curve shifts to the left. This process
+continues until equilibrium output $Y^{\ast }$ falls back to the natural
+rate, closing the gap. The underlying intuition is that higher price
+expectations drive up wages, meaning higher costs for firms, such that short-run AS shifts to the left. Hence, there is an automatic process by which output returns to its natural rate.
+
+Supply shocks do not necessarily open gaps, inflationary or recessionary. \
+A fall in oil prices, for example, is represented by a decreased markup $\theta $ that enters into both supply equations. Hence, both the
+vertical and upward-sloping AS curves shift right together, as Figure  demonstrates. \
+If they continue to intersect along AD, there is no gap. Strictly speaking, it's
+possible for a gap to arise, but that gap would be small and could be of
+either variety.
+
+\begin{figure}[hb]
+\centering
+\includegraphics[width=8cm]{F13.png}
+\caption{Supply Shock}
+\end{figure}
+
+The AS--AD graph facilitates discussion of many policy issues.
+
+Q: Is an active policy response, such as a change in the money supply, more
+appealing for a supply shock or a demand shock?
+
+Supply shocks do not necessarily create recessionary or inflationary gaps,
+while demand shocks do. Although active policy could be used to close gaps,
+an active response to a supply shock is likely to be harmful. For example, if
+the central bank tries to counter an increase in oil prices with an increase
+in the money supply, the result would be an inflationary gap and even higher
+prices as expectations adjust. The Great Inflation of the 1970s in the U.S. follows just such a story.
+
+Q: Why might one prefer active policy to close gaps as opposed to allowing
+the expectations adjustment to manage it?
+
+The adjustment to a recessionary gap using passive policy requires a fall in $P^{e}$ and, hence, wages too. Because wages are notoriously sticky downward,
+the process can be slow and painful. The recoveries following the Great Recession in countries like Spain and Italy are prime examples. The adjustment to an
+inflationary gap involves higher prices, something an inflation-targeting
+central bank might want to avoid. In fact, most central banks engage in
+some degree of inflation targeting, which has the effect of closing gaps. \
+Inflation targeting is not just about inflation. Inflation is the canary in the coal mine for an over- or under-heating economy.
+
+Q: Is government spending a good thing? How does it appear on the graph?
+
+The short answers to the above questions are, ``it depends'' and ``AD shifts
+right.'' The reason for government spending is one issue. In
+principle, spending could be used as an active response to shocks, although
+most macroeconomists prefer monetary policy for that job because the decision-making process is more flexibleIn the U.S., the Federal Open Market Committee makes a decision every six weeks, while it can take
+Congress years to do anything. [fn]. If output starts from the natural rate,
+the shift in AD would eventually lead to higher prices with no change
+in $Y$, after expectations adjust. However, most government spending is
+intended to make the economy more productive, which implies a shift in both
+supply curves. Naturally, there are many examples of wasteful government
+spending, but there are also examples of spending that advances productive technology, such as the U.S. Defense Department
+spending to develop the ARPAnet, the precursor to the internet. In such cases, all three curves on the AS--AD graph shift with an increase in the natural rate $Y_{n}$ and an ambiguous effect on the price level $P^{\ast}$.
+
+Attaching words to the AS--AD diagram can provide an overview of the policy
+prescription of a majority of macroeconomists:
+
+
+- Monetary policymakers should smooth inflation to stabilize
+against demand shocks, that is, close gaps;
+
+- Government spending should provide public goods and respond to shocks
+via automatic stabilizers;
+
+- Beyond that, spending priorities should depend on their impact on
+productivity;
+
+- Taxes should be set to provide the revenue needed for long-run budget
+stability.
+
+The first point about inflation targeting seemingly implies that policymakers
+do not care about unemployment or GDP, but that is not the case. Consider cases where a fall in output occurs due to a rise in oil prices versus a
+fall in business investment. The latter case is a demand shock where AD
+shifts left, the price level falls, and the policy response is clear:
+increase the money supply to shift AD back and close the recessionary gap.
+The case for a policy response to a supply shock where short-run AS and long-run AS shift left is more complicated. The policymaker must weigh the increase in prices against the fall in output, and the proper response might be to do nothing, which makes sense on the graph because no gap has been opened.
+
+Of course, the policy prescription above is just an outline and many details and exceptions need to be spelled out. And so we press on....
+
+
+
+##
+
+
+
+
+- [itm:11] Starting from the natural rate of output on an AS--AD graph, show the short- and long-run effect of a decrease in the money supply. Does the graph demonstrate money neutrality, meaning money does not affect real variables?
+
+- [itm:12] Starting from the natural rate on an AS--AD graph, use two graphs to compare a temporary and permanent fall in oil prices. What would be an
+appropriate policy response?
+
+- [itm:13] Using the quantity equation for money, how would one interpret a financial crisis? How would it change the AS--AD graph?
+
+- [itm:14] The increasing availability of internet retailing makes product markets more competitive. Show the effect on the AS--AD graph, starting from the natural rate.
+
+- [itm:15] Draw an AS--AD graph with an inflationary gap. Show the adjustment, assuming passive policy. Explain how monetary policy could be used to close the gap.
+
+- [itm:16] A country wins the World Cup of Soccer (Football, whatever), triggering a burst of celebratory spending. Show the effect on an AS--AD graph starting from the natural rate.
+
+- [itm:17] Consolidation in a number of industries has increased monopsony power for firms. Show the impact on an AS--AD graph and discuss a potential policy response.
+
+- [itm:18] Integrated technology has improved productivity. What can you conclude about the ultimate impact on the aggregate price level $P$ and
+output?
+
+- [itm:19] Show the Great Inflation on an AS--AD graph. Starting from the natural rate, show the impact of an increase in oil prices. If the
+monetary policymaker responds by increasing the money supply, show the
+change(s) on the graph.
+
+- [itm:110] For the following, use the quantity equation where the variables are functions of time $M_{t}V_{t}=P_{t}Y_{t}$.
+
+
+- Write the equation in terms of growth rates. (See Appendix  for a discussion of growth rates.) Take logs of both sides of the equation, write the equation for time $t-1$, and then subtract equations.
+
+- Using U.S. post-WWII data, create a graph with annual growth rates for
+the four variables using M1 for money and velocity. Make a second graph
+using M2. Is velocity plausibly stable for either? Briefly explain your position.
+
+- [itm:111] How could the recession caused by the COVID-19 pandemic be modeled on the AS--AD graph? How does the response of inflation inform the description?
+
+
+
+
+#
+
+
+
+The initial goal is to create a small algebraic model for short-run analysis.  The first building block is a model of aggregate demand that allows for qualitative analysis of monetary and fiscal policy using comparative statics
+methodology, meaning derivatives and not just graphs. Most economically
+literate people have seen an IS--LM graph, which combines a goods market with
+money supply and demand using output and the interest rate as the endogenous
+variables. Here, the investment-saving (IS) relation is developed in a similar (albeit calculus-based) manner, but on the asset side of the model we'll consider interest rate targeting, which better aligns with current policy practice, in addition to the standard development of a liquidity-preference/money-demand (LM) relation.
+
+
+
+##
+
+
+
+The model with total domestic expenditures $E$ is
+
+
+
+E &=&C+I+G
+Y &=&E
+
+
+with expenditures split into consumption $C$, investment $I$, and
+government spending $G$. The equilibrium condition sets expenditures
+equal to GDP. All quantities are real. Having a separate equilibrium
+condition emphasizes the dual role of real GDP as both income and a measure
+of final goods.
+
+The first equation is not just an accounting relation. Income affects
+consumption $C( Y) $ where the derivative $C_{Y}$---the marginal
+propensity to consume---is such that $0<C_{Y}<1$ because households consume a
+fraction of their income and save the other portion. The two equation
+model is graphically represented by the *Keynesian cross* on a graph of
+expenditures $E$ versus output $Y$.
+
+Assume that the real interest rate $r$ has an inverse relation with
+investment $I$, so $I_{r}<0$. One justification for this assumption is
+that higher borrowing costs tend to dampen business expenditures. A
+fancier and financier reason is that businesses invest in a project when its
+discounted future cash flows exceed the cost, i.e. the net present value is
+positive. A higher interest rate reduces the present value of future
+revenue and makes investment in a project less likelyChapter 15 presents a more formal justification. [fn].
+
+Given that government spending ($G$) is primarily a political decision, it's assumed
+to be exogenous. Combining the equations with these assumptions yields
+
+
+
+Y=C( Y) +I( r) +G
+
+
+
+
+Q: The intuition behind $I_{r}<0$ could also be applied consumption. \
+However, some consumers might increase their consumption with an increase in $r$. Who? (Note that this explains why we ignore the effect of the interest rate on
+consumption for now. See Problem 2. and Section 8.4)
+
+One simple exercise demonstrates the relationship between $Y$ and $r$. Assuming $\bar{r}$ is exogenous, take the derivative of both sides with respect to $\bar{r}$ and solve.
+
+
+
+\frac{dY}{dr}=\frac{I_{r}}{1-C_{Y}}<0
+
+
+The sign of $\dfrac{dY}{dr}$ is clear because $I_{r}<0$ and $C_{Y}<1$. We
+have just demonstrated that the IS curve slopes downward, primarily due to the
+inverse relationship between investment and the interest rate.
+
+Maintaining the exogeneity of the interest rate, we can compute a simple
+version of the fiscal multiplier by differentiating with respect to $G$.
+
+
+
+\frac{dY}{dG}=\frac{1}{1-C_{Y}}
+
+
+Q: What do we know about the above value? (Positive or negative? \
+Anything else?)
+
+This expression represents the multiplier $m=\dfrac{1}{1-C_{Y}}$, which is
+greater than one because the marginal propensity to consume $C_{Y}$ is less
+than one. The economic intuition is that expenditures (e.g., an increase in
+$G$) start as payments to firms and then enter the consumption function as
+income, and that process repeats indefinitely. Hence, the larger the marginal propensity to consume, the
+larger the multiplier. The multiplier could apply to any exogenous
+increase in spending. Although this intuition is likely familiar to many readers,
+the goal here is to use comparative statics technology to express it.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=9cm, trim=0 1cm 0 0]{F21.png}
+\caption{}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=10cm, trim=0 -1cm 0 0]{F22.png}
+\caption{Federal Funds Rate}
+\end{figure}
+
+
+
+##
+
+
+
+For the asset side of the model, we first describe a traditional development of the LM relation based on money supply and
+demand that are functions of an interest rate, then consider monetary policy that adjusts the interest rate in response to economic conditions. Assume
+supply is vertical because the money supply is primarily a decision of the
+Federal Reserve (henceforth, the Fed)---see Figure . Although bank lending also creates money, in the
+interest of simplicity, we'll ignore that for now.
+Money demand slopes downward because higher interest rates increase the
+incentive to hold interest-bearing assets such as bonds and decrease the incentive to
+hold money. Money demand shifts with changes in nominal GDP, which could happen due to changes in prices or real activity.
+
+Algebraically, the equilibrium condition can be expressed
+
+
+
+\frac{M^{s}}{P}=L( Y,i) ,
+
+
+where the real supply of money $\dfrac{M^{s}}{P}$ must equal the demand for
+liquidity $L( \cdot ) $, which is decreasing in $i$---hence the
+downward-sloping money demand---and increasing in $Y$. An increase in real
+GDP shifts money demand to the right, increasing the equilibrium interest
+rate. This is a derivation of the upward-sloping LM relationship in Figure
+. Assume that inflation is exogenous, such that the nominal rate here and
+the real rate in equation () move together. Monetary policymakers control interest rate through open market operations, which shifts the money supply and LM curves. For example, to lower the equilibrium rate, the central bank buys bonds, increasing the money supply.  The extra demand for bonds and the extra supply of money both lower the equilibrium interest rate. This is known as the *liquidity effect*.
+
+
+
+##
+
+
+
+For many central banks, including the Fed, current policy is to actively adjust a target interest rate according to economic conditions. Federal Open Market Committee meetings have produced explicit statements about the federal funds rates,
+and the graph shows discrete jumps since the early 1990s---see Figure .
+Assume that the monetary policymaker adjusts the money supply so that the interest rate responds directly to output $Y$ and inflation $\pi .$
+
+
+
+r=\rho ( Y,\pi )
+
+
+One expects a central bank to lower rates in response to a recession and
+raise them in response to inflation, so both derivatives of $\rho $ are
+assumed to be positive, $\rho _{Y}>0$ and $\rho _{\pi }>0$.
+Such a monetary policy (MP) function assumes that the policymaker will adjust the
+money supply to achieve the desired interest rate, with the LM relation assuming a fixed money supply. The MP and LM
+curves (Figure ) are both upward-sloping but for different reasons. Exogenous shifts in the demand for money do not shift the MP curve because the policymaker will automatically adjust. Only changes in policymaker preferences cause a shift.
+
+The other change in the graph is the substitution of the real rate plus the expected inflation $r+\pi^{e}$ for the nominal rate $i$. This reflects an approximation of the Fisher relation. For the rest of the chapter, let expected inflation $\pi^{e}$ be exogenous, so the real and nominal rates move together.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=8cm, trim=0 2cm 0 0]{F23.png}
+\caption{}
+\end{figure}
+
+Assuming (for now) that inflation $\overline{\pi }$ is exogenous, the model
+now features two equations, IS and MP, and two endogenous variables: $Y$ and $r$.
+
+
+
+Y &=&C( Y) +I( r) +G
+r &=&\rho ( Y,\bar{\pi})
+
+
+
+
+
+
+##
+
+
+
+The government spending multiplier $\frac{dY}{dG}$---which describes how much a
+change in $G$ affects output $Y$---can be derived for the IS--MP model by
+differentiating both sides with respect to $G$.\begin{align*}
+\frac{dY}{dG}&=C_{Y}\frac{dY}{dG}+I_{r}\frac{dr}{dG}+1 [5pt]
+\frac{dr}{dG}&=\rho _{Y}\frac{dY}{dG}+0,
+\end{align*}which yields
+
+
+
+\frac{dY}{dG}=\frac{1}{1-C_{Y}-I_{r}\rho _{Y}}.
+
+
+Q: How does this compare to the multiplier $m$? What is the economic intuition behind the difference?
+
+This derivative remains positive but is smaller than the simple multiplier $m$,
+which assumes a fixed interest rate.
+
+
+
+\frac{dY}{dG}<m=\frac{1}{1-C_{Y}}
+
+
+The difference represents government spending *crowding out* private
+investment due to the higher interest rate. The difference between the two is
+represented by the shift in IS in Figure . If the interest rate is
+allowed to change, output increases to $Y^{\ast ^{' }}$. However, if it is
+fixed, output increases to $Y^{\ast ^{' ' }},$ meaning that the difference $Y^{\ast ^{' ' }}-Y^{\ast ^{' }}$ is the amount crowded out.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=8cm]{F24.png}
+\caption{Crowding Out}
+\end{figure}
+Thus, although the simple multiplier $m$ is conceptually important, it is far from the whole story.
+
+The relation between inflation and output can be similarly derived. (Do it.)
+
+
+
+\frac{dY}{d\bar{\pi}}=\frac{I_{r}\rho _{\pi }}{1-C_{Y}-I_{r}\rho _{Y}}<0.
+
+
+Here, output falls with an exogenous increase in GDP, which represents
+downward-sloping demand, with inflation $\pi $ substituting for the price
+level. IS--MP is a model of demand. Aggregate demand resembles a demand
+curve for a single good, but the intuition is more complicated. Using the
+model with the MP curve, higher inflation leads the monetary policymaker to
+raise interest rates, which causes investment to fall, lowering GDP. Any
+shift in IS or MP (or LM)---for instance, the one in Figure ---appears as a shift in AD.
+
+The multiplier analysis represented by equation () makes policy look
+rather powerful in that it can impact real GDP. The crowding-out story represented by Figure  dampens the story a bit, but equilibrium GDP can be increased to an arbitrarily high value for a sufficient increase in the money supply. Of course, the elephant in the room is AS, the slope of which substantially determines the effectiveness of policy.
+
+
+
+##
+
+
+
+
+- [itm:21] Draw a Keynesian cross diagram and show the effect of an exogenous increase in $G$. What would it mean for the multiplier to exceed one on the graph?
+
+- [itm:22] Use a money supply and demand graph to show the immediate effect of the following on equilibrium interest rates.
+
+
+- a decrease in the price level.
+
+- an increase in the money supply.
+
+- [itm:23] If the interest rate is below equilibrium, describe the intuition behind the market process that pushes it upward. (Hint: Think about the bond market.)
+
+- [itm:24] Describe and show how (if at all) the following developments affect either or both the IS and MP curves:
+
+
+- Taxes fall.
+
+- Government purchases fall at the same time that the Fed
+changes its policy rule to set a higher real interest rate at a given level
+of output.
+
+- The demand for money increases due to an exogenous change in consumer
+preferences for holding real money balances for given levels of $i$ and $Y$.
+
+- Investment demand becomes less sensitive to the interest rate.
+
+- [itm:25] Let $NX( \varepsilon ) $ represent net exports as a function of the exchange rate $\varepsilon $. A higher $\varepsilon $ indicates appreciation of the domestic currency. Use the following model for the
+questions below.
+Let inflation be fixed at $\bar{\pi}$.
+
+
+
+Y &=&C( Y) +I( r) +G+NX( \varepsilon )
+r &=&\rho ( Y,\bar{\pi})
+
+
+
+
+
+- Should $\dfrac{dNX}{d\varepsilon }$ be positive or negative? Give a
+brief intuitive explanation.
+
+- If the domestic currency depreciates, how will this affect
+equilibrium output $Y$ and the interest rate $r$? Show using comparative
+statics and a graph.
+
+- Explain the result in (b) if the monetary policymaker responds only to
+inflation, meaning $\dfrac{dr}{dY}=0$. Show using comparative statics and
+a graph.
+
+- In a more complete model, name one other variable that might affect $NX$.
+
+- [itm:26] Use the following model where consumption responds to the interest
+rate
+such that $C_{r}( Y,r) <0$.
+
+
+
+Y &=&C( Y,r) +I( r) +G
+r &=&\rho ( Y,\bar{\pi})
+
+
+
+
+
+- Give an intuitive explanation for $C_{r}<0$.
+
+- Let inflation be fixed at $\bar{\pi}$. Explain how an increase in
+government spending $G$ would affect the equilibrium values for $Y,r$. How does
+the answer differ with the inclusion of $r$ in $C( Y,r) $?
+Explain using comparative statics and a graph. See Appendix  for a
+statement of the chain rule for functions with multiple inputs. (Hint:
+Consider how your answer changes if $\dfrac{dC}{dr}=0$. Is there more
+crowding out?)
+
+- [itm:27] Draw an IS--MP graph to represent the situation where the monetary
+policymaker acts to fix the interest rate. How does the change affect AD?
+
+
+
+#
+
+
+
+Most readers have seen upward-sloping supply graphs reflecting the idea that if
+firms can charge higher prices, they have an incentive to produce more. This intuition needs careful consideration in a macro context because the price
+reflects an aggregate of the prices of many goods and services.
+
+A dairy farmer that sees most prices rising has an incentive to increase production to sell at a higher price, but he might also face higher costs for
+feed, energy, and labor. If input and output costs rise together, there
+may be no net effect on production decisions.
+
+Q: What does the supply curve look like in this case?
+
+One might question the standard AS relation. For aggregate
+supply to be upward-sloping, one must distinguish between the timing
+of changes in output and input prices. If input prices change more slowly---in macro lingo, if they are ``stickier''---than output prices, the usual intuition about AS is valid. That assumption is quite reasonable. \
+Our dairy farmer likely has contracts with suppliers for a year or more in
+advance, while the wholesale price of milk can fluctuate weekly if not
+daily.
+
+Our goal is to formalize (mathematize) these ideas. One way to model
+sticky input prices is to consider different ways that expectations are formed,
+following the earlier AS--AD analysis. \
+
+Q: What is the difference in the impact of a tax cut for vertical and
+upward-sloping AS?
+
+Most changes in fiscal and monetary policy appear as a shift in aggregate
+demand. A tax cut would increase consumption and shift aggregate demand to
+the right. For a vertical AS, there is no change in equilibrium output---just an increase in the equilibrium price level. For upward-sloping AS, output does increase, so the shape of AS has substantial policy implications.
+
+Note that we're making several assumptions. First, at least
+some of the cut is spent rather than saved by households. Second, we're
+ignoring the effect on debt and the deficit, which is reasonable for short-run analysis but is a topic we return to in Chapter 7.
+
+
+
+##
+
+
+
+To develop a model of supply, let's quickly cover some basics about
+production functions, such as
+
+
+
+Y=F( K,AL) .
+
+
+Here, output is $Y$, inputs are capital $K$ and labor $L$, and the variable $A $ reflects the productivity of labor. The first partial derivatives $F_{K}$ and $F_{L}$\ are taken to be positive, while the second partial derivatives $F_{KK}$ and $F_{LL}$ are negative, reflecting a production function that is
+increasing in both inputs, but at a decreasing rate due to diminishing
+marginal productivity.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=10cm]{F31.png}
+\caption{Production Function $F( K,\bar{L}) $}
+\end{figure}
+
+Figure  shows a generic two-input production function where the output is the vertical axis. Fixing one input---for example, labor $\bar{L}$---would be
+equivalent to intersecting the graph with a plane parallel to the $K$ axis
+and perpendicular to the $( K,L) $ plane. That intersection
+would be a typical production function with one variable $F( K,\bar{L}) $ that is increasing at a decreasing rate.
+
+Q: What would the intersection of the graph with a plane parallel to the $( K,L) $ plane be?
+
+A common specification is the Cobb-Douglas production function, which has
+parameters $\alpha  ,\beta $ between 0 and 1.
+
+
+
+F( K,AL) =K^{\alpha }( AL) ^{\beta }
+
+
+The derivative with respect to capital
+
+
+
+F_{K} &=&\alpha K^{1-\alpha }( AL) ^{\beta }
+F_{KK} &=&( 1-\alpha ) \alpha K^{-\alpha }( AL)
+^{\beta }
+
+
+clearly obeys the sign restrictions $F_{K}>0$ and $F_{KK}<0$ given that $0<\alpha <1$. The reader can verify these conditions for labor input
+(Problem 3.).
+
+For the model of supply, consider the simplest production function
+displaying these characteristics for a single labor input.
+
+
+
+Y=F( L) =L^{\beta }
+
+
+A firm facing output price $P$ and wage $W$ must decide how many workers to
+hire. Profit $Pr( L) $ is
+
+
+
+Pr( L) =PF( L) -WL
+
+
+Maximizing shows that the optimal choice of the number of workers to hire is
+
+
+
+PF^{' }( L) =W
+
+
+which means the marginal revenue product equals the wage. Alternatively,
+
+
+
+F^{' }( L) =\frac{W}{P},
+
+
+which indicates that the marginal product of labor equals the real wage. This is standard micro theory for a competitive labor market.
+
+Q: To test your understanding, consider how the firm should act if
+these conditions are not met, for example, $F^{' }( L) <\dfrac{W}{P}.$
+
+Q: If condition () were represented on a
+graph, what would the economic interpretation be?
+
+}
+A: Labor Demand [fn]
+}
+
+To derive an AS relation, we use both the production function $Y=L^{\beta }$ and the labor demand relation $\beta L^{\beta -1}=\dfrac{W}{P}$.
+
+Q: Does the intuition correspond to the labor demand relation in the
+Introduction (Section 1.2)?
+
+First, convert both to log form using the convention $x=\log X$. Using
+logs simplifies the math and allows for easy interpretation of the growth rates
+of the variables once the time element is added.
+
+
+
+y &=&\beta l
+\log \beta +( \beta -1) l &=&w-p
+
+
+Solving out log labor $l$ gives the following supply relation.
+
+
+
+y &=&a( p-w) +a\log \beta
+\text{for }a &=&\frac{\beta }{1-\beta }
+
+
+
+
+To make progress, we must take a stand on the relationship between wages and prices. Following the intuition about the importance of timing and
+expectations, wages are determined by a contract set in the previous period.
+\ Let wages be given according to price expectations $w_{t}=p_{t}^{e}$. \
+The notation $p_{t}^{e}$ represents the expectation of $p_{t}$ for time $t-1.$ Accounting for the timing and including
+expectations gives the followingSuch equations are often called ``Lucas Supply Relations'' in honor of Robert. [fn].
+
+
+
+y_{t}=a( p_{t}-p_{t}^{e}) +a\log \beta
+
+
+
+
+
+
+##
+
+
+
+There are many ways to model expectations. Consider two situations.
+
+Q:  If someone asks you the price of oranges, what information would you use
+to answer?
+
+Q: Similarly, how might you approach the question of the level of the stock market (the S\&P 500, for example) a decade from now?
+
+Q: What's the difference between the two situations?
+
+In the first case, it is likely that you bought oranges within the past few weeks, and the stakes are rather low, so your answer might simply be the price you remember from the last time you shopped. That approach is not
+appropriate for the stock market. The stakes are higher (at least
+for some), and the forecast horizon is much longer (for some). Hence, at a
+minimum, you would examine past prices and dividends to identify trends. We'll model expectations using two extreme assumptions about agents' sophistication to
+get a feel for the implications.
+
+The approach exemplified by the oranges scenario is called *static*
+*expectations* (SE).
+
+
+
+p_{t}^{e}=p_{t-1}
+
+
+Expectations use the previous period's value. Substituting SE into the supply relation () gives
+
+
+
+y_{t}=a\pi _{t}+a\log \beta ,
+
+
+where inflation $\pi _{t}$ is the log difference in the price level $\pi
+_{t}=p_{t}-p_{t-1}.$
+
+Alternatively, imagine a forecaster who uses all the relevant information
+available. They have what is called *rational expectations* (RE). Although this approach does not ensure perfect accuracy, forecasting errors only occur when
+relevant information is unavailable at the time of the forecast's formation. Hence, people with RE make errors but not systematic errors.
+Mathematically, this means the forecast errors are unbiased.
+
+
+
+p_{t}^{e} &=&p_{t}+\varepsilon _{t}
+E_{t-1}\varepsilon _{t} &=&0
+
+
+According to the second line, the mathematical expectation of the forecast error is zero, meaning a forecast that is too high or too low is equally likely. \
+One could also suggest that RE means $p_{t}^{e}=E_{t-1}p_{t}$. See Appendix  for more on the expectations operator.
+
+Substituting RE into the AS relation (\ref{supply}) gives
+
+
+
+y_{t}=a( -\varepsilon _{t}) +a\log \beta .
+
+
+Q: On a graph with output and inflation, what would the two versions of AS
+look like?
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=8cm]{F32.png}
+\caption{Aggregate Supply under Rational and Static Expectations}
+\end{figure}
+
+It is reasonable to imagine a vertical AS curve fluctuating around the
+natural rate of output $y_{n}$ as in Figure . Therefore, the foregoing equations assume $y_{n}=a\log \beta  $\ such that the general form of the AS
+relation () can be written
+
+
+
+y_{t}=y_{n}+a( p_{t}-p_{t}^{e}) ,
+
+
+or in terms of inflation
+
+
+
+y_{t}=y_{n}+a( \pi _{t}-\pi _{t}^{e}) .
+
+
+Hence, including the natural rate, AS under SE and AS under RE are
+
+
+
+
+y_{t} &=&y_{n}+a\pi _{t}
+y_{t} &=&y_{n}-a\varepsilon _{t}.
+
+
+Under SE, AS is upward-sloping; under RE, it is
+vertical. However, shifts in each period with the forecast
+error lead to the fuzziness of the graph.
+
+Q: What is the role of policy under the two different versions of AS?
+
+Q: More concretely, if the Fed increases the money supply, what are the
+impacts under SE and RE. How do they differ?
+
+An increase in the money supply is represented by a shift in AD. Under SE,
+there is the usual increase in equilibrium output and inflation, but, under
+RE, only inflation is affected. Because changes in the money supply only
+affect nominal quantities, we say money is *neutral*, reflecting the
+*classical dichotomy*, meaning the real and nominal sectors of the economy are separate.
+
+We have also just demonstrated *policy ineffectiveness* under RE. Changes
+in fiscal policy would also be represented by a shift in AD. With vertical
+AS and PC, policy does not impact real quantities, such as output and the
+unemployment rate.
+
+Q: What's the economic intuition?
+
+Intuitively, when a central bank changes the money supply, under RE, the
+public fully anticipates the change, and only prices are affected. \
+Obviously, this conclusion is extreme and seemingly at odds with the power
+usually ascribed to central bankers.
+
+An implicit assumption in the derivation of the vertical AS curve is that
+expectations affect economic decisions immediately. A common (New
+Keynesian) modeling approach assumes RE but also
+includes some type of nominal stickiness, such as the
+assumption that some wages cannot adjust immediately to changes in
+expectations. Therefore, although people might have RE,
+they cannot immediately act on the information, introducing the possibility that
+policy changes have real effects.
+
+
+
+##
+
+
+
+The above can be extended to an analysis of the Phillips Curve (PC), a
+translation of AS into a relationship between the unemployment
+rate and inflation. William Phillips introduced the idea as an empirical
+relationship that appeared to be robust in the 1960s. However, the Great Inflation of the 1970s demonstrated that the simple version did not always
+hold. Considering the role of expectations is one avenue for explaining
+the difficulties.
+
+The primary tool connecting the AS relation with the PC is Okun's Law, a stable empirical relationship between the output gap and
+the unemployment gap, that is, their deviations from natural rates. Figure
+shows a traditional plot of the difference in the unemployment rate versus
+the real GDP growth rate. The following model uses the levels of the gaps, and the estimation of this version of Okun's Law is the goal of
+Problem 3..
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=10cm]{F33.png}
+\caption{Okun's Law Sample 1948Q1-2019Q2}
+\end{figure}
+
+Such relationships can be derived from a production function, but the
+intuition that GDP and unemployment have a closely linked inverse
+relationship is not too hard to stomach. Okun's Law in levels is
+
+
+
+y_{t}-y_{n}=\gamma ( u_{n}-u_{t}) .
+
+
+Combining this with the last version of AS () yields
+
+
+
+\pi _{t}-\pi _{t}^{e}=\frac{\gamma }{a}( u_{n}-u_{t}) ,
+
+
+which demonstrates the standard inverse relationship between inflation and
+unemployment. However, assumptions about expectations have large
+policy implications.
+
+Postulating SE for inflation (the price level $p_{t}^{e}$ case is left to the reader), we have $\pi _{t}^{e}=\pi _{t-1}$ so the PC becomes
+
+
+
+\pi _{t}-\pi _{t-1}=\frac{\gamma }{a}( u_{n}-u_{t}) ,
+
+
+the ``accelerationist Phillips Curve'' based on the change in inflation that
+was commonly used in empirical macro models in the 1960s and 1970s.
+
+RE in terms of inflation is written $\pi _{t}^{e}=\pi
+_{t}+\varepsilon _{t}$, where the term $\varepsilon _{t}$ again represents a mean zero
+forecast error. Here, the PC can be written
+
+
+
+-\varepsilon _{t}=\frac{1-\beta }{\beta }\gamma ( u_{n}-u_{t}) .
+
+
+Similar to the AS situation, the PC is essentially vertical and
+fluctuates around the natural rate of unemployment.
+
+Q: What assumption about expectations would recover the original PC that
+relates the levels of inflation and unemployment?
+
+Neither the SE nor the RE version exactly matches the original. The original PC
+could be derived from an assumption of fixed expectations $\pi _{t}^{e}=\bar{\pi}$ for some constant $\bar{\pi}$. This indicates that the initial
+formulations did not take expectations into account. With fixed
+expectations, the PC () becomes
+
+
+
+\pi _{t}=\bar{\pi}+\frac{\gamma }{a}( u_{n}-u_{t})
+
+
+
+Q:  What are the implications for a policymaker that wants to keep
+unemployment persistently below its natural rate for the three versions of
+expectations? (Hint: Remember that the PC is AS in disguise. There's no analog to AD on the graph, but you can use AS--AD to get some intuition.)
+
+For the original PC (), the policymaker can achieve an
+unemployment rate $u_{t}$ below the natural rate $u_{n}$ by tolerating a
+sufficiently high inflation rate $\pi _{t}$. However, for the
+accelerationist PC (), the policymaker must be willing to allow the
+change in inflation $\Delta \pi _{t}$ to be consistently positive, which
+implies an ever-increasing level of inflation. Under RE (), the
+policymaker has no influence on unemployment, which simply fluctuates around
+the natural rate, another example of policy ineffectiveness.
+
+None of these versions offers a fully satisfactory model. Although the original
+downward-sloping PC fits the data in the 1950s and 1960s, Phelps  and Milton Friedman  recognized that the relationship implied the unemployment rate could be kept at an
+arbitrarily low value indefinitely, provided the policymaker is willing to allow
+high inflation. In a rare forecasting victory for macroeconomists, the
+Great Inflation/stagflation of the 1970s showed that high inflation gave
+no such guarantee, and there were limits to the power of the Fed (see Figure
+). Macroeconomists responded by embracing RE as a
+modeling strategy.
+
+However, a vertical PC implies that the Fed can costlessly disinflate,
+which means lowering inflation involves no sacrifice of higher unemployment. \
+Paul Volker's nomination as Fed chair in 1979 offered a natural test of
+this hypothesis (again, see Figure ). Volker's cure for inflation involved
+increases in interest rates sufficient to raise real rates. This
+successfully reduced inflation but also precipitated a severe, double-dip recession that saw the unemployment rate reach double digits. As such, disinflation was hardly costless in this instance.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=10cm]{F34.png}
+\caption{}
+\end{figure}
+
+Hence, the vertical PC is thought to be relevant only in the long run. Though the
+empirical performance of short-run PC depends on the particular specification and sample, the underlying rationale for a connection between unemployment and inflation is hard to ignore. So the PC continues to evolve as macroeconomists consider alternative formulations for
+expectations or supply factors that should be included.
+
+
+
+##
+
+
+
+That subheading is the title of a Jeffrey Fuhrer paper that reports estimates of
+PC parameters using U.S. inflation and unemployment data under an intermediate (between SE and RE) form for expectations. While such an estimation is a noble goal on its own, several economists have objected to using such relationships based on aggregate variables for policy
+analysis.
+
+Q: Why?
+
+Q: More concretely, if the Fed wants to know the effect of a future
+increase in the money supply, why might an estimated PC be misleading?
+
+A potential problem is that the change in policy might lead to a change in
+the PC relationship, biasing the parameter estimates.
+Economists say such parameters are not *structural*, meaning they are not invariant to changes in policy. The *Lucas critique* is the
+assertion by Robert Lucas that relationships between aggregate variables
+like the PC are not structural and should not be used for policy analysis. \
+Fuhrer aims to empirically test that idea.
+
+Inflation expectations are given according to a weighted average of a year's
+worth of past (monthly) inflation data.
+
+
+
+\pi _{t}^{e}=\sum_{i=1}^{12}\alpha _{i}\pi _{t-i}
+
+
+The parameters $\alpha _{i}$ are estimated alongside other PC parameters
+and are restricted so that they sum to one, $\sum_{i=1}^{12}\alpha _{i}=1$.
+\ This form for expectations uses more information than SE but far
+from the ``all available'' information needed for RE.
+
+The estimation equation resembles the PC () above but has several
+changes. First, the unemployment variable $U_{t}$ is defined as the
+unemployment gap $U_{t}=u_{t}-u_{n}$.
+
+
+
+\pi _{t}=C+\sum_{i=1}^{12}\alpha _{i}\pi _{t-i}+\lambda _{1}U_{t-1}+\lambda
+_{2}\Delta U_{t-1}+\gamma po_{t}+\eta _{t}
+
+
+The variable $po_{t}$ is the price of oil, a supply shock that can impact
+the PC, and the error term is $\eta _{t}$. The constant $C$ can be used to
+obtain an estimate of the natural rate because $\widehat{C}=\widehat{\lambda
+_{1}u_{n}}$. The unemployment rate is thought to be a lagging indicator,
+which explains the timing of the unemployment data. Including the term $U_t-1$ allows for a test of the impact of the change in unemploymentIn the paper, the equation contains $\beta _{1 [fn]U_{t-1}+\beta _{2}U_{t-2}$
+and the focus is on the estimates of $\widehat{\beta _{1}+\beta _{2}}$.}
+$\Delta U_{t-1}$.
+
+The estimation using the sample for U.S. data 1960Q2--1993Q4 gives a
+reasonably good fit and indicates a natural rate of unemployment of 6.09\and a negative estimate for $\widehat{\lambda }_{1}=-0.23,$ both reasonable
+values for a downward-sloping PC. The coefficients $\widehat{\alpha }_{i}$
+for the first three lags of inflation significantly exceed zero,
+so expectations are an important factor. The results using wage data to
+construct an inflation measure is similar, with the estimate of the
+coefficient on unemployment having an even higher magnitude $\widehat{\lambda }_{1}=-0.86$.
+
+It is often said that the PC broke down in the 1970s. This is true in the sense that simple versions---such as those under SE () and fixed expectations ()---did not fit the data well. However, reasonable estimations of short-run relationships with more nuanced versions of expectations and allow for supply shocks can be found for most
+samples, particularly when wage data is used for inflation (Gali ).
+
+Q: What would constitute a test of the Lucas critique?
+
+The fact that fitted inflation tracks the data does not constitute evidence
+for or against the Lucas critique. Such a test requires that the estimated
+equation performs well for a change in policy out-of-sample. The obvious
+policy shift is the change in Fed policy when Paul Volker became chair in
+1979. Fuhrer conducts Chow tests for a break in the parameter estimates
+around this time. For the wage version of the PC, there is no evidence of
+instability in the $\alpha _{i}$'s that represent the formation of inflation
+expectations. For inflation based on CPI, the evidence is mixed, although
+simulations show that the parameter shifts are insufficiently large to impact
+the fitted values significantly.
+
+There also appears to be instability in the parameter representing the
+``slope'' of the PC $\lambda _{1}$, meaning the sensitivity of inflation to
+changes in unemployment. For Fuhrer, the Lucas critique arises due
+to public perceptions of policy changes, so the important tests are those on the $\alpha _{i}$
+coefficients.
+
+In any case, the Lucas critique cannot be toppled by a single study. Even if one accepts that Fuhrer's conclusion applies here, that doesn't mean it will (or won't) for different economic relationships at different times.
+
+Another objection is the estimation of single equations in isolation. \
+Estimating models of supply and demand is a classic problem in economics,
+and estimating either individually has obvious pitfalls. The PC is the
+cousin of AS, and it is quite possible that PC relations should be estimated as part of a larger model.
+
+Even if aggregate relationships like the PC are ``good enough for government
+work,'' there is good reason to develop models that are robust to changes in
+policy. Thus the focus on models with *micro foundations* because
+(for example) preferences about risk aversion should not depend on the
+identity of the Fed chair. Dynamic, Stochastic, General Equilibrium (DSGE)
+models exemplify micro-founded, multi-equation models and represent the focus of much of the modern research described in Chapters 9, 10, 15, and 16 of this textbook.
+
+
+
+##
+
+
+
+
+- [itm:31] For Cobb-Douglas production $Y_{t}=F( K_{t},A_{t}L_{t})
+=K_{t}^{\alpha }( A_{t}L_{t}) ^{1-\alpha }$ such that $0<\alpha
+<1$, show that $F_{K}>0$ and $F_{LL}<0$. Give a brief economic
+interpretation of these statements. Similarly, determine the sign of $F_{LA}$ and give a brief interpretation.
+
+- [itm:32] For the production function $F( L) =-\exp ( -L) $, would labor demand be downward sloping given profit $Pr( L)
+=PF( L) -WL$? What condition on the general $F( L) $
+is required to have downward-sloping demand?
+
+- [itm:33] Let the production and labor demand relationships be $y_{t}=\beta
+n_{t} $ and $w_{t}-p_{t}=( \beta -1) n_{t}-c$, where $y_{t},n_{t},w_{t}$, and $p_{t}$ are logs of output, labor, wages, and prices. The parameter $\beta \in ( 0,1) $\ is labor's share of output. Let wages be determined by a weighted average
+
+
+
+w_{t}=\theta p_{t}^{e}+( 1-\theta ) p_{t-1}
+
+
+where $\theta \in [ 0,1] $ and $p_{t}^{e}$ denotes the rational
+expectation of $p_{t}$, formed before time $t$.
+Using Okun's Law, derive a PC relationship and explain how $\theta $\ affects the slope of the curve. Interpret the effect of and
+increase in $\theta $ in terms of expectations and the effectiveness of
+policy.
+
+- [itm:36] Produce an AS--AD graph (similar to Figure ) representing the Volker disinflation policy of 1979--1982 under both SE and RE. Explain
+which version explains the data better.
+
+- [itm:37] Pick a country and a sample with at least 200 time periods and
+estimate the PC using Fuhrer's approach. Are the results similar?
+
+- [itm:38] Consider how a change in the money supply would be represented on an AS--AD graph.
+
+- If expectations are rational and there is no nominal stickiness,
+what would be true of the response of output and inflation to a monetary
+shock?
+- Pick a country and a sample and run an unrestricted vector autoregression (VAR) on real output growth, and money supply growth. Do the results match the
+predictions?
+- Advanced version: Run the VAR in levels (as opposed to growth rates) using the methodology of Toda-Yamamoto .
+See Dave Giles' blog  for detailed instructions.
+
+- [itm:39] Estimate Okun's Law in levels. Pick a country and a sample, and
+download data for real GDP and the unemployment rate. Estimate a trend for
+real GDP. Although the Hodrick-Prescott filter is often easiest to implement,
+feel free to use alternatives (e.g., Hamilton ), explaining
+clearly. Construct the GDP gap by computing the percentage difference between real GDP and the trend. Then use least squares to estimate the relationship between the unemployment rate and the gap. Does it follow the usual intuition for Okun's Law? Graph a scatter plot to verify. (Hint: \ Pay close attention to the frequency of the data.)
+
+- [itm:310] Pick a survey of inflation expectations (see the New York Federal
+Reserve or St. Louis Federal Reserve websites). Under rational expectations, forecast errors should be independent. Use this idea to
+formulate and conduct a test of rational expectations.
+
+
+
+#
+
+
+
+
+
+##
+
+
+
+Let's extend our approach to monetary policy beyond functions like $r=\rho (Y,\pi )$ to equations that can quantitatively describe current practices. Whether the policymaker should target an interest rate, as in the case of our interest rate function, or a money supply variable, as with the LM relation, has been addressed by a number of big names in the past.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=8cm,clip]{F41.png}
+\caption{The Cumulative Process}
+\end{figure}
+
+Standard money supply and demand graphs enable examination of cases where
+the policymaker sets a fixed interest rate (see Figure ) or a fixed money supply. Differences arise in the response to a shock. \
+Imagine that some increase in income shifts the demand for money to the
+right. In the case where the policymaker commits to maintaining a fixed
+interest rate, they must increase the money supply to compensate and return
+the interest rate to the promised level. However, the increase in the
+money supply can subsequently increase the price level, prompting a further shift in the demand for money (Figure ).
+\ This process can continue, with the money supply and prices rising
+indefinitely, the worst of all worlds for a monetary policymaker. Knut
+Wicksell  termed this the *cumulative process*.
+Alternatively, if the same shock occurred when the policymaker was targeting
+the money supply, the demand for money would shift, but no change in the
+money supply would be required. If anything, the higher interest rate
+would counter the initial shock. It appears that targeting the money
+supply is a much better policy for stabilization. Milton Friedman
+made a similar argument in 1968 to advocate for his *k-percent rule*, where a central bank target money supply growth at a fixed rate.\
+
+An alert reader might wonder why discussions of a target interest rate dominate policy announcements from the Fed, the European Central Bank, and the Bank of Japan.
+
+Q: Is the Federal Open Market Committee ignorant of the above money S\&D analysis?
+
+}
+A: No. Duh. [fn]
+}
+
+Q: Does either of the policies outlined describe current Fed policy?
+
+The answer is that the Fed does not peg the interest rate. A cursory
+glance at federal funds rate data shows that the data changes in response to economic conditions (see Figure ), which is often represented as an
+interest rate rule or Taylor rule, in honor of John Taylor . Much earlier, Wicksell
+discussed an economy where the interest rate is actively managed and money
+supply data is not informative.
+
+This raises another complication with targeting the money supply. What is
+it? There are multiple measures of the money supply, including M1, M2, and the
+monetary base, and which assets should be included in a measure of the money
+supply is a non-trivial question. Even worse, some assets, such as
+mortgage-backed securities, are very liquid in normal times but become
+illiquid in a crisis, so the proper choice of assets can change. Targeting the money supply is not as straightforward as the graph suggests.
+
+
+
+##
+
+
+
+The following is a simple version of a Taylor rule
+
+
+
+i=\pi +r^{\ast }+b_{\pi }( \pi -\bar{\pi}) ,
+
+
+where inflation is $\pi $, the nominal policy rate is $i$, and the real
+policy rateWe're utilizing the approximate relation for the real rate $r_{t [fn]=i_{t}-\pi _{t}.$  includes a rigorous discussion.} is $r=i-\pi $. The policymaker's target inflation rate is $\bar{\pi}$, and the term in
+parentheses is the inflation gap. If the policymaker achieves their goal,
+meaning the gap is zero, the real rate achieves its equilibrium $r=r^{\ast }$.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=10cm]{F42.png}
+\caption{}
+\end{figure}
+
+The parameter $b_{\pi }$ describes the degree to which the policymaker
+adjusts rates in response to the inflation gap. The experience of the
+Great Inflation of the 1970s provides some intuition about reasonable values
+for $b_{\pi }$. Figure  shows the inflation rate and the real and nominal federal funds rates.
+Although the Fed increased the federal funds rate with inflation throughout much of the 1970s, it wasn't until Paul Volker raised rates sufficiently aggressively that the real rates increased (a lot) that inflation fell back towards target, usually taken to be 2\Ben Bernanke explicitly stated a 2\interest rate rule presented, the parameter $b_{\pi }$ must be positive for the
+real rate to rise with inflation. The condition $b_{\pi }>0$ is often
+called the *Taylor principle*.
+
+Interest rate rules can be extended to include more goals. The Fed's
+charter explicitly says that it should strive to achieve stability in both prices and employment. Because employment is closely connected to GDP, a
+common Taylor rule is
+
+
+
+i_{t}^{T}=\pi _{t}+r^{\ast }+b_{\pi }( \pi _{t}-\bar{\pi})
++b_{y}( y_{t}-\bar{y})
+
+
+with the rule written in terms of a nominal target policy rate $i^{T},$ where
+output and the output target are $y_{t}$ and $\bar{y}$. \
+Although Taylor's original prescription was for the parameters $b_{\pi }$ and $b_{y}$ to both be 0.5, different policymakers could have different
+values depending on their preferences. Because the European Central Bank mandate is to stabilize inflation only, their parameter $b_{y}$ should be 0, equivalent to the simple rule introduced.
+
+
+
+##
+
+
+
+Judd and Rudebusch  estimate these parameters in an effort to describe the preferences of different Fed chairs. A complication is that Fed chairs often seem to smooth interest rates, meaning they
+adjust the federal funds rate slowly toward the target. Because the Fed's choice for $i_{t}$ depends on the previous period's value, estimating the Taylor
+Rule () with OLS would be a mistake due to serial correlation.
+
+Judd and Rudebusch's estimation equation combines the Taylor rule with the following equation describing the dynamics.
+
+
+
+\Delta i_{t}=\gamma ( i_{t}^{T}-i_{t-1}) +\rho \Delta i_{t-1}
+
+
+The target rate $i_{t}^{T}$ is the rate the policymaker would set in the
+absence of smoothing. The actual policy rate $i_{t}$ is set to approach
+the target rate, and the parameter $0<\gamma <1$ measures the speed of
+adjustment. The smoothing parameter $0<\rho <1$ is large if the policymaker prefers to make adjustments in similar increments for every period.
+
+Judd and Rudebusch further extend their model by including a lagged output gap in the Taylor rule. Hence, the target rate is
+
+
+
+i_{t}^{T}=\pi _{t}+r^{\ast }+b_{\pi }( \pi _{t}-\bar{\pi})
++b_{y}( y_{t}-\bar{y}) +b_{L}( y_{t-1}-\bar{y}) .
+
+
+Such a rule encompasses special cases such as $b_{y}=-b_{L}$, where the policymaker responds to real GDP growth.
+
+Using the Taylor rule to substitute for the target rate $i_{t}^{T}$\ in the
+dynamics equation yields
+
+
+
+\Delta i_{t}=-\gamma i_{t-1}+\gamma \alpha +\gamma ( 1+b_{\pi })
+\pi _{t}+\gamma b_{y}( y_{t}-\bar{y}) +\gamma b_{L}( y_{t-1}-\bar{y}) +\rho \Delta i_{t-1}
+
+
+where the constant term contains $\alpha =r^{\ast }-( 1+b_{\pi })
+\bar{\pi}$. Such an equation can be estimated with least squares. Judd and Rudebusch use a linear trend to construct the natural rate of output $\bar{y}$.
+
+The estimates of equation () for the tenures of Arthur Burns, Paul Volker, and Alan Greenspan show markedly different preferences. The key estimates are as follows:
+
+
+
+
+
+& $\widehat{b}_{\pi }$ & $\widehat{b}_{y}$ & $\widehat{b}_{L}$ & $\widehat{\rho }$  Burns &\ $-$&\ $-$& 0.89 & 0.26  Volker & 0.46 & 1.53 & -1.53 & 0.0  Greenspan & 0.54 & 0.99 &\ $-$& 0.42
+
+
+
+
+
+*Table 4.1, Estimates of equation ()*
+
+For the Burns and Greenspan samples, some of the parameter estimates
+were not significantly different than zero, and the table reports regressions
+with those variables omitted. Similarly, in the Volker case, Judd and Rudebusch could not reject the hypothesis that $\widehat{b}_{y}=-\widehat{b}_{L}$, which
+corresponds to the policymaker targeting the real GDP growth rate. The table
+reports estimates assuming that the hypothesis holds for Volker.
+
+The differences in policymaker behavior are clear: Volker and Greenspan
+both responded to inflation in a manner satisfying the Taylor Principle; Burns did not. In fact, it appears that Burns only responded to the level of lagged output. That his tenure corresponds to the Great Inflation of the
+1970s is unsurprising.
+
+Whether Fed policy in the 1970s reflects the preferences of Arthur Burns or
+other factors is difficult to ascertain. Macro data became available at a
+greater lag in the 1970s (Orphanides ), and President Nixon may have pressured Burns to ease policy. Recently released documents (Abrams ) show that this was the case leading up to the 1972 election.
+
+Most monetary theorists and policymakers agree that the Greenspan approach
+is sound under normal circumstances. However, normal does not apply to
+Volker, who explicitly attempted to lower inflation, which exceeded
+10\aggressive, as reflected by an insignificant estimate of the smoothing
+parameter $\widehat{\rho }$. The Volker policy is often referred to as the
+monetarist experiment because of his statements about targeting quantities such as Non-borrowed Reserves. Nonetheless, the resulting policy was a straightforward increase in interest rates to slow inflation.
+
+The recent Great Recession following the financial crisis was hardly normal either. In particular, interest rates, including the federal funds rate,
+approached zero. Current practice views setting interest rates below zero as
+problematic, so interest rate rules that recommend negative rates cannot be
+implemented. This prompts unconventional monetary policy measures
+such as forward guidance and quantitative easing. We'll discuss the zero
+lower bound at length in Chapter 6.
+
+
+
+##
+
+
+
+
+- [itm:41] If the central bank fixes the nominal rate in Figure , would an initial fall in money demand lead to a fall in the money supply and prices?
+\ Explain using the graph.
+
+- [itm:42] Assume apples are the only good in the economy, and they cost \$2 each. \
+(They are really good apples.) Joan takes a \$10 simple loan to be repaid
+in a year at a nominal rate of 2\rate (return) on the loan? Can you verify this calculation with footnote ? Can you verify it with the real rate equation in the text $r_{t}=i_{t}-\pi _{t}$?
+
+- [itm:43] Judd and Rudebusch (p.7) give a condition where the policymaker uses nominal income growth targeting in equations (2) and (4).
+
+
+- What is nominal income in their notation? Explain why their condition
+implies that the policymaker is reacting to nominal income growth. (Note that the variables $y$ and $p$ are in log form.)
+
+- What condition on the parameters would indicate that the policymaker
+is targeting real GDP growth?
+
+- [itm:44] Simulate the federal funds rate recommended by the TR relation (\ref{TR}) for the last 60 years of U.S. data. Assume the inflation target is
+2\graph the recommended rate and the actual rate together. Do the actual
+data always follow the simulated data?
+
+
+- For the output gap, use the growth rate of real GDP over the past year
+for $y_{t}$ and assume the target rate is 3\
+- For the output gap, use real GDP detrended using the Hodrick-Prescott
+filter with the smoothing parameter set to the standard value of 1600 for
+quarterly data. The detrended series is the percentage difference between the
+original data and the trend for each time period.
+
+- Repeat the exercise in b. using the value 100,000 for the smoothing
+parameter. Describe the changes in the trend and the results.
+
+- Choose alternative specifications for inflation, using (for example) personal consumption expenditure or the deflator, and the output gap, using (for example) a different detrending method or growth rates, and then
+repeat the exercise.
+
+- [itm:45] Estimate equation (4) in Judd and Rudebusch  for the Greenspan/Bernanke era. Construct data for the output gap as in problem 4c. You will also need to construct separate series for $\Delta i_{t}$. Report your estimated values for the equation. How do your estimates compare with Judd and Rudebusch? Do they imply similar behavior on the part of the monetary policymakers?
+
+- [itm:46] Project: Do the exercise in 5. for your choice of country, sample, inflation measure, and output gap specification.
+
+
+
+#
+
+
+
+This chapter combines supply, demand, and monetary policy equations into a
+macroeconomic model to describe short-term dynamics. The model is among the simplest *general equilibrium* models where multiple endogenous variables are determined simultaneously.
+
+An algebraic representation allows for quantitative expression of the relationships between variables and informs empirical work. The equilibria depend on stochastic elements, which thereby determine impulse response
+functions, which helps to connect the theoretical model with econometric
+techniques such as vector autoregressions. We examine solutions under rational expectations and the stability of equilibria under adaptive expectations.
+
+
+
+##
+
+
+
+The three equations are an IS relation, a Taylor rule, and AS,
+an IS--MP--AS model. The AS relation
+comes from equation () writing the natural rate of output as $\bar{y}$.
+
+
+
+y_{t}=\bar{y}+a( \pi _{t}-\pi _{t}^{e}) +v_{t}.
+
+
+The term $v_{t}$ is a stochastic variable with mean zero that could represent several supply shocks, including changes to productivity or input prices.
+
+Monetary policy is given by the Taylor rule () from Chapter 4,
+assuming, for simplicity, that the equilibrium real rate of interest is zero $r^{\ast }=0$.
+
+
+
+i_{t}=\pi _{t}+b_{\pi }( \pi _{t}-\bar{\pi}) +b_{y}( y_{t}-\bar{y}) ,
+
+
+which can be written in terms of the real rate $r_{t}$\ using the approximation of the Fisher relation
+
+
+
+r_{t}=i_{t}-\pi _{t},
+
+
+
+so that the interest rate rule can be written
+
+
+
+
+r_{t}=b_{\pi }( \pi _{t}-\bar{\pi}) +b_{y}( y_{t}-\bar{y}) .
+
+
+
+
+The demand side employs a greatly simplified version of the IS equation but includes a mean zero shock $u_{t}$.
+
+
+
+y_{t}=\bar{y}-r_{t}+u_{t}
+
+
+This is quite ad-hoc, and we will strive to find a more satisfactory development later.
+
+
+
+##
+
+
+
+The three equations (), (), and () determine the endogenous variables output, inflation, and the real interest rate targeted by the policymaker. Adding the Fisher relation approximation as a fourth equation gives the nominal policy rate. One complication in determining an equilibrium is the presence of expectations in the supply relation (), without which solving would be a simple question of three equations and three unknowns.
+
+Assume expectations are rational, so $\pi _{t}^{e}=E_{t-1}\pi _{t}$.
+
+Q: What is an inconsistency in the assumption about expectations in this model? (Hint: Think about the Taylor rule and Fisher relation.)
+
+}
+A: The Fisher relation () assumed adaptive expectations, but rational expectations have been imposed on the AS relation (). See Problem 5. for an alternative. [fn]
+}
+
+To solve for an equilibrium using the *method of undetermined coefficients*, McCallum  postulates a solution of a reasonable form and
+then determines the unknown parameters using the model equations. For simplicity (again), let the demand shock be zero, so that the equilibrium represents how $y_{t}, \pi _{t}$ and $r_{t}$ are affected by the supply
+shock $v_{t}$. The shock is mean zero, so we write $E_{t-1}v_{t}=0$.
+
+Using the IS relation (\ref{smmIS}) to substitute for $r_{t}$ in the Taylor rule gives us
+
+
+
+-( 1+b_{y}) ( y_{t}-\bar{y}) =b_{\pi }( \pi _{t}-\bar{\pi}) ,
+
+
+which is an aggregate demand relation. Note the inverse relation between output and inflation.
+
+The AS--AD graph here differs fundamentally from the IS--LM graphs in Chapter 1 due to the inclusion of the natural rate. On the IS--LM graphs, it appears that an increase in the money supply can increase $Y$ indefinitely. \
+Of course, printing pieces of paper should not have such power, and supply factors limit the change in output. For the present model, shocks like $u_{t}$ and $v_{t}$ move the equilibrium away from the natural rate only temporarily.
+
+Using the AD equation () to substitute for $y_{t}-\bar{y}$ in the AS equation () yields
+
+
+
+-\frac{b_{\pi }}{1+b_{y}}( \pi _{t}-\bar{\pi}) =a( \pi
+_{t}-E_{t-1}\pi _{t}) +v_{t}.
+
+
+One could continue solving for inflation as a function of expected inflation and the shock, but that is not particularly informative without providing more insight into how expectations are formed.
+
+To deal with the expectation terms under RE, the method
+of undetermined coefficients involves postulating a form for the solution. \
+Inflation depends on a constant term and the shock, so
+
+
+
+\pi _{t}=c_{0}+c_{1}v_{t}
+
+
+for some unknown parameters $c_{0}$ and $c_{1}$. The goal is to use equation () to solve for the parameters $c_{0}$ and $c_{1}$. The expectations term is
+
+
+
+E_{t-1}\pi _{t}=E_{t-1}( c_{0}+c_{1}v_{t}) =c_{0},
+
+
+because $E_{t-1}v_{t}=0$.
+
+Next, substituting into ()\ using these two relations gives
+
+
+
+-\frac{b_{\pi }}{1+b_{y}}( c_{0}+c_{1}v_{t}-\bar{\pi}) =a(
+c_{0}+c_{1}v_{t}-c_{0}) +v_{t}.
+
+
+Solving for two unknowns $c_{0}$ and $c_{1}$ using one equation might seem like cheating, but one solution can be identified by matching the constant terms on the left- and right-hand sides with the shock $( v_{t}) $ terms on either side.
+
+
+
+-\frac{b_{\pi }}{1+b_{y}}( c_{0}-\bar{\pi}) &=&a(
+c_{0}-c_{0})
+-\frac{b_{\pi }}{1+b_{y}}( c_{1}v_{t}) &=&ac_{1}v_{t}+v_{t}
+
+
+For these equations to be true, it must be the case that $c_{0}=\bar{\pi}$ and $c_{1}=-\dfrac{1+b_{y}}{b_{\pi }+a( 1+b_{y}) }$ so,
+substituting in the postulated forms, the solution for inflation is
+
+
+
+\pi _{t}=\bar{\pi}-\dfrac{1+b_{y}}{b_{\pi }+a( 1+b_{y}) }v_{t}.
+
+
+Using the aggregate demand relation (), the solution for output is
+
+
+
+y_{t}=\bar{y}+\dfrac{b_{\pi }}{b_{\pi }+a( 1+b_{y}) }v_{t}.
+
+
+Though there could be other solutions, this has an obvious economic interpretation and is often referred to as the *minimum state variables* solution because the postulated form () is the simplest.
+
+Q: Does it make sense that coefficients on the shocks have opposite signs?
+\ How would an increase in oil prices be interpreted? Does policy affect the solution?
+
+The solution shows how a supply shock $v_{t}$ causes output and inflation to deviate from their target levels. A typical approach to answering such questions
+involves imagining a one-period shock $v_{1}=1$ assuming all other $v$'s are
+zero: $v_{0}=v_{2}=v_{3}=.....=0$. A positive supply shock (Figure ), such as a productivity improvement, increases output and decreases inflation,
+which is analogous to a shift to the right of AS (using inflation instead of the price level on the vertical axis).
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=8cm]{F51.png}
+\caption{Positive Supply Shock}
+\end{figure}
+
+The solution shows how the policymaker influences the impact of the shocks.
+\ The parameter $b_{\pi }$, $b_{y}$ are choices of the policymaker that affect $\pi _{t}$ and $y_{t}$.
+
+Q: How would the graph and the response to the supply shock change for a lower $b_{\pi }$?
+
+A change in the $b$'s changes the slope of AD (). Because a lower $b_{\pi }$ implies a steeper AD curve, a positive supply shock leads to a larger deviation in equilibrium inflation () and a smaller deviation in equilibrium output ().
+
+The lack of a shift in AD does not mean that the central bank is passive. \
+Given the equilibrium () and (), and using the Taylor
+rule (), the real rate is a function of the shock $v_{t}$.
+
+
+
+r_{t}=\dfrac{-b_{\pi }}{b_{\pi }+a( 1+b_{y}) }v_{t}
+
+
+For this model, the monetary policymaker lowers the real rate in response to the shock for
+positive $b$'s, with a change in the $b$'s representing a change
+in policymaker preferences that impacts how the shock affects the endogenous variables.
+
+The policy response might seem counter-intuitive. A negative supply shock $v<0$ would cause a decline in output $y$, meaning a recession, and the monetary policy response would be to raise the nominal rate sufficiently for the real rate to also rise. Of course, the reason is that inflation is increasing too, and both factors concern the policymaker. That this
+result holds for any $b$'s is particular to this specification of the model and does not hold for some more complicated versions, such as the one in Problem 5..
+
+Impulse response graphs in Figures -- show the evolution of the variables over time. The shock $v_{t}$ shows a one-period spike in period one but is zero elsewhere. The solution equations () and () show that the evolution of output and inflation follow the same pattern.
+\ The shock affects them in the period of the shock but not at any other time.
+
+\begin{figure}[hp]
+\centering
+\begin{subfigure}[][5cm][t]{0.4\linewidth}
+\centering
+\includegraphics[width=6cm]{F52a.png}
+\caption{}
+\end{subfigure}
+\begin{subfigure}[][5cm][t]{.4\linewidth}
+\centering
+\includegraphics[width=6cm]{F52b.png}
+\caption{}
+\end{subfigure}
+\begin{subfigure}{.4\linewidth}
+\centering
+\includegraphics[width=6cm]{F52c.png}
+\caption{}
+\end{subfigure}
+\begin{subfigure}{.4\linewidth}
+\centering
+\includegraphics[width=6cm]{F52d.png}
+\caption{}
+\end{subfigure}
+\caption{Impulse Response Functions ($v_{1}=1.0$)}
+\end{figure}
+
+These impulse response graphs mirror the output from vector auto-regressions, a workhorse macro-econometric technique. Comparisons with the impulse responses from regressions represent a common test of theoretical models.
+
+Q: Could the policymaker completely smooth inflation?
+
+Q: For the adaptive expectations problem setup, what would the impulse response functions look like?
+
+Big Q: Is policy effective here? If so, how is that possible with RE?
+
+
+*The next section will make more sense after doing problems 1--4**.*
+
+
+
+#
+
+
+
+
+
+##
+
+
+
+The Great Recession of 2008--2009 was among the most severe since the Great
+Depression and policymakers adopted a number of new policies.
+\ This section explores why the recession required a novel response and whether the
+response was appropriate. Along the way, we revisit a
+debate at the core of macroeconomics that has been ongoing for over 200
+years and will not go away any time soon.
+
+The starting point is the previous chapter's Fisher relation (FR) approximation under adaptive
+expectations.
+
+
+
+i_{t}-\pi _{t}=\widetilde{r},
+
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=8cm]{F61.png}
+\caption{Fisher Relation}
+\end{figure}
+
+Assume the steady state real rate $\widetilde{r}$ is constant, while the
+nominal rate $i_{t}$ and inflation move each period. In truth, the real
+rate is not an immutable constant and can change due to firm profitability
+or household preferences for exampleFor many other examples, see this tweet (trust me) by Michell . [fn], but it should be comparatively stableAn alternative development found in many theory papers---such as Evans, Guse, and Honkapohja ---focuses on steady states. [fn].
+
+The FR is represented on a graph of pairs $( \pi ,i) $, as in Figure .
+Consider a policymaker, such as the European Central Bank, that (supposedly) cares only about
+inflation so the Taylor rule (TR) takes the form,
+
+
+
+i_{t}=\pi _{t}+\widetilde{r}+b_{\pi }( \pi _{t}-\bar{\pi}) ,
+
+
+where the equilibrium real rate is the constant steady state real rate $\widetilde{r}$. Let the interest rate in the FR be the same as the policy rate.
+
+Q: Where and how does the TR intersect the FR in Figure ? Which is steeper? How do you know?
+
+A:  See Figure .
+
+If the interest rate rule satisfies the Taylor principle $( b_{\pi
+}>0) $, the slope on the graph is steeper than the FR and
+intercepts where inflation is at its target, such that $( i,\pi ) =(
+\widetilde{r}+\bar{\pi},\bar{\pi}) $ (see Figure ). The logic of the Taylor principle is apparent from the graphs. If inflation $\pi $ is above
+target, the policymaker raises the nominal rate above $\widetilde{r}+\pi $
+(and vice versa).
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=10cm]{F62.png}
+\caption{Taylor Rule and Fisher Relation}
+\end{figure}
+
+Q: What is the potential problem with using this TR () as
+a guide to policy for all possible outcomes of inflation?
+
+If the line for the TR is extended indefinitely, it crosses the
+horizontal axis, meaning that, for sufficiently low inflation, the rule
+recommends that the central bank sets a negative nominal rate. In
+principle, negative nominal rates are possible. However, in practice, the zero
+lower bound on interest rates (ZLB) does constrain monetary policy.
+
+Q: If you found that the interest rate on your checking account was -10\what would you do?
+
+Recorded cases of negative nominal rates on government bonds in Japan
+and Switzerland have never been below -2\negative rates on loans or deposits. Because cash is always an alternative
+asset that pays 0\
+In practice, the ZLB binds, and if the TR recommends a
+negative rate, the actual policy rate is zero. Hence, the kink in the TR
+curve on the graph. The horizontal portion of the interest rate rule
+creates a second intersection with the FR at a negative
+inflation rate $\pi =-\widetilde{r}$. The interpretation of this
+alternative equilibrium has substantial policy implications.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=10cm]{F63.png}
+\caption{Interest and Inflation Rate Data for 2002--2019}
+\end{figure}
+
+The work of Bullard  compares Japanese and U.S. data for 2002--2010
+(Figure  is an update). Before the financial crisis, most of the U.S. data fluctuated
+around the usual equilibrium at the target inflation rate $\bar{\pi}$. However,
+after 2009, interest rates fell toward the ZLB.
+
+The second intersection between the FR and the ZLB forms an
+equilibrium around which the Japanese data appears to fluctuate. Writing in 2010, Bullard discusses alternatives for avoiding and/or escaping this
+seemingly undesirable outcome. The experience of the Great Recession and its
+recovery, which saw the federal funds rate and other short-term rates spend
+considerable time near zero, makes this discussion even more pertinent for
+the U.S. and similarly impacted countries.
+
+
+
+##
+
+
+
+Before proceeding with the analysis, it is useful to consider the meaning of
+the ZLB in a traditional IS-LM framework, a situation
+referred to as a *liquidity trap*. A typical story for how interest
+rates fall in a recession involves a drop in autonomous consumption and/or
+investment, with the central bank responding to these recessionary pressures
+by increasing the money supply. If IS shifts sufficiently to the
+left, and LM shifts sufficiently to the right, the equilibrium interest rate
+can fall to zero or below (Figure ). In the latter case, the ZLB binds,
+and equilibrium output is at the point where the horizontal axis intersects the
+IS curve, which represents the goods market. These elements can all be
+observed in the experience of the Great Recession experience 2008--2010.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=8cm]{F64.png}
+\caption{}
+\end{figure}
+
+Now consider the market for loanable funds that underlies the IS relation. Although the
+idea that aggregate savings and investment are equal is implicit in many
+models, it is important to consider the enabling mechanism. The following formulation is equivalent to that in Chapter 2, but explicitly includes savings in the analysis.
+
+Combining a specification for disposable income $Y_{D}$ as income net taxes $T$
+
+
+
+Y_{D}=Y-T
+
+
+and a household budget relation
+
+
+
+Y_{D}=C+S,
+
+
+where disposable income is split between consumption $C$ and savings $S$,
+with the original equilibrium relationship
+
+
+
+Y=C+I+G
+
+
+gives the relation
+
+
+
+S=I+d,
+
+
+where the government deficit is $d=G-T$. Savings is split between private
+and public investment.
+
+Q: For a given deficit $d$, what magical force achieves $S=I+d$?
+
+Q: More specifically, assume $d=0$. If aggregate savings exceeds
+(business) investment $S>I$, what happens?
+
+If savings exceeds investment, the first people to notice would be
+bankers. The supply of loanable funds, savings, would outstrip the demand
+for loans, investment. The response of bankers would be to lower
+interest rates to make borrowing cheaper and lower the incentive to save.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=8cm]{F65.png}
+\caption{}
+\end{figure}
+
+This discussion contains the intuition behind the loanable funds graph in
+Figure . As interest rates rise, savings becomes more attractive and
+investment becomes less attractive, explaining the slopes. The market clears through
+the adjustment of the interest rate. The loanable funds graph provides a
+rationale for the IS relation with the additional---and quite reasonable---idea that savings depends on income.
+
+Q: Why?
+
+Higher income shifts savings to the right, lowering the equilibrium interest
+rate. At the same time, investment increases via movement along the
+curve with the decline in $i$, matching the intuition behind the IS relation
+in Chapter 2. To emphasize the role of the interest rate as income, it is
+useful to write the equilibrium relation as
+
+
+
+
+S( Y,i) =I( i) +d.
+
+
+
+
+Q: On the loanable funds graph, what would cause the equilibrium interest
+rate to fall to the ZLB?
+
+The recession story above about a fall in autonomous investment shifts I to the left in
+Figure . At the same time, households see trouble ahead and become more
+conservative, move some consumption to savings, which shifts S to the
+right. Given big enough shifts like these, the equilibrium interest rate
+can fall to zero or below. The fall in savings corresponds to households
+deleveraging following the housing boom leading up to the Great Recession.
+
+Q: If the ZLB binds ($i^{\ast }<0$), what is happening inside banks?
+
+If the equilibrium rate is negative, but the actual rate is zero, the
+quantity saved outstrips the amount borrowed/invested. The ZLB is a price
+floor that creates an excess supply (as with any good).
+
+Q: An excess supply of what?
+
+A cursory glance at bank reserves in the U.S. around the time of the Great Recession
+shows a clear example of excess savings where the ZLB breaks the connection between savings and investment. Although details of the movements on bank balance sheets are much more complicated than what appears on the loanable funds graph, private savings and investment did uncouple around the Great Recession.
+
+Consequently, the economy can find itself stuck at $Y^{\ast }<Y_{n}$ in
+Figure , and the recession can become very persistent. One subtle point is that excess saving in a liquidity trap
+means there is excess desired saving in the neighborhood of full
+employment. Equilibrium is achieved by income falling with
+investment so savings must fall as well. On the loanable funds graph, the
+desire to save shifts S to the right, but the subsequent fall in income
+shifts it back to the left, possibly beyond where it started. Hence,
+at the ZLB, there can be a sustained fall in income (and savings), which
+sounds a lot like a depression. See Problems 6. and 6. for a representation of these issues on standard graphs.
+
+
+
+#
+
+
+
+Q: Does an increase in government spending (unfunded, ceteris paribus)
+lead to an increase in bond yields?
+
+For most financially literate people, the answer is a
+qualified ``yes'': Government borrowing to pay for the spending shifts of
+the supply of bonds, lowers the price of bonds and raises the
+yield. However, some advocates of Modern Monetary Theory (MMT)Recent reference for MMT are Kelton  and Mitchell, Wray, and Watts . [fn] have
+claimed that there is no effect and that this is ``just a matter of supply and
+demand.''
+
+It is possible to make sense of this view, although it requires a bit of
+explanation. If the central bank immediately buys up the issued bonds,
+effectively removing them from the market, yields are unaffectedIn fact, if the sale is fully sterilized and some of the government spending
+shifts the demand for bonds, yields could fall. [fn]. Alternatively, one could
+combine monetary and fiscal authorities to allow the government to pay for
+the spending without issuing bonds, the MMT prescription. Loosely speaking,
+the government prints money, which, in practice, means crediting bank
+reserve accounts held at the central bank. In both versions, the immediate
+effect on the bond market is limited, although increasing the money supply could
+lead to inflation. Thus, the interpretation of the effect of government
+spending on bond yields depends on the interaction between fiscal and monetary
+policy. So far, our discussions have treated fiscal and monetary policy
+separately, which is acceptable under certain conditions, but we should
+understand what those conditions are.
+
+The relationship between fiscal and monetary policy can take many forms. A debt crisis is an obvious example of fiscal policy infringing on the influence of monetary policy. If investors lose confidence in a country's ability to service its debts, yields can spiral out of control regardless of the monetary policymaker.  Most governments allow the monetary authorities to respond to economic conditions to control inflation while promising to keep the debt under control to avoid such interference, an arrangement referred to as *monetary dominance*. In the language of Leeper , monetary policy is active and fiscal policy is passive. MMT policy exemplifies active fiscal policy, where all fiscal deficits are funded by the money supply, so the (passive) monetary policymaker has no discretion at all.
+
+
+
+##
+
+
+
+
+###
+
+
+
+To study these issues, we begin with the budget constraints for fiscal and
+monetary policy in an endowment economy such that output $\bar{y}$ is
+constant. Both equations show the flow or changes over a period. \
+The fiscal flow budget constraint is
+
+
+
+P_{t}g_{t}=P_{t}\tau _{t}+\frac{1}{1+i_{t}}B_{t+1}^{T}-B_{t}^{T}+RCB_{t}
+
+
+where the price of goods is $P_{t}$ and real government spending and tax
+revenue are $g_{t}$ and $\tau _{t}$. The variable $B_{t}^{T}$
+represents all bonds issued by the fiscal authority, regardless of who holds
+them. Bonds have nominal yield $i_{t}$ so are sold at price $\frac{1}{1+i_{t}}$ and pay one unit of currency. \ In
+finance terms, they are one-period discount bonds with a face value of one.
+\ The central bank returns profits (or losses) $RCB_{t}$ to the fiscal
+authority---the Treasury Department in the case of the U.S.---and the fiscal authority uses
+the bond market to pay for any deficit the government runs.
+
+During the 2010s, the Fed remitted approximately \$80b a year
+to the Treasury. However, in late 2022, it began to sustain losses because it was raising interest rates by increasing the rate paid on bank reserves. Furthermore, it is possible for losses to occur if a central bank makes loan guarantees, as in the case of the Bear Stearns liquidity crisis, and the loans default, which did not happen with Bear. Any losses can be kept in a deferred account that the Fed promises to pay (someday).
+
+This practice is not problematic unless the deferred account becomes so
+large that it is doubtful that the Fed can pay it down using future profits. The situation is uncharted territory but could become politically awkward, threatening the independence of the Fed because it is infringing on fiscal policy. For the following discussion, assume the transfer is positive $RCB_{t}>0$.
+
+Central banks have many different assets, including discount loans, gold, and
+foreign currency. However, for monetary policy discussions, the most important asset
+is government bonds. The central bank buys and sells government bonds $B_{t}^{M}$ and then (usually) sends the quantity $RCB_{t}$ to the fiscal authority. \
+Changes in assets are matched by changes in the money supply $M_{t}$, the only liability in the model. Hence, the central bank's flow budget constraint can be
+represented by setting the change in assets equal to the change in
+liabilities.
+
+
+
+\frac{1}{1+i_{t}}B_{t+1}^{M}-B_{t}^{M}+RCB_{t}=M_{t+1}-M_{t}
+
+
+
+
+The Fed's liabilities are usually said to be the monetary
+base or ``high-powered money.'' The present model treats the money supply and
+monetary base as equivalent (and ignores bank reserves). If the money
+multiplier is stableFormally, the money multiplier $m=1$, where it is defined by $\Delta
+M=m( \Delta MB) $, for the monetary base $MB$. [fn], such an
+assumption should be innocuous, and it is quite common in DSGE modeling.
+However, during the Great Recession and its recovery, the money multiplier was
+anything but stable, making explicit modeling of the banking and financial
+sector an important project. Here, our excuse is that we're focusing on long-run outcomes.
+
+
+
+###
+
+
+Combining the two budget constraints by substituting for $RCB_{t}$, the
+consolidated budget constraint is as follows.
+
+
+
+P_{t}g_{t}-P_{t}\tau
+_{t}=\frac{1}{1+i_{t}}B_{t+1}^{T}-B_{t}^{T}-\frac{1}{1+i_{t}}B_{t+1}^{M}+B_{t}^{M}+M_{t+1}-M_{t}.
+
+
+
+Thus, the deficit is paid with bonds sold to the public, bonds sold to the central bank, or money issued by the central bank.
+
+
+First, define the net debt or the bonds held by the public as $B_{t}=B_{t}^{T}-B_{t}^{M}$, such that the constraint () is
+
+
+
+P_{t}g_{t}-P_{t}\tau _{t}=\frac{1}{1+i_{t}}B_{t+1}-B_{t}+M_{t+1}-M_{t}.
+
+
+Under MMT, net debt $B_{t}$ is automatically zero, but hold that thought. Dividing by the price, and rearranging determines
+
+
+
+g_{t}-\tau _{t}=\frac{1}{1+i_{t}}\frac{B_{t+1}}{P_{t}}-\frac{B_{t}}{P_{t}}+s_{t+1}^{m}.
+
+
+
+where the monetary surplus or seigniorage term is
+
+
+
+s_{t+1}^{m}=\frac{M_{t+1}-M_{t}}{P_{t}}.
+
+
+
+
+
+
+###
+
+
+Seigniorage represents both the benefit of money creation to the government and a tax on households for holding money. In the long run, seigniorages depend solely on inflation, which is easy to believe, but the formal explanation is non-trivial. Let the demand for real money balances be
+
+
+
+\frac{M_{t+1}}{P_{t}}=L( \bar{y},i_{t}) ,
+
+
+where $L( \cdot )$ is decreasing in $i_{t}$. The intuition is the same as that for the demand for liquidity in Section 2.2.
+
+For now, let the real rate be fixed $r_{t}=\widetilde{r}$. Sargent and Wallace  call this a ``monetarist'' assumption, though it arises in many contexts (e.g. Figure 6.1). The usual Fisher relation for the real rate becomes
+
+
+
+1+\widetilde{r}=\dfrac{1+i_{t}}{1+\pi _{t+1}}.
+
+
+
+
+Because the output $\bar{y}$\ and the real rate $\widetilde{r}$\ are\ constant,
+the demand for real balances has a compact representation
+
+
+
+\frac{M_{t+1}}{P_{t}}=\bar{L}( \pi_{t+1}).
+
+
+
+The constant real rate means the nominal rate and inflation move together, so the demand for
+real balancesSargent
+and Ljungqvist (, Chapter 27) give micro-foundations for such a relation. [fn]
+is inversely related to inflation.
+
+Q:  Is there a reason higher inflation might increase money demand? Does that mean there is something wrong with the demand for real balances above?
+
+}
+A: Its complicated. People might hold money anticipating the need to pay higher prices. The key assumption about $\widetilde{r [fn]$ that determines the form of money demand here is plausible for long run analysis.}
+}
+
+
+Seigniorage can be written as a function of inflation.
+
+
+
+s_{t+1}^{m} &=&\frac{M_{t+1}}{P_{t}}-\frac{M_{t}}{P_{t-1}}\frac{P_{t-1}}{P_{t}}
+&=&\bar{L}( \pi_{t+1}) -\bar{L}( \pi_{t})\frac{1}{1+\pi_{t}}
+
+
+
+
+The analysis focuses on *steady states*, which
+are stationary (trend-free) equilibrium values in the
+absence of any shocks or uncertainty. Often, the specification of steady states is
+followed by the introduction of shocks and fluctuations around the steady states. In the present analysis, however, they are the whole storySee Leith and Leeper  for models of fiscal theories with uncertainty. [fn].
+
+The variables are set to steady-state values as follows: $g_{t}=g,\tau
+_{t}=\tau ,M_{t}=M,r_{t}=\widetilde{r}$. Note that there is no steady-state price level. Some people get worked up about this; I am not one of them.
+
+Hence, steady-state seigniorage is
+
+
+
+s^{m}( \pi) =\bar{L}( \pi) ( \frac{1}{\pi^{-1}+1})
+
+
+
+
+
+
+#
+
+
+
+The models studied thus far are mostly of the starting-from-curves variety,
+meaning relationships between aggregate variables are proposed without micro-economic foundations.
+
+Q: Is the consumption function $C( Y) $ micro-founded?
+
+Specifying household consumption is the starting point for most modern
+macroeconomic models and this chapter focuses on the basics.
+
+
+
+##
+
+
+
+Testing macroeconomic models against the data helps our understanding and
+gives indications of the directions to take for improving those models. Thus
+far, we have used as our model of consumption the function $C( Y) $, where the marginal propensity to consume (MPC) is $C_{Y}$, which assumes a
+relationship between aggregate income and consumption data. To obtain an
+estimate of this value, a simple empirical exercise is a least squares
+regression of disposable income $Y_{t}$ against personal consumption
+expenditures $C_{t}$.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=10cm]{F81.png}
+\caption{U.S. household data 1959--2019}
+\end{figure}
+
+
+
+C_{t}=-36.8+0.9Y_{t}\text{ \ \ }R^{2}=0.999
+
+
+
+
+The estimated MPC is a reasonable value of 0.9 and the $R^{2}$
+statistic looks quite impressive.
+
+Q: Name all the econometric sins committed running this regression.
+
+Problems arise because both series show exponential growth.
+
+
+- Interpreting the estimated parameter 0.9 as the MPC assumes a linear
+relationship. Using log transformations of the series could address this, but the story continues...
+
+- Serial correlation in the residuals means the estimates are
+biased because both series have trends. The high $R^{2}$ indicates
+a problem, as does the $t-$statistic (1143.2) on the MPC estimate.
+
+- The serial correlation problem also arises with series containing unit
+roots (random walks; see Appendix B).
+
+Trends and unit roots are two reasons for the non-stationarity in
+macroeconomic time series that require methods beyond least squares
+regression. Loosely speaking, stationary series have a meaningful mean. \
+For example, one can compute the mean of the consumption data in the graph
+above, but it would differ for different samples due to the trend.
+
+To enable work with stationary data, macroeconomists use several
+techniques to transform the data. Focusing on ratios of variables that
+appear to fluctuate around stable values is one method. Unfortunately, for
+the present data, the ratio $C_{t}/Y_{t}$ appears to have long-term cycles or trends.
+
+Detrending and differencing offer two other options. We've already
+encountered the latter: Inflation is the log difference of the price
+level. Whether inflation is stationary is a non-trivial question, but it
+certainly does not have a trend in the manner of price level measures.
+
+Computation of the output gap (Chapter 4) for use in the Taylor rule estimation involves detrending. In that case, the first step is estimating a trend for real GDP. This might involve assuming a linear trend or using a Hodrick-Prescott
+filter (to name two techniques). The next step is to compute the percentage
+difference between real GDP and the trend for each period. The resulting
+detrended data is stationary and fluctuates around zero.
+
+For a macro-econometrician, the good news is that there are many ways to
+transform data into a stationary form. The bad news is that such multiplicity creates doubt about the correct method. Whether to difference or detrend is a persistent question.
+
+One natural attempt to solve the problem of serial correlation in the
+estimation of the MPC is to use annual growth rates for consumption and
+income. The following also uses real, per capita values.
+
+
+
+\log C_{t}-\log C_{t-12}=0.002+0.9( \log Y_{t}-\log Y_{t-12})
+\text{ \ \ }R^{2}=0.88
+
+
+Interestingly, the estimate of the MPC is almost identical, but there is
+still serial correlation in the residualsThe Durbin-Watson statistic is the first value to examine for serial
+correlation. The two regressions had DW statistics of 0.24 and 0.53, far
+below the value of 2 that would indicate independent residuals. [fn].
+
+It shouldn't be surprising that there is such
+persistence in the consumption data. Many households do not change their
+consumption according to day-to-day or year-to-year changes in income. \
+Decisions about buying a house or saving for college and retirement are
+plans involving expectations far into the future.
+
+An alternate approach that avoids the serial correlation problem is to focus
+on cross-sectional data across households. Figure  shows a scatter plot of income and expenditure data from the 2019 Consumer Survey by the Bureau of Labor Statistics. The slope coefficient estimate, naturally interpreted as the MPC, is approximately 0.45, differing dramatically from the result based on time series data.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=10cm]{F82.png}
+\caption{Logs of Household Income and Expenditure Data}
+\end{figure}
+
+These considerations and the Lucas critique motivate a micro-founded,
+multi-period model that enables a more detailed description of household decisions. In this context, micro-foundations mean utility maximization.
+
+
+
+#
+
+
+
+The infinite horizon consumption model can be extended to study dividend
+yielding assets like stocks, connecting to some models and issues central to
+finance, such as the efficient markets hypothesis (EMH). There are (at
+least) two flavors of the EMH, the weak version that says asset prices are
+unpredictable and the strong version that says prices are determined by
+fundamentals. This chapter formalizes these ideas, connecting macro theory
+and the asset pricing models from finance, then discusses some of the
+evidence for both versions.
+
+The savings problem for the household remains the key decision, but the vehicle is stocks instead of bonds or deposits. Let the price and dividend
+for a stock be $P_{t}^{s}$ and $D_{t}^{s}$. Households buy a number of
+stocks $x_{t-1}$ in time $t-1$ and then receive income from the dividend and
+sale of the stocks. The household optimization problem becomes
+
+
+
+\max_{C_{t},x_{t}}E_{t}\sum_{j=0}^{\infty }\beta ^{j}u(
+C_{t+j}) \text{ \ subject to}
+
+
+
+C_{t+j}+P_{t}^{s}x_{t}\leq Y_{t+j}+x_{t-1}( P_{t}^{s}+D_{t}^{s}) ,
+
+
+where the right-hand side represents income and the left-hand side represents
+expenditures in time $t$.
+
+From the Lagrangian with multipliers $\lambda _{t+j},$ the FOC's for $j=0$
+are
+
+
+
+\beta ^{t}u^{' }( C_{t}) -\lambda _{t} &=&0
+-\lambda _{t}P_{t}^{s}+\lambda _{t+1}E_{t}(
+P_{t+1}^{s}+D_{t+1}^{s}) &=&0
+
+
+Solving out the $\lambda ^{' }s$ and simplifying yields
+
+
+
+P_{t}^{s}=\beta E_{t}[ \frac{u^{' }( C_{t+1}) }{u^{' }( C_{t}) }( P_{t+1}^{s}+D_{t+1}^{s}) ]
+,
+
+
+a standard asset pricing model in finance.
+
+
+
+##
+
+
+
+Before describing the meaning of market efficiency, let's take a brief
+detour to connect the macro-based model of asset pricing with the language
+found in finance textbooks.
+
+In some models, the discount factor would be constant or reflect an interest rate. Here the term $m_{t}=\beta \dfrac{u^{' }( C_{t+1}) }{u^{' }( C_{t}) }$ depends on the ratio of marginal utilities
+and is often referred to as the *stochastic discount factor *or
+*pricing kernel*.
+
+Ignoring uncertainty for the moment, and using the variable $m_{t}$ as the
+stochastic discount factor, the asset pricing equation () can be
+written
+
+
+
+\frac{1}{m_{t}}=\frac{P_{t+1}^{s}+D_{t+1}^{s}}{P_{t}^{s}}.
+
+
+The right-hand side is the standard expression for the gross return $R_{t}^{s}$ of the asset so, we have
+
+
+
+R_{t}^{s}=\frac{1}{m_{t}},
+
+
+a compact way of demonstrating the role of the pricing kernel.
+
+
+
+##
+
+
+
+A simpler, but still quite common, asset pricing relation obtains for
+risk-neutral households. If the utility function is linear $u(
+c) =ac$ for some parameter $a$, then marginal utility is constant, the
+discount factor is $m_{t}=\beta ,$ and it is no longer stochastic. Hence,
+the asset pricing equation () is
+
+
+
+P_{t}^{s}=\beta E_{t}( P_{t+1}^{s}+D_{t+1}^{s}) ,
+
+
+which is the starting point for much textbook asset pricing analysis. \
+Assuming that $\beta \approx 1$, which is plausible for high frequency data,
+and dividends are mean zero, which is reasonable if the price and dividends
+are deviations from a trend, the above relation implies
+
+
+
+P_{t}^{s} &=&E_{t}P_{t+1}^{s}
+&&\text{or}
+P_{t+1}^{s} &=&P_{t}^{s}+\varepsilon _{t}
+
+
+where the term $\varepsilon _{t}$ is a mean zero stochastic process. The
+implication is that today's price is as good a forecast of tomorrow's as anything, the weak version of the EMH.
+
+The intuition is the same as with the RWH for consumption in Section 9.2.
+An asset price embodies all the relevant, available information so it
+changes only in response to new information, which could be good or bad if
+it really is news, so the price is equally likely to go up or down.
+
+
+
+#
+
+
+
+Politicians and commentators like to say that we are living in an exceptional
+time in history. From a broad historical perspective, which they may or
+may not have, it is exceptional. Following the widespread adoption of agriculture, which may or may not have been a good thing
+(Diamond ), sustainable standards of living improved modestly at best until roughly 1800 CE. Since the Industrial Revolution, standards of living have improved dramatically. Around 1800, over 90\Furthermore, inequality within countries has fluctuated significantly over the last several centuries. Models of growth are needed to study the determining factors of growth rates, and the reasons for the
+divergence and convergence of living standards.
+
+
+
+##
+
+
+
+Some guiding principles come from the *Kaldor facts*. In the mid-20th century, Nikolai Kaldor
+compiled detailed data for aggregate quantities and summarized the state of the art with six stylized facts, which are roughly true, but
+some are rougher than others. Several of the ``facts'' hold up today---such as the steady growth of per capita output and that the capital-output ratio fluctuates around a constant---and they fit well with the Solow model in particular. Including capital as a productive input is a primary feature
+of the Solow model that we've avoided so far. Other Kaldor facts, such as the stability of the return on capital do not so neatly fit the data from the past few decades, even if macroeconomists often make the assumption that they do. We'll use it for the model in this chapter but examine the issue in more detail in the discussion of secular stagnation.
+
+The central tool for models of growth is the production function
+
+
+
+Y=F( K,AL)
+
+
+as in Chapter 1. Labor productivity $A_{t}$ and population $L_{t}$ are
+assumed to grow at constant rates $g_{A}$ and $g_{L}.$ The continuous time
+specification is
+
+
+
+\dot{A}_{t} &=&g_{A}A_{t}
+\dot{L}_{t} &=&g_{L}L_{t}.
+
+
+A primary goal is to determine the growth rate of per capita output $\mathfrak{g}( \dfrac{Y_{t}}{L_{t}}) $. The notation $\mathfrak{g}( \cdot ) $ can represent any of the waysApologies to any mathematicians out there. [fn] to define growth
+rates (see Appendix ). Meanwhile, the exogenous growth rates are given by notation like $g_{A},g_{L}$.
+A key element of the Solow model is the exogenous savings rate. Households
+save a constant fraction of income $s$, and the loanable funds market clears
+(by assumption) so that savings is lent out as the flow of investment $I_{t}$\ that contributes to the capital stock. This means
+
+
+
+sY_{t}=I_{t}.
+
+
+
+\ Capital evolves according to
+
+
+
+\dot{K}_{t}=I_{t}+( 1-\delta ) K_{t}\text{,}
+
+
+where the parameter $\delta \in [ 0,1] $ is the depreciation rate.  Investment is the flow feeding the capital stock; depreciation reduces that stock.
+
+One modeling choice inspired by the Kaldor facts involves focusing on
+
+
+
+\kappa _{t}=\dfrac{K_{t}}{A_{t}L_{t}}.
+
+
+
+
+Q: What is reasonable long-run behavior for $\kappa _{t}$?
+
+A: (To be continued...)
+
+The term $A_{t}L_{t}$ refers to effective labor, so intensive
+capital is capital per unit of effective labor. To express the production function in terms of intensive capital, divide all terms by $A_{t}L_{t}$.
+
+
+
+\frac{Y_{t}}{A_{t}L_{t}}=F( \frac{K_{t}}{A_{t}L_{t}},1)
+
+
+For a general function $F$, this operation is illegal, but it is acceptable assuming constant returns to scale production. Formally, for any positive constant $a>0$, constant returns to scale production satisfies $aY=F(
+aK,aAL) $, which means an x\
+Production as a function of intensive capital is written using the more
+compact notation
+
+
+
+y_{t}=f( \kappa _{t})
+
+
+where output per unit of effective labor is $y_{t}=\dfrac{Y_{t}}{A_{t}L_{t}}, $ and the intensive form production function is defined as $f(
+\kappa _{t}) =F( \dfrac{K_{t}}{A_{t}L_{t}},1) $.
+
+A useful special case is Cobb-Douglas (C-D) production
+
+
+
+F( K,AL) =K^{\alpha }( AL) ^{1-\alpha }.
+
+
+\ The fact that the share for capital $\alpha $ and labor $1-\alpha $ sum to
+one guarantees constant returns to scale. The intensive form of the
+production function becomes
+
+
+
+y_{t}=\kappa _{t}^{\alpha }.
+
+
+
+
+
+
+##
+
+
+
+A key equation describes the evolution of intensive form capital. The derivation uses
+the expansion of the time derivative $\dot{\kappa}_{t}$ according to the quotient rule.
+
+
+
+( \frac{\dot{K}_{t}}{A_{t}L_{t}}) &=&( A_{t}L_{t})
+^{-2}[ \dot{K}_{t}A_{t}L_{t}-K_{t}( \dot{A}_{t}L_{t}+A_{t}\dot{L}_{t}) ]
+&=&( A_{t}L_{t}) ^{-1}[ \dot{K}_{t}-K_{t}(
+g_{L}+g_{A}) ]
+&=&( A_{t}L_{t}) ^{-1}[ sY_{t}-\delta K_{t}-K_{t}(
+g_{L}+g_{A}) ]
+&=&sy_{t}-\kappa _{t}( g_{L}+g_{A}+\delta )
+
+
+The second line uses the definitions () and () of the
+growth rate for productivity and population. The third line uses the
+definition () of the evolution of capital and the definition
+of investment $I_{t}=sY_{t}$.
+
+Finally, using the production function to substitute for $y_{t}$ yields a
+key equation in the Solow model.
+
+
+
+\dot{\kappa}_{t}=sf( \kappa _{t}) -( g_{L}+g_{A}+\delta
+) \kappa _{t}
+
+
+Q: What is reasonable long-run behavior for $\dot{\kappa}_{t}$? (I warned
+you.)
+
+In the long run, intensive capital should not be increasing or decreasing. \
+An indefinite fall in $\kappa _{t}$ is implausible because it would imply that capital is eventually eliminated. A persistent increase would mean
+that capital as a ratio of labor is ever increasing, which seems unlikely
+unless machines take over the world. While capital could jump sharply
+in response to changes in the savings rate, for example, such a change would
+be temporary. The long-run value of $\dot{\kappa}_{t}$---the left-hand side
+of equation ()---should be 0.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=8cm]{F111.png}
+\caption{Intensive-Form Production, Break-Even Investment, and Actual Investment}
+\end{figure}
+
+Figure  shows the two terms on the right-hand side of the intensive capital evolution equation () as functions of $\kappa _{t}$, along with the production function in intensive form. The first term is the actual amount of output saved for investment that contributes to the capital stock.
+\ Because it is a constant fraction of output, it has the usual concave shape of a production function due to diminishing marginal productivity.\ The
+second term $( g_{L}+g_{A}+\delta ) \kappa _{t}$ is called the
+*break-even investment* curve and represents the amount of investment needed to maintain intensive capital at its current level. The intersection of the two curves happens where $\dot{\kappa}_{t}=0$.
+
+The level of intensive capital $\kappa ^{\ast }$\ at the intersection is
+called the steady state because $\kappa $ is not changing. Consider the
+dynamics if $\kappa $ is below the steady state. There, the actual
+investment curve is above the break-even investment line, meaning $\dot{\kappa}$
+is positive and the level of intensive capital increases toward the steady
+state. One could interpret this as a description of a recovery from a
+natural disaster that damages a country's infrastructure. Similarly, if
+intensive capital exceeds the steady state, it falls. Hence, the
+steady state is stable.
+
+
+
+#
+
+
+
+Interpretations of the empirical implications of the Solow model follow two very different
+paths. The first relates to development economics and uses
+cross-sectional, cross-country data to test the fit of the model and its
+ability to explain differences in growth rates between countries. The
+second adopts the method of modeling productivity as a given, then derives
+predictions about the persistence and volatility of the time series data via
+calibration, a style of empirical work associated with Real Business Cycle (RBC) models.
+
+
+
+##
+
+
+
+The paper by Mankiw, Romer, and Weil  uses cross-sectional data to see how much the differences in real GDP across countries can be
+explained by factors in the Solow model, such as savings rates,
+productivity growth, and population growth. The model doesn't perform
+badly, but the paper does identify some extensions for improvement.
+
+To make the model operational, assume Cobb-Douglas production, such that $y_{t}=\kappa _{t}^{\alpha }$ so the condition for the steady-state level $\kappa ^{\ast }$ is
+
+
+
+s\kappa ^{\ast \alpha }=( g_{L}+g_{A}+\delta ) \kappa ^{\ast }
+
+
+using the equation () for the evolution of $\kappa $ and the
+condition for the steady state $\dot{\kappa}=0$. Hence, the steady-state
+level is
+
+
+
+\kappa ^{\ast }=( \frac{s}{g_{L}+g_{A}+\delta }) ^{\dfrac{1}{1-\alpha }}.
+
+
+The focus of the empirical exercise is GDP per capita, which can be
+expressed as
+
+
+
+\frac{Y_{t}}{L_{t}}=A_{t}\kappa ^{\ast \alpha },
+
+
+assuming the economies under consideration are at the steady state
+throughout the sample. Substituting an explicit exponential function for
+the evolution of productivity $A_{t}=A_{0}\exp ( g_{A}t)$ and
+the above expression for the steady state $\kappa ^{\ast }$ in terms of the
+parameters, taking logs yields
+
+
+
+\log ( \frac{Y_{t}}{L_{t}}) =\log A_{0}+g_{A}t+\dfrac{\alpha }{1-\alpha }\log s-\dfrac{\alpha }{1-\alpha }\log ( g_{L}+g_{A}+\delta
+) .
+
+
+The term $A_{0}$ is interpreted as the starting level $( t=0) $
+of productivity. Because the estimation uses cross-sectional data, the time $t$ is fixed and common but $A_{0}$ varies across countries. Therefore, let
+$\log A_{0}=\bar{A}+\varepsilon _{i}$ where the index $i$ represents the
+countries. Furthermore, Mankiw, Romer, and Weil  assume that $g_{A}+\delta $ is common to all
+countries and equals 0.05. The level of productivity varies between
+countries, but their growth rates do not. The constant term is $c=\bar{A}+g_{A}t_{0}$, so the estimation equation is
+
+
+
+\log ( \frac{Y}{L}) _{i}=c+\dfrac{\alpha }{1-\alpha }\log s_{i}-\dfrac{\alpha }{1-\alpha }\log ( g_{L,i}+g_{A}+\delta )
++\varepsilon _{i}.
+
+
+The baseline estimation is performed for 98 non-oil producing countries in 1985.
+\ The estimate for the share of capital $\widehat{\alpha }=0.6$ with a $R^{2} $ of 0.59. The results are encouraging but not completely
+successful. The variation explained (0.59) is meaningful but implies that
+other factors are necessary to explain the variation between countries. \
+The capital share estimate is plausible but far from the anticipated value
+of one-third.
+
+There are many possible avenues for extending the Solow model. Mankiw, Romer, and Weil  extend
+the model to include human capital in the production function and show
+improved empirical performance. They also relax the assumption that all
+countries are at their steady state, though that involves incorporating the speed of adjustment.
+
+
+
+#
+
+
+
+Conceptually, the economics of climate change is a simple issue. Global
+warming is a negative externality for the world economy, requiring the
+reduction of carbon emissions to achieve an improved outcome. \
+Quantitatively, the issue is more complex. While nobody who has
+examined the issue in detail dismisses it, there is no broad consensus concerning the degree or extent of harm or the choice of solutions. (Most economists would start with a carbon tax/dividend, with most reasonable proposals returning carbon tax revenue to households as a lump sum tax
+credit or dividend.)
+
+
+
+##
+
+
+
+The Solow model provides the basis for simulating the effects of carbon
+emissions on the climate and economy. Besides the economic variables
+discussed in the previous chapter, the version of the model presented here
+has a number of variables that change over time, such as emissions $E_{t}$\ and damage $D_{t}$.
+
+There are several other differences in the present model, which is a
+modified version of the model included in Tsigaris and Wood , an example of an
+integrated assessment model. The model is in discrete time, as are those
+developed by Nordhaus  and Weitzman . The growth rates of the population and productivity decline over time, reflecting past data and future projections.
+
+Production is similar to the standard Solow model but uses total factor
+productivity $A_{t}$ instead of labor productivity.
+
+
+
+Y_{t}=A_{t}K_{t}^{\alpha }L^{1-\alpha }
+
+
+Instead of using intensive capital, the focus of the model is per capita
+output $\dfrac{Y_{t}}{L_{t}}$ and capital $k_{t}=\dfrac{K_{t}}{L_{t}}$, so
+production is writtenApologies for the abuse of notation, as $k_{t [fn]$ is the log of capital in the
+last chapter but represents per capita capital here, following the cited papers on climate
+change.}
+
+
+
+\dfrac{Y_{t}}{L_{t}}=A_{t}k_{t}^{\alpha }.
+
+
+
+
+An additional force on production is damages $D_{t}$. Due to higher
+global temperatures, production becomes
+
+
+
+\dfrac{Y_{t}}{L_{t}}=D_{t}A_{t}k_{t}^{\alpha }.
+
+
+where the damage function is
+
+
+
+D_{t}=\frac{1}{1+\theta _{1}T_{t}^{\theta _{2}}}.
+
+
+The variable $T_{t}$ represents the mean global temperature innovations due to
+carbon emissions in each period. In the absence of emissions, $T_{t}=0$
+and $D_{t}=1$, so there is no effect on production. If temperature
+innovations are positive, as has been the case for decades, then $T_{t}>0$
+and $D_{t}<1$, so the damage lowers output. Projections including damages
+without any policies to mitigate the impact of climate change are referred
+to as the *business as usual* outcome.
+
+Productivity and population (labor force) grow over time and take the same
+form as before
+
+
+
+A_{t} &=&A_{t-1}( 1+g_{A,t})
+L_{t} &=&L_{t-1}( 1+g_{L,t}) ,
+
+
+
+but here the growth rates change over time according to the following
+functional form for initial values $g_{A,0},g_{L,0}>0$ and parameters $\delta _{A},\delta _{L}>0$
+
+
+
+g_{A,t} &=&\frac{g_{A,0}}{( 1+\delta _{A}) ^{t}}
+g_{L,t} &=&\frac{g_{L,0}}{( 1+\delta _{L}) ^{t}}.
+
+
+
+
+Q: What is the long-run outcome for $L_{t}$ and $A_{t}$?
+
+The fall in the population growth rate matches global data since the 1960s and the projection that the world's population will stabilize at around 10.5 million people. Note that as $t\rightarrow
+\infty $, $g_{A,t}\rightarrow 0$. This is also the case for productivity,
+although the case is less clear. The argument follows the earlier discussion
+about secular stagnation, with varying opinions concerning the future of
+productivity growth. We follow the standard form for the climate change model,
+keeping in mind the idea that the parameter $\delta _{A}$ might be small or
+zero.
+
+The evolution of capital per capita $k_{t}$\ is taken to be
+
+
+
+k_{t+1}-k_{t}=s( \frac{Y_{t}}{L_{t}}) -( \delta
++g_{L,t}) k_{t},
+
+
+which is a discrete-time analog to equation () in the previous
+chapter, where the parameters $s$ and $\delta $ are the savings rate and
+depreciation rate. The intuition is the same. Savings becomes the
+investment flow contributing to the capital stock, while a portion of the
+stock depreciates every period. The population growth rate enters because a
+higher $g_{L,t}$ implies a smaller increase in per capita capital.
+
+In fact, if one starts from an intuitive equation for the evolution of
+capital $K_{t}$, analogous to () in the previous chapter, the
+resulting equation for the evolution of $k_{t}$ is more complicated than
+the above equation, which explains the common use of continuous time exposition
+for the Solow model.
+
+For the form of the evolution of $k_{t}$ given above, the steady-state
+capital per capita $k^{\ast }$ is given where $k_{t+1}=k_{t}$. Imposing
+this condition on the capital evolution equation () and
+substituting using the production function () with damages
+gives the following expression for $k^{\ast }$.
+
+
+
+k^{\ast }=( \frac{sA_{t}D_{t}}{\delta +g_{L,t}}) ^{\dfrac{1}{1-\alpha }}
+
+
+Q: How does this steady state fundamentally differ from $\kappa ^{\ast }$
+in the previous chapter (besides the difference in the variable)?
+
+Compared with the baseline Solow model, this steady state is not so steady. It changes over time with $A_{t},D_{t}$ and $g_{L,t}$. At the steady state, the production of output per capita is
+
+
+
+( \frac{Y_{t}}{L_{t}}) ^{\ast }=( A_{t}D_{t}) ^{\dfrac{1}{1-\alpha }}( \frac{s}{\delta +g_{L,t}}) ^{\dfrac{\alpha }{1-\alpha }}
+
+
+For a fixed level of damage $D_{t}=\bar{D}$, production is initially
+dominated by the growth of productivity $A_{t}$, and steady-state output per
+capita $( \dfrac{Y_{t}}{L_{t}}) ^{\ast }$ shows its usual
+exponential growth. However, over time, the growth rates of population and
+productivity $g_{L,t}$ and $g_{A,t}$ fall to zero, so production as a
+function of time becomes concave and eventually flattens to a constant.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=10cm]{F131.png}
+\caption{}
+\end{figure}
+
+Figure  shows projections for the steady-state income per capita for the
+case where damages affect production (i.e., business as usual) and the case where they do
+not. The flattening of both curves is apparent, as is the impact of damages, which are caused by emissions $E_{t}$ that are determined endogenously, as described below.
+
+
+
+##
+
+
+
+Emissions each period are a fraction $\sigma _{t}$ of output so
+
+
+
+E_{t}=\sigma _{t}Y_{t}.
+
+
+
+
+Q: Does a fall in emissions require a fall in GDP?
+
+A faction of environmentalists has advocated for eliminating economic
+growth as a solution to climate change, but that is wrong headed (Smith ).
+\ It is quite possible to have technology driven growth and falling
+emissions. In fact, that is exactly what has been happening in the U.S.
+over the last couple of decades. Technological innovation directed toward
+energy efficiency (e.g., with a carbon tax or clean energy subsidies)
+is certainly part of the solution.
+
+Because the trend in efficiency is assumed to continue, the emissions intensity
+parameter is assumed to decline at a declining rate, as in the case of $A_{t}$ and $L_{t}$. This means that for some initial growth rate $g_{\sigma ,t}<0$ and parameter
+$\delta _{\sigma }>0$,
+
+
+
+\sigma _{t} &=&\sigma _{t-1}( 1+g_{\sigma ,t})
+g_{\sigma ,t} &=&\frac{g_{\sigma ,t-1}}{1+\delta _{\sigma }}.
+
+
+
+
+The cumulative emissions over time determine the temperature innovations $T_{t}$, meaning the increase over the baseline temperature is given by the following.
+
+
+
+T_{t}=\beta ( B_{0}+\sum_{j=1}^{t-1}E_{j})
+
+
+The initial amount of carbon in the atmosphere is $B_{0}$, so the term in
+parentheses is the total at time $t-1$ and the parameter $\beta $ reflects the
+degree of impact on global temperature. For the graphs and simulations
+here, time $t=1$ is equivalent to the year 2010. See Appendix  for the
+parameter values used in the simulations.
+
+The decline in emissions intensity implies an environmental Kuznets curve
+on a graph of emissions against income in Figure . Although carbon emissions rise
+with income at lower levels of income, over time, the emissions
+intensity falls so the graph shows an inverted U shape like the Kuznets curve with income and inequality discussed in the previous chapter. The fact that emissions eventually fall does not mean there is no problem. The cumulative effect of the emissions could still be disastrous.
+\begin{figure}[ht]
+\centering
+\includegraphics[width=10cm]{F132.png}
+\caption{Environmental Kuznets Curve}
+\end{figure}
+
+
+#
+
+
+
+In the Solow model, getting the savings rate right is a happy accident. In the overlapping generations (OLG) model, the household makes an endogenous
+savings decision. Because there are none of the usual suspects for market failure--- externalities, asymmetric information, or returns to scale---it is reasonable to expect that households make an optimal decision.
+
+Mathematician David Hilbert discussed the Paradox of the Grand Hotel, which has an infinite number of rooms and every room is occupied. If a new guest arrives, they can be accommodated by moving the occupant of room 1 to room 2, the occupant of room 2 to room 3, and so on. Actually, any finite number of new guests can stay. Full doesn't mean full when infinity is involved. \
+It turns out that this idea is relevant to the question of optimal savings in an OLG model.
+
+
+
+##
+
+
+
+Like the Solow model, the OLG model focuses on intensive capital and can be used to study long-run growth. The endogenous saving decision helps determine the availability of capital. In principle, the OLG model allows for more detailed examination of the long-run behavior of interest rates, which are
+determined by the return on capital.
+
+Like the core DSGE model (Chapter 9), the model has an infinite horizon, but consumers live only two periods. For the present form of the model, assume
+they earn income only in the first period of their lives when they are
+young, and consume their savings in the second period when they are old.
+
+A key part of the notation describing the model is the consumption subscripts. In the term $C_{i,t},$ the variable $t$ is time and the variable $i=1,2$ denotes whether the consumer is young or old. For example, the term $C_{2,10}$ denotes consumption in period 10 by someone born in period 9. For simplicity, assume there are no bequests to future
+generations.
+
+Part of the model is identical to the Solow model. Production takes the form $Y=F( K,AL) $ and has constant returns to scale so we can focus on intensive capital $\kappa =\dfrac{K}{AL}$ and intensive form production $
+y=f( \kappa ) $ where $y =\dfrac{Y}{AL}$. Labor force and productivity have growth rates $g_{L}$ and $g_{A}$. The model in this
+chapter uses discrete time so these take the form
+
+
+
+L_{t} &=&L_{t-1}( 1+g_{L})
+A_{t} &=&A_{t-1}( 1+g_{A}).
+
+
+Again, Cobb-Douglas (C-D) production is a central example where $Y=K^{\alpha
+}( AL) ^{1-\alpha }$ and $y=\kappa ^{a}$.
+
+As with the Solow model (Section 11.5.1), define wages and the interest rate as given by competitive markets in labor and capital, such that they are given by their marginal products $W=F_{L}$ and $r=F_{K}$. For CD production, a fraction of income\ paid to capital $\dfrac{rK}{Y}$ is $\alpha $ and the
+fraction paid to labor $\dfrac{rL}{Y}$ is $1-\alpha $, as expected for a CRS production function (see subsection ).
+
+The major departure of the OLG model from the Solow model is the inclusion of a household optimization problem. Households born in time $t$\ have lifetime utility
+
+
+
+U_{t}=\frac{C_{1,t}^{1-\theta }}{1-\theta }+( \frac{1}{1+\rho })
+\frac{C_{2,t+1}^{1-\theta }}{1-\theta }.
+
+
+The functional form is the CRRA utility function studied in Chapter 8, where the parameter $\theta $ measures the desire to smooth and the case where $\theta =1$ corresponds to log utility. The budget constraint is analogous to the two-period consumption model where income is received as a wage $W_{t}$ in the first period of life.
+
+
+
+C_{1,t}+\frac{C_{2,t}}{1+r_{t+1}}=W_{t}
+
+
+The household optimization problem and optimality condition are almost identical to those in the two-period model in Section 8.4.
+
+
+
+\frac{C_{2,t+1}}{C_{1,t}}=( \frac{1+r_{t+1}}{1+\rho }) ^{\dfrac{1}{\theta }}
+
+
+
+
+Q: What's different?
+
+Although the OLG model has an infinite horizon, because individuals only livetwo periods, the household problem is simplified.
+
+The next task is to solve for $C_{1,t}$ and find an expression for the fraction of income saved $s( r) $. Using the optimality condition () and the budget constraint () gives the solution
+
+
+
+C_{1,t}=[ \frac{( 1+\rho ) ^{\frac{1}{\theta }}}{(
+1+\rho ) ^{\frac{1}{\theta }}+( 1+r_{t+1}) ^{\frac{1-\theta
+}{\theta }}}] W_{t}.
+
+
+Because income is $W_{t}$, the term in $[ \cdot ] $ is the fraction of income consumed in the first period. Therefore, the expression $1-[
+\cdot ] $ is the fraction saved, such that
+
+
+
+s( r_{t+1}) =\frac{( 1+r_{r+1}) ^{\frac{1-\theta }{\theta }}}{( 1+\rho ) ^{\frac{1}{\theta }}+(
+1+r_{t+1}) ^{\frac{1-\theta }{\theta }}}.
+
+
+Note that savings is always positive, since only the young receive income. Savings is endogenous since it depends on the interest rate.
+
+Q: How does a change in $r_{t+1}$ affect $s( r_{t+1}) ?$
+
+To answer this question, it is convenient to write the equation as follows.
+
+
+
+s( r_{t+1}) =[ \frac{( 1+\rho ) ^{\frac{1}{\theta
+}}}{( 1+r_{t+1}) ^{\frac{1-\theta }{\theta }}}+1] ^{-1}
+
+
+The impact of a change in $r_{t+1}$ depends on whether $\theta $ is greater or less than one. If $\theta $ is greater than one, then the derivative $s^{' }( r_{t+1}) $ is negative. Intuitively, a higher $\theta $ implies a greater desire to smooth, so the income effect dominates,
+and consumers split any increase in interest payments across periods, leading to a fall in savings.
+
+Q: Describe the intuition if $\theta <1$. (Problem 13.)
+
+Savings determines the evolution of capital. The quantity of capital available to firms for the following period is determined by the total quantity saved.
+
+
+
+K_{t+1}=s( r_{t+1}) W_{t}L_{t}
+
+
+The wage per unit of effective labor $w_{t}$ is defined as $w_{t}=\dfrac{W_{t}}{A_{t}}$, so, in intensive form, the relation becomes\begin{align}
+\kappa _{t+1} &=s( r_{t+1}) w_{t}\frac{A_{t}L_{t}}{A_{t+1}L_{t+1}}  \notag
+\shortintertext{or}
+\kappa _{t+1} &=s( r_{t+1}) w_{t}\frac{1}{( 1+g_{A})
+( 1+g_{L}) }.  \end{align}
+
+
+
+#
+
+
+
+The Neo-Classical or Ramsey model extends the DSGE model in Chapter 6 to include a production function with capital as an input. The Neo-Classical label fits for the baseline version because there are no frictions or
+externalities and efficient outcomes arise naturally from optimizing behavior. The model can be extended in many directions and is a workhorse
+for countless studies by macroeconomists in both academia and policy institutions. The household savings decision remains central, and a comparison of the outcome of the Ramsey model with models previously studied is a theme of the chapter.
+
+Government is introduced, breaking the automatic connection between efficiency and the market outcome. The primary policy result discussed here is the optimality of eliminating taxes on capital. In addition, the
+model can be extended to study growth, and stochastic versions of the model can generate impulse response functions for various shocks.
+The last section describes how to numerically solve and create impulse response graphs using the program Dynare.
+
+
+
+##
+
+
+
+The savings behavior in the Ramsey model can be compared with that of the Solow model. For the baseline model there is no growth, so consumption, capital, and output can be thought of as detrended variables. Lifetime utility is the
+same as for the basic DSGE model.
+
+
+
+U=\sum_{t=0}^{\infty }\beta ^{t}u( c_{t})
+
+
+The resource constraint for the economy is
+
+
+
+c_{t}+k_{t+1}\leq f( k_{t}) +( 1-\delta ) k_{t},
+
+
+which has the same intuition as in the Solow and OLG\ models. Output is given by the production function $f( k_{t}) $, which is split between consumption and savings, which becomes investment, the change in $k_{t}$ above. As before, the parameters $\beta $ and $\delta $ are the discount and depreciation rates. Under the OLG model, households had to save for the second period of their lives, but here the motive is simply to provide capital, a required input in production. As a micro-founded
+story, the Ramsey model includes a household savings decision, which the Solow model does not, though most people don't think about their impact on firm inputs when making their savings decision.
+
+Q: Given the setup, is there any reason to expect that optimal saving in the Ramsey model will differ from the golden rule in the Solow Model?
+
+The solution method uses the Lagrangian, as before, but with one alteration to the multipliers.
+
+
+
+L=\sum_{t=0}^{\infty }\beta ^{t}u( c_{t}) +\beta ^{t}\mu
+_{t}[ f( k_{t}) +( 1-\delta ) k_{t}-c_{t}-k_{t+1}]
+
+
+In previous chapters, the Lagrange multipliers were $\lambda _{t}=\beta
+^{t}\mu _{t}$. The multiplier or shadow price $\lambda _{t}$ is
+interpreted as the marginal benefit to the household of an extra unit of
+output, valued at time 0. Similarly, the multiplier $\mu _{t}$ is the marginal benefit of breaking the budget constraint, but it is valued at time
+$t$. Discounting $\mu _{t}$ by $\beta ^{t}$ recovers the time 0 value $\lambda _{t}$. Using the $\mu $ form in the Lagrangian makes the meaning
+of the first-order conditions more transparent.
+
+The first-order conditions with respect to $c_{t}$ and $k_{t}$ are
+
+
+
+\beta ^{t}u^{' }( c_{t}) -\beta ^{t}\mu _{t} &=&0
+
+-\beta ^{t-1}\mu _{t-1}+\beta ^{t}\mu _{t}[ f^{' }(
+k_{t}) +1-\delta ] &=&0,
+
+
+which simplifies to
+
+
+
+f^{' }( k_{t}) +1-\delta =\frac{u^{' }(
+c_{t-1}) }{\beta u^{' }( c_{t}) }.
+
+
+As with equation () in Chapter 8, this equation equates a gross rate of the return on the left with the elasticity of intertemporal substitution on the right. In the present model, however, the rate of return is not exogenous but is determined by the marginal productivity of
+capital along with the depreciation rate.
+
+
+
+###
+
+
+
+Steady-state analysis allows for a comparison with the golden rule level of saving in the Solow model. There is no growth in the present model and, for the Solow model with $g$ and $n$ equal to zero, the golden rule condition
+is
+
+
+
+f^{' }( \kappa _{GR}^{\ast }) =\delta .
+
+
+
+
+For the steady-states $c_{t}=c^{\ast }$ and $k_{t}=k^{\ast }$ for all $t,$
+equation () is
+
+
+
+f^{' }( k^{\ast }) =\frac{1}{\beta }-1+\delta .
+
+
+For the special case where $\beta =1$, the Ramsey model optimality condition above is analogousAssuming $A_{0 [fn]=L_{0}=1$, the conditions are identical.} to the golden rule in the Solow model, a natural outcome given that there is no discounting in the Solow model and the household maximizes utility in an economy with no frictions or externalities.
+
+Q: As $\beta $ falls, how does savings change?
+
+}
+A: For $\beta <1$, $f^{'  [fn]( k^{\ast }) >\delta $, so $k^{\ast }$ falls below the golden rule level, meaning less saving.}
+}
+
+
+
+###
+
+
+
+In all the DSGE models thus far, there have been two ways to save, either holding capital or using a financial instrument, such as bonds or bank deposits.
+\ (OK, maybe that's three.\ Whatever.) It is natural to consider the situation
+closer to reality, where households can choose either vehicle for saving.
+
+Let the real quantity of bonds held entering time $t$ pay $b_{t}$ with the gross interest rate $R_{t}=1+r$. Households maximize lifetime utility () over $\left\{ c_{t},k_{t},b_{t}\right\} $ subject to the following
+constraint.
+
+
+
+c_{t}+k_{t+1}+\frac{b_{t+1}}{R_{t+1}}\leq f( k_{t}) +(
+1-\delta ) k_{t}+b_{t}
+
+
+Using the same form for the Lagrangian () with multipliers $\mu _{t}$
+yields the same conditions ( and ) as before, with an additional first-order condition with respect to $b_{t}$.
+
+
+
+-\mu _{t-1}\frac{1}{R_{t}}=\mu _{t}
+
+
+Using this equation to substitute for $\mu _{t-1}$ in the first-order condition with respect to $k_{t}$ () gives
+
+
+
+-R_{t}\mu _{t}++\mu _{t}[ f^{' }( k_{t}) +1-\delta ] =0.
+
+
+The multiplier $\mu _{t}$ is the shadow price of income, so it must be strictly positive. Therefore, one can divide by $\mu _{t}$ to achieve
+
+
+
+R_{t}-1=f^{'}( k_{t})-\delta \text{,}
+
+
+which connects the interest on bonds with the return on capital and is really an arbitrage relation. If capital had a higher return, nobody would
+hold bonds and vice versa. For both savings vehicles to matter, they must have the same return. A simplified version of the above $f^{' }(
+k_{t}) =r_{t}+\delta $ shows that the marginal product of capital determines its returnWith a little extra work, we can use this relation to justify the assumption
+$I_{r [fn]<0$ in Chapter 1. One can also arrive at such a relation by
+considering the net present value of an investment project, but that's best left for a finance class.}.
+
+
+
+#
+
+
+
+Astronomers have it easy. They have a set of equations that tells them
+where to point a telescope to see any planet at any time. Macroeconomists
+would love to have such a means of forecasting recessions, for example. The comparison should be unsurprising, given that our solar system is dominated by
+the gravitational relationships between eight planets and the sun, and macroeconomics involves studying a few (hundred) million people subject to
+psychological, social, material, and spiritual forces. Planets do not engage in religious or ethnic feuds. Furthermore, despite the vast quantity of macroeconomic data, the quality is suspect due to (for example) trends, breaks, and serial correlation. The forecasting problem is the tip of the iceberg. There continues to be disagreement concerning the best methodology, and we are far from a grand unified model of a macroeconomy.
+
+Nonetheless, notable successes have been achieved by models focused on either the short or long term. Vector autoregressions are a workhorse model for forecasting and analysis in the private sector and among policymakers. Stability analysis under adaptive expectations has identified a robust class of interest rate rules for monetary policy. Long-run GDP growth is largely determined by savings rates and productivity growth, a result that arises in
+many models.
+
+But doing long-run analysis often involves strong assumptions about short-run dynamics and vice versa. There are no expectations in the Solow model.
+Likewise, short-run models---for example, the small macro model 5.---use
+stationary variables that rely on detrending or growth rates to derive
+empirical implications.
+
+For a macroeconomic model that has substantive long-run implications but can
+also be used for short-run policy analysis, micro-founded DSGE models receive
+the most attention from academic macroeconomists. The Ramsey model is used
+to study growth (Section 10.3), but it is also the foundation for the IS equation in
+the small macro model.
+
+A major alternative is large-scale (i.e., hundreds of equations) macro models like
+the FRB/US model maintained by the Federal Reserve, which can include any number of factors. Pieces of these large-scale models are similar to equations found in DSGE models, but they cannot be estimated as a single simultaneous equations model.
+
+It is worth pondering the appeal of micro-founded DSGE models, particularly
+given that their robustness to the Lucas critique is questionable. The ability
+to estimate DSGE models (or VARs) as a single system is an advantage over
+large-scale models. Estimating equations individually ignores the
+possible correlation between the errors of the equations, making
+interpreting the parameter estimates more difficult. DSGE models have
+more economic intuition than VARs. The connection of  DSGE models to
+microeconomic concepts like efficiency is comforting.
+
+
+
+A watershed moment for Western music is the adoption of a well-tempered tuning. The twelve notes between octaves are evenly spaced, so any pattern of notes---such as scales or chords---can begin on any note and remain in harmony. Much has been gained, but something is lost as well.
+Well-tempering opened the door to the complex harmony that began developing
+with J.S. Bach (or earlier), and that has persisted into the 21st century. Symphonies and operas from hundreds of years ago are still played and revered today.
+
+However, well-tempered tuning does not match the natural overtone series---think
+of the bugle call at a horse race. Brass players must constantly adjust to
+fit the well-tempered scale, and the use of harmonics on stringed
+instruments must be done with discretion. More importantly, melodies using
+the overtone series or micro-tones in between the well-tempered notes are a
+crucial element in Indian classical music, to name one of many examples. Such melodies are incorporated into Western music rarely and usually to
+produce an exotic effect.
+
+The focus on micro-founded DSGE models has led to an explosion of work on an array of macroeconomic issues, and a great deal has been gained. Such models clarify the underlying assumptions behind aggregate relations
+and allow researchers to consider interactions that might not be obvious.
+
+However, empirical work with DSGE models usually requires stationary data
+using detrended series, growth rates, or intensive forms, which assumes a
+unique equilibrium or steady state. Some macroeconomic issues with the
+biggest implications for welfare involve large deviations from equilibrium
+outcomes. The ZLB may give rise to a second steady state; stock market bubbles and crashes involve large deviations from the equilibrium given by the strong efficient markets hypothesis, and development traps are often modeled with multiple steady states.
+
+A danger is that the focus on a unique rational expectations equilibrium could be akin to looking for your keys under the streetlight when they were lost in a dark alley. The complications inherent in modeling a macroeconomy make such an approach appealing. Restricting attention to a single equilibrium opens large mathematical toolboxes with stationary distributions, stability analysis, and iterative solution techniques.
+
+Some have resisted these temptations in the development of DSGE models. New Keynesian models with the ZLB are a notable example. Estimating DSGE
+models with multiple equilibria or occasionally binding constraints in a convincing way is a mountain some are scaling todaySee, for example, Guerrieri and Iacoviello  or Gust, Herbst, Lopez-Salido, and Smith . [fn].
+
+Nonetheless, the total victory of one modeling strategy is unlikely for the
+foreseeable future. Macroeconomic knowledge arises out of a mosaic of
+methods. Olivier Blanchard  identifies five modeling varieties, adding *toy models* and *foundational models* to the three
+discussed already. The first three he names are *forecasting models*, such as
+VARs, micro-founded *DSGE models*, and *policy models* (e.g.,
+the large FRB/US model). The IS--LM model exemplifies a toy model that
+is of primarily expository value. The fiscal theories of inflation and the
+price level (Chapter 7) are foundational models that may not provide realistic
+restrictions on the data but do provide intuition about a deep theoretical idea.
+
+Each methodology has costs and benefits that should be considered, whether one is
+beginning a research project or giving policy advice. Researchers vary in
+the degree to which they've fallen in love with their favorite models, so we
+should listen to them according to their abilities but take advice according to our needs.
+
+Macro is hard, but it is at least as important as it is difficult. Let's be careful out there.
+
+
+
+
+#
+
+
+
+
+
+##
+
+For a constant $\rho $ between -1 and 1, the following infinite sums converge:
+
+
+
+\sum_{k=0}^{\infty }\rho ^{k} &=&1+\rho +\rho ^{2}+\rho ^{3}+....=\frac{1}{1-\rho }
+\sum_{k=1}^{\infty }\rho ^{k} &=&\rho +\rho ^{2}+\rho ^{3}+....=\frac{\rho }{1-\rho }
+
+
+For a visual demonstration, see the geometric series video .
+
+For a finite series of this form, the sum $S$ for $n+1$ terms is
+
+
+
+S=1+\rho +\rho ^{2}+....+\rho ^{n}.
+
+
+Multiplying by $\rho $ and adding 1 to both sides gives
+
+
+
+\rho S+1=\rho +\rho ^{2}+....+\rho ^{n+1}+1,
+
+
+but now the right-hand side is equal to $S+\rho ^{n+1}$. so, solving for $S$
+gives
+
+
+
+\rho S-S=\rho ^{n+1}-1,
+
+
+so
+
+
+
+S=1+\rho +\rho ^{2}+....+\rho ^{n}=\frac{1-\rho ^{n+1}}{1-\rho }.
+
+
+This is useful in its own right. Taking the limit as $n\rightarrow \infty
+$ recovers the first infinite sum above because $\rho ^{n+1}\rightarrow 0$
+for $0\leq \rho <1$.
+
+
+
+##
+
+Here are some standard relationships using the expectations operator $E$ for
+time series variables $x_{t}$ and $y_{t}$ for some parameter $a$. The first two reflect the linearity of the operator.
+
+
+
+E_{t-1}( x_{t}+y_{t}) &=&E_{t-1}x_{t}+E_{t-1}y_{t}
+E_{t-1}( ax_{t}) &=&aE_{t-1}x_{t}
+E_{t}x_{t} &=&x_{t}
+
+
+The notation $E_{t-1}x_{t}$ refers to the expectation formed in time $t-1$ of $x_{t}$, which we've also expressed as $x_{t}^{e}$. The notation $E[ x_{t}|\Omega _{t}] $ is sometimes used to refer to the expectation of $x_{t}$
+formed using information in the set $\Omega _{t},$ which is handy when
+different information is available at different times. The last rule
+reflects the fact that the value $x_{t}$ is observed in time $t$.
+
+
+
+##
+
+Economists use several mathematical definitions of growth rates more or less interchangeably. Let the variables $X_{t}$ and $Y_{t}$ be functions of time. The growth rate of $X_{t},$ $\mathfrak{g}( X_{t}) $ could be defined as
+
+
+
+\text{1) \ \ }\mathfrak{g}( X_{t}) &=&\frac{X_{t}-X_{t-1}}{X_{t-1}}
+\text{2) \ \ }\mathfrak{g}( X_{t}) &=&\log X_{t}-\log X_{t-1}
+
+\text{3) \ \ }\mathfrak{g}( X_{t}) &=&\frac{\dot{X}_{t}}{X_{t}}
+
+
+The first of these three methods is the usual fractional (percentage) change
+formula. The second is the log difference version commonly used in time
+series econometrics, and the last uses the time derivative seen in Chapter 11 in the context of the Solow model.
+
+Growth rate functions are assumed to follow several rules for parameter $\alpha $:
+
+
+
+\mathfrak{g}( X_{t}Y_{t}) &=&\mathfrak{g}( X_{t}) +\mathfrak{g}( Y_{t})
+\mathfrak{g}( \frac{X_{t}}{Y_{t}}) &=&\mathfrak{g}(
+X_{t}) -\mathfrak{g}( Y_{t})
+\mathfrak{g}( X_{t}^{\alpha }) &=&\alpha \mathfrak{g}(
+X_{t})
+
+
+One can easily show that the first rule above is satisfied for the log
+difference definition 2) as follows using the rules for logs.
+
+
+
+\mathfrak{g}( X_{t}Y_{t}) &=&\log ( X_{t}Y_{t}) -\log
+( X_{t-1}Y_{t-1})
+&=&\log X_{t}+\log Y_{t}-\log X_{t-1}-\log Y_{t-1}
+&=&\log X_{t}-\log X_{t-1}+\log Y_{t}-\log Y_{t-1}
+&=&\mathfrak{g}( X_{t}) +\mathfrak{g}( Y_{t})
+
+
+
+
+However, the rules do not hold exactly for all definitions. To
+demonstrate, consider some of the ways to represent a variable $Z_{t}$ with
+a constant growth rate $m$, meaning it has exponential growth. Note that
+these are analogous to the definitions for growth rates:
+
+
+
+Z_{t} &=&Z_{t-1}( 1+m)
+Z_{t} &=&Z_{0}\exp ( mt)
+\dot{Z}_{t} &=&mZ_{t}
+
+
+Similarly, let the variable $W_{t}$ have growth rate $n.$ Computing the
+growth rate of the product $\mathfrak{g}( Z_{t}W_{t}) $ using the
+first definition yields
+
+
+
+\mathfrak{g}( Z_{t}W_{t}) &=&\frac{Z_{t}W_{t}-Z_{t-1}W_{t-1}}{Z_{t-1}W_{t-1}}
+&=&\frac{Z_{t-1}( 1+m) W_{t-1}( 1+n) -Z_{t-1}W_{t-1}}{Z_{t-1}W_{t-1}}
+&=&m+m+mn.
+
+
+The first rule would require that $\mathfrak{g}( Z_{t}W_{t})
+=m+n$, so it is not satisfied. However, for small growth rates, the
+product $mn$ is close to zero, so it is approximately true that the growth
+rate of a product is the sum of the growth rates. Again, such assumptions
+are often implicit in economic analysis.
+
+Graphing growing functions also offers some choices for presentation. The
+variable $Z_{t}$ has the usual concave shape. The graph of $\log Z_{t}$ is
+a line with slope $m.$ Being able to represent the growth rate on the
+graph makes the graph of the log more convenient in many cases.
+
+
+
+##
+
+The Fisher relation is motivated by problems of the following kind:
+
+Q: Imagine cookies are the only good in the economy and they cost \$2. \
+If the nominal rate on a one-year loan is 20\is the value of a \$1,000 loan and repayment in cookies?
+
+A: The loan of \$1,000 can buy 500 cookies and the repayment of \$1,200
+can buy approximately 566 cookies at a price of \$2.12. Hence, the real
+interest rate on the loan is 13.2\
+Calculating the real rate uses $1.132=\dfrac{\$1000(1.2)/2(1.06)}{\$1000/2}$, so the general form of the relation between real $r$ and
+nominal rates $i$ is
+
+
+
+1+r=\frac{1+i}{1+\pi }
+
+
+for inflation $\pi $ over the year after the loan is made.
+
+Because inflation in the period after the loan is the key, the real rate relation is usually written
+
+
+
+1+r_{t}=\frac{1+i_{t}}{1+\pi _{t+1}^{e}}
+
+
+where expected inflation is $\pi _{t+1}^{e}$.
+
+An approximation is commonly used. Taking logs of both sides and using the
+approximation $\log ( 1+x) \approx x$ for small $x$ gives the
+following:
+
+
+
+r_{t}=i_{t}-\pi _{t+1}^{e}
+
+
+One could assume rational expectations, where $\pi _{t+1}^{e}=E_{t}\pi _{t+1}$.This is done as part of theoretical models, such as the small macro model (see Problem 5.) in Chapter 5.
+
+Under static expectations $\pi _{t+1}^{e}=\pi _{t-1}$, the approximate Fisher relation is
+
+
+
+r_{t}=i_{t}-\pi _{t},
+
+
+which is easy to use for data analysis, as in the case of the TR--FR graph in Figure .
+
+
+
+##
+
+The product notation $\prod_{k}$ works just like the sum $\sum_{k}$. For a function $f( k) $\ of the index $k$, the finite product
+can be written
+
+
+
+\prod_{k=1}^{n}f( k) =f( 1) \cdot f(
+2) \cdot f( 3) \cdot ....\cdot f( n).
+
+
+This means, if the function is a constant, $f( k) =a$, the formula
+reduces to
+
+
+
+\prod_{k=1}^{n}f( k) =a^{n}.
+
+
+The infinite product is
+
+
+
+\lim_{n\rightarrow \infty }\prod_{k=1}^{n}f( k)
+=\prod_{k=1}^{\infty }f( k) =f( 1) \cdot
+f( 2) \cdot f( 3) \cdot .....
+
+
+
+
+
+
+##
+
+The chain rule for functions with multiple inputs, such as $f( x,y)$, is
+
+
+
+\dfrac{df( x,y) }{d\theta }=f_{x}\dfrac{dx}{d\theta }+f_{y}\dfrac{dy}{d\theta }.
+
+
+
+
+For example, the consumption function with output/income and a real interest
+rate as arguments is written $C( Y,r).$ Differentiating with
+respect to an exogenous variable $A$ yields
+
+
+
+\frac{dC( Y,r) }{dA}=C_{Y}\frac{dY}{dA}+C_{r}\frac{dr}{dA},
+
+
+so the effect of a change in $A$ on consumption is split into the effect of
+the change on output multiplied by the effect of the change of output on consumption
+and the effect on the real rate multiplied by the effect of the real rate on
+consumption.
+
+
+
+#
+
+
+
+The ARMA(p,q) model is fundamental to time series analysis. For a time-dependent variable $y_{t}$\ and stochastic shock $\varepsilon _{t}$ distributed $IID( \sigma _{\varepsilon }) $, the model is written using parameters $\rho _{j}$ and $\theta _{k}$ and constant $c$.
+
+
+
+y_{t}=c+\rho _{1}y_{t-1}+\rho _{2}y_{t-2}...+\rho _{p}y_{t-p}+\theta
+_{0}\varepsilon _{t}+\theta _{1}\varepsilon _{t-1}+...+\theta
+_{q}\varepsilon _{t-q}
+
+
+There are $p$ autoregressive (AR) terms, lags of $y_{t},$ and $q$ moving
+average (MA) terms, lags of the shock. Estimating such models is a
+standard technique for analyzing stationary data.
+
+
+
+##
+
+Eliminating the stochastic elements of the equation above gives a $p$-th
+order linear-difference equation. Solving such an equation means expressing $y_{t}$ as a function of parameters and time and an initial condition $y_{0},$
+if it is available.
+
+A very simple but very important case is a first-order difference equation.
+
+
+
+y_{t}=c+\rho y_{y-1}
+
+
+For a given initial condition $y_{0}$, one can solve by iterating. For $t=1$, it is the case that
+
+
+
+y_{1}=c+\rho y_{0}.
+
+
+Now let $t=2$ and substitute using the equation above:
+
+
+
+y_{2} &=&c+\rho y_{1}
+&=&c+\rho ( c+\rho y_{0})
+&=&c( 1+\rho ) +\rho ^{2}y_{0}
+
+
+Continuing,
+
+
+
+y_{3} &=&c( 1+\rho +\rho ^{2}) +\rho ^{3}y_{0}
+y_{4} &=&...
+&&\text{etc.}
+
+
+Hence,
+
+
+
+y_{t}=c\sum_{i=0}^{t-1}\rho ^{i}+\rho ^{t}y_{0}
+
+
+is the solution to the first-order difference equation (). (Note: A handy math fact that simplifies the solution further is $\sum_{i=0}^{t-1}\rho ^{i}=\dfrac{1-\rho ^{t}}{1-\rho }$. For further insight, see
+Appendix )
+
+An important question is the long-run behavior of $y_{t}$, meaning $\lim_{t\rightarrow \infty }y_{t}$, which clearly depends on the parameter $\rho $. If $\left\vert \rho \right\vert <1$, then $\rho ^{t}\rightarrow 0$
+as $t\rightarrow \infty $, so $y_{t}$ is *mean reverting*.
+
+\begin{remark}
+If $\left\vert \rho \right\vert <1,$ $\lim_{t\rightarrow \infty }y_{t}=\dfrac{c}{1-\rho }$ for the first-order difference equation ().
+\end{remark}
+
+\begin{remark}
+If $\left\vert \rho \right\vert >1,$ $\lim_{t\rightarrow \infty
+}y_{t}=\infty $ and $y_{t}$ diverges unless $c=y_{0}=0$.
+\end{remark}
+
+\begin{remark}
+A special case is where $\rho =1$ and the sum $\sum_{i=0}^{t-1}\rho^{i}=t$ so the solution is $y_{t}=ct+y_{0}$, which diverges but also forms a linear trend.
+\end{remark}
+
+
+
+##
+
+The above deterministic analysis is useful for stability analysis, as in
+Section 5.4, but for econometric applications, stochastic terms are
+necessary. The simplest stochastic version of the ARMA model ()
+is ARMA(1,0).
+
+
+
+y_{t}=c+\rho y_{t-1}+\varepsilon _{t}
+
+
+This equation can be solved iteratively (verify!), as in the
+deterministic case, or using the lag operator (see below) to obtain
+
+
+
+y_{t}=c\sum_{i=0}^{t-1}\rho ^{i}+\rho
+^{t}y_{0}+\sum_{i=0}^{t-1}\rho ^{i}\varepsilon _{t-i}
+
+
+Again, the behavior of the variable $y_{t}$ is largely governed by the
+parameter $\rho $.
+
+\begin{figure}[hp]
+\centering
+\begin{subfigure}{0.4\linewidth}
+\includegraphics[width=6cm]{FB1a.png}
+\caption{$\rho=0.5$}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.4\linewidth}
+\includegraphics[width=6cm]{FB1b.png}
+\caption{$\rho=0.9$}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.4\linewidth}
+\includegraphics[width=6cm]{FB1c.png}
+\caption{$\rho=0.25$}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.4\linewidth}
+\includegraphics[width=6cm]{FB1d.png}
+\caption{$\rho=1.0$}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.4\linewidth}
+\includegraphics[width=6cm]{FB1e.png}
+\caption{$\rho=1.1$}
+\end{subfigure}
+\hfill
+\begin{subfigure}{.4\linewidth}
+\includegraphics[width=6cm]{FB1f.png}
+\caption{$\rho=-1.1$}
+\end{subfigure}
+\caption{Simulations of the AR1 model (), $\sigma _{\varepsilon }=1.0 $}
+\end{figure}
+
+Figures -- show simulations (see the program in Appendix ) of the AR1
+process in equation () for varying parameter choices for $y_{0}$
+and $\rho ,$ where the constant is zero ($c=0$), which implies that $y_{t}$
+should (eventually) fluctuate around a mean of zero. Panels a) and b) start away from
+the mean, such that $y_{0}=20$. In both cases, the simulation shows $y_{t}$
+reverting toward zero, but in panel b), that takes more time because the
+parameter $\rho $ is higher (0.5 versus 0.9).
+
+In panels c) and d), the simulation starts at equilibrium, so no adjustment is needed.  Panel c) shows moderate persistence, with panel d) showing a simulation of a unit root when $\rho=1$. In that case, there is no tendency for the series $y_{t}$ to revert to equilibrium, and the unconditional variance increases with $t$.
+
+The last two panels show divergent behavior when the absolute value of parameter $\rho $ exceeds one. Panel f) shows oscillating behavior typical of a negative $\rho $. The case where $\rho =1$ is called a unit
+root and it has special properties discussed below.
+
+
+
+#
+
+
+These programs can also be found at the webpage/blog *https://primeronmacro.blogspot.com/*.
+
+
+
+
+##
+
+The following EViews program generates the simulations in Figures --:
+
+
+wfcreate arsim u 1 101
+
+scalar nobs = @obssmpl
+
+scalar nobs1 = nobs-1
+
+scalar rho = -1.05
+
+scalar sig = 1.0
+
+scalar y0 = 0
+
+scalar cons = 0.0
+
+genr eps = sig*nrnd
+
+series y = y0
+
+for !i = 2 to nobs
+
+y(!i) = cons + rho*y(!i-1) + eps(!i)
+
+next
+
+line y
+
+
+
+##
+
+The following Dynare program generates impulse response graphs for the small macro model in Section 5.3. Instructions for running Dynare programs can be found at the webpage .
+
+
+
+var y, pi, r, u, v;
+
+varexo e, g;
+
+parameters a, bpi, by, c, ybar, pibar, rbar, rho, phi;
+
+bpi = 0.5;
+
+by = 0.5;
+
+a = 2.0;
+
+c = 0.4;
+
+pibar = 2.0;
+
+ybar = 3.0;
+
+rbar = 0.0;
+
+rho = 0.0;
+
+phi = 0.0;
+
+model;
+
+y = ybar + a*(pi - Expectation(-1)(pi(0))) + v;
+
+y = ybar - c*r + u;
+
+r= rbar + bpi*(pi - pibar) + by*(y - ybar);
+
+u = rho*u(-1) + e;
+
+v = phi*v(-1) + g;
+
+end;
+
+initval;
+
+y = 2.0;
+
+r = 1.0;
+
+pi = 2.0;
+
+v = 0;
+
+u = 0;
+
+end;
+
+shocks;
+
+var e; stderr 0.0;
+
+var g; stderr 1.0;
+
+end;
+
+stoch\_simul(irf=10);
+
+\end{document}
