@@ -1,14 +1,26 @@
-﻿Productivity and welfare can have an inverse relationship.  This paper
-describes an overlapping generations model where housing is the savings
-vehicle, and utility is provided by housing and a consumption good. If
-intratemporal substitution between the consumption good and housing is
-sufficiently inelastic, aggregate utility is decreasing in productivity.  At higher levels of productivity, the relative scarcity of housing
-aggravates the problem of oversaving.
+---
+title: "Productivity and Welfare in an Overlapping Generations Model with Housing"
+author: "George A. Waters"
+date: "May 22, 2020"
+---
+
+**George A. Waters**¹
+*Department of Economics*
+*Campus Box 4200*
+*Illinois State University*
+*Normal, IL 61790-4200*
+
+¹ gawater@gmail.com
+
+## Abstract
+
+Productivity and welfare can have an inverse relationship. This paper describes an overlapping generations model where housing is the savings vehicle, and utility is provided by housing and a consumption good. If intratemporal substitution between the consumption good and housing is sufficiently inelastic, aggregate utility is decreasing in productivity. At higher levels of productivity, the relative scarcity of housing aggravates the problem of oversaving.
 
 **Keywords:** Housing, income distribution, OLG, savings
 
+---
 
-## Introduction
+## 1. Introduction
 
 
 The benefits of productivity growth is one of the few ideas upon which
