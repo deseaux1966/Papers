@@ -1,46 +1,30 @@
-﻿\documentclass[12pt]{article}
+---
+title: "Detecting Mysticism in Asset Markets"
+author: "George A. Waters"
+date: "2026-07-16"
+---
 
+**George A. Waters**¹
+*Department of Economics*
+*Illinois State University*
 
-backend=biber,
-style=authoryear,
-bibstyle=authoryear,
-maxcitenames=3,
-uniquename=false,
-sorting=nyt,
-url=false
-]{biblatex}
+¹ gawater@gmail.com
 
-
-footmisc,caption,pdflscape,array,hyperref}
-
-}
-
-
-}
-
-
-%
-
-
-\geometry{left=1.0in,right=1.0in,top=1.0in,bottom=1.0in}
-
-\begin{document}
-
-
-Department of EconomicsIllinois State University}
-
+## Abstract
 
 The model of endogenous rational bubbles (ERB) uses a weighted replicator dynamic to describe the evolution of heterogeneous forecasting strategies and can produce bubbles when agents are sufficiently aggressive about switching to better performing strategies. The Generalized Sup Augmented Dickey Fuller (GSADF) test is the most reliable test for detecting bubbles and is capable of dating multiple bubbles in a sample. The model of ERB can produce empirically realistic bubbles, and the GSADF test can detect and date them. The choices of parameter values have behavioral interpretations related to the frequency, magnitude and duration of the bubbles. The interaction between the theoretical and empirical approaches suggests a bubble definition based on magnitudes of the deviations and the autocorrelation of the price-dividend ratio.
-**Keywords:** rational bubble, GSADF, evolutionary game theory, asset price**JEL Codes:** C22, C73, D84, G12
 
+**Keywords:** rational bubble, GSADF, evolutionary game theory, asset price
 
-\newpage
-"*When the music stops, in terms of liquidity, things will be complicated. But as long as the music is playing, you've got to get up and dance. We're still dancing.*"
-- Citigroup CEO Charles Prince (princequote2007citigroup ((princequote2007citigroup)))
+**JEL Codes:** C22, C73, D84, G12
 
+---
 
-##
+> *When the music stops, in terms of liquidity, things will be complicated. But as long as the music is playing, you've got to get up and dance. We're still dancing.*
+>
+> — Citigroup CEO Charles Prince (Prince, 2007)
 
+## 1. Introduction
 
 There is not consensus on a definition for asset market bubbles. The model of Endogenous Rational Bubbles (ERB) incorporates heterogeneous forecasts and demonstrates the underlying determinants behind the formation and collapse of rational bubbles. The Generalized Sup Augmented Dickey-Fuller (GSADF) test was developed by phillips2015testing ((phillips2015testing)) to detect and date bubbles. This paper shows that the model of ERB can produce empirically plausible bubbles, including simulated samples with multiple bubbles, and that the GSADF test is able to detect and date them.
 
