@@ -396,7 +396,7 @@ While addressing these policy issues, undergraduates can get experience with emp
 - Schmitt-Grohé, Stephanie and Martin Uribe (2009). Liquidity Traps with Global Taylor Rules. *International Journal of Economic Theory*, 5(1), 85-106.
 - Taylor, John B. (1993). Discretion Versus Policy Rules in Practice. *Carnegie-Rochester Conference Series on Public Policy*, vol. 39, December, 195-214.
 - Vox EU (2014). Secular Stagnation: Facts, Causes and Cures. E-book, edited by Coen Teulings and Richard Baldwin. https://voxeu.org/content/secular-stagnation-facts-causes-and-cures (accessed 10/4/2019).
-- Waters, George (2021). *A Primer on Macroeconomics*. Manuscript.
+- Waters, George (2021). *[A Primer on Macroeconomics](https://primeronmacro.blogspot.com/)*. Blurb Books.
 - Wolla, Scott (2019). A New Frontier: Monetary Policy with Ample Reserves. *Page One Economics*, May 2019, The Federal Reserve Bank of St. Louis.
 - Woodford, Michael (2003). *Interest and Prices*. Princeton University Press, Princeton, NJ.
 
