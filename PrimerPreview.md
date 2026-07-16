@@ -1,4 +1,10 @@
-﻿Copyright 2023 Illinois State University
+# A Primer on Macroeconomics
+## Connecting Graphs with Modern Methods
+
+**George Waters**
+
+---
+ Copyright 2023 Illinois State University
 
 
 Edited by *Cambridge Proofreading LLC*
